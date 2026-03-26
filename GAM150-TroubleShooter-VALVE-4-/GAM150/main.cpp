@@ -4,7 +4,7 @@ int main() {
 
 
     Engine::Application& engine = Engine::Application::Instance();
-    engine.Start("Assignment 3 - sun.hwang@digipen.edu");
+    engine.Start("TroubleShooter");
     while (IsKeyPressed(KEY_A) == false) {
         engine.Update();
     }

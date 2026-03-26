@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="GAM150/GAM150.vcxproj" />
+  <Project Path="GAM150/GAM150.vcxproj" Id="1d4cdb11-1a70-412a-a0cc-b22c6dd719f1" />
 </Solution>
