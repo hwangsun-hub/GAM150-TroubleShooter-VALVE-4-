@@ -21,11 +21,16 @@
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="Game\GameObject.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\ObjectID.h" />
     <ClInclude Include="Engine\Window.h" />
+    <ClInclude Include="Game\GameObject.h" />
+    <ClInclude Include="Game\Player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
