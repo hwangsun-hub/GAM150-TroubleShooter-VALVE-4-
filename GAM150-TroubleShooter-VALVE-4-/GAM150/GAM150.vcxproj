@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\GameManager.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Game\GameObject.cpp" />
     <ClCompile Include="Game\Player.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\GameManager.h" />
     <ClInclude Include="Engine\ObjectID.h" />
     <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="Game\GameObject.h" />

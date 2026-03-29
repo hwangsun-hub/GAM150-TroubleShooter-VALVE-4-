@@ -25,6 +25,9 @@
     <ClCompile Include="Game\GameObject.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\GameManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Window.h">
@@ -40,6 +43,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Engine\ObjectID.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameManager.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
