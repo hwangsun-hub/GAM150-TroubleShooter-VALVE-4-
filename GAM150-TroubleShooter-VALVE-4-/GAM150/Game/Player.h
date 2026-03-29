@@ -5,10 +5,8 @@ namespace Game {
 	class player
 	{
 	public:
-		player();
-		~player();
 		void Load();
-		void Update();
+		void Update(double dt);
 		void Draw();
 		Vector2 GetPosition();
 		Rectangle GetHitbox();
@@ -16,8 +14,10 @@ namespace Game {
 
 	private:
 		Texture2D texture;
-		Vector2 position;
+		Vector2 position = { 0,0 };
 		Rectangle hitbox;
+
+		static constexpr int SPEED = 50;
 
 	};
 }
