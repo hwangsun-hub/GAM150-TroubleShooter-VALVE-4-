@@ -1,31 +1,71 @@
 #include "Player.h"
-void Game::player::Load() {
+#include "../Engine/Application.h"
+Game::Player::Player()  {
+
+}
+void Game::Player::Load() {
 	texture = LoadTexture("Assets/gam150-player.png");
+	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	hitbox = Rectangle{ position.x, 
 						position.y,
 						static_cast<float>(texture.width),
 						static_cast<float>(texture.height) };
 }
 
-void Game::player::Update(double dt) {
+void Game::Player::Update(double dt) {
 	//move
-	if (IsKeyDown(KeyboardKey::KEY_LEFT)) {
-		position.x -= SPEED * dt;
+	if (IsKeyDown(KeyboardKey::KEY_LEFT) == true) {
+		position.x -= MOVE_SPEED * dt; //direct feedback
 
 	}
-	if (IsKeyDown(KeyboardKey::KEY_RIGHT)) {
-		position.x += SPEED * dt;
+	if (IsKeyDown(KeyboardKey::KEY_RIGHT) == true) {
+		position.x += MOVE_SPEED * dt; //direct feedback
 
 	}
+	//jump
+	if (IsKeyPressed(KeyboardKey::KEY_SPACE) == true) {
+		if (IsOnGround == true &&
+			CanJump == true) {
+			velocity.y += JUMP_SPEED * dt;
+			IsOnGround = false;
+		}
+
+	}
+
+	//update
+	if (IsOnGround == true) {
+		velocity.y = 0;
+	}
+	position += velocity * dt;
+	velocity.y += GRAVITY * dt;
+
+	//hitbox update
 	hitbox.x = position.x;
 	hitbox.y = position.y;
 }
-void Game::player::Draw() {
-	DrawTexture(texture, position.x, position.y, WHITE);
+void Game::Player::Draw() {
+	DrawTexturePro(
+		texture,
+		Rectangle{0, 0, static_cast<float>(texture.width), static_cast<float>(texture.height)},
+		Rectangle {position.x, position.y, static_cast<float>(texture.width), static_cast<float>(texture.height) },
+		Vector2 {0, 0},
+		0.0f,
+		WHITE
+	);
+
+					
 }
-Vector2 Game::player::GetPosition() {
+Vector2 Game::Player::GetPosition() const {
 	return position;
 }
-Rectangle Game::player::GetHitbox() {
+Rectangle Game::Player::GetHitbox() const {
 	return hitbox;
+}
+
+void Game::Player::SetCanJump(bool CanJump) {
+	this->CanJump = CanJump;
+}
+
+void Game::Player::SetIsOnGround(bool IsOnGround) {
+	this->IsOnGround = IsOnGround;
 }

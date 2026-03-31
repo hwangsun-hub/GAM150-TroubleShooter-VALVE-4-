@@ -20,22 +20,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
-    <ClCompile Include="Engine\GameManager.cpp" />
+    <ClCompile Include="Engine\GameState.cpp" />
+    <ClCompile Include="Engine\GameStateManager.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="Game\Floor.cpp" />
+    <ClCompile Include="Game\GameMap.cpp" />
+    <ClCompile Include="Game\GameMode.cpp" />
     <ClCompile Include="Game\GameObject.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
-    <ClInclude Include="Engine\GameManager.h" />
+    <ClInclude Include="Engine\GameState.h" />
+    <ClInclude Include="Engine\GameStateManager.h" />
     <ClInclude Include="Engine\ObjectID.h" />
     <ClInclude Include="Engine\Window.h" />
+    <ClInclude Include="Game\Floor.h" />
+    <ClInclude Include="Game\GameMap.h" />
+    <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Game\GameObject.h" />
     <ClInclude Include="Game\Player.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\Downloads\Retro-Lines-v3.4\Retro-Lines-16x16\Environment.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
