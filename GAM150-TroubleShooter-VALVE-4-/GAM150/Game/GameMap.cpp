@@ -96,6 +96,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		switch (obj->GetObjectID())
 		{
 		case ObjectID::ID::FLOOR:
+			//should update later
 			if (obj->CheckCollision(player.GetHitbox()) == true &&
 				isFirstTimeFloor == true
 				) {

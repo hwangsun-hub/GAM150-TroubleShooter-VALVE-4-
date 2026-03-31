@@ -40,6 +40,12 @@ void Game::Player::Update(double dt) {
 		velocity.y += GRAVITY * dt;
 	}
 	position += velocity * dt;
+
+	//if collision with wall(floor's left/right side)
+	//then position.x -/+= velocity * dt;
+
+	//if collision with ceiling(floor's down side)
+	//then position.y += velocity * dt;
 	
 
 	//hitbox update
@@ -56,7 +62,7 @@ void Game::Player::Draw() {
 		WHITE
 	);
 	//for debugging
-	//DrawRectangleLinesEx(hitbox, 10, RED);
+	DrawRectangleLinesEx(hitbox, 5, RED);
 
 					
 }

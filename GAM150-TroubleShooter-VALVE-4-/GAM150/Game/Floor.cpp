@@ -48,5 +48,5 @@ void  Floor::Update(Game::Player& player, double dt) {
 void Floor::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
-	//DrawRectangleLinesEx(hitbox, 10, RED);
+	DrawRectangleLinesEx(hitbox, 5, RED);
 }
