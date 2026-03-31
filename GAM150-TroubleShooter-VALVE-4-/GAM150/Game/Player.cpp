@@ -36,8 +36,11 @@ void Game::Player::Update(double dt) {
 	if (IsOnGround == true) {
 		velocity.y = 0;
 	}
+	else {
+		velocity.y += GRAVITY * dt;
+	}
 	position += velocity * dt;
-	velocity.y += GRAVITY * dt;
+	
 
 	//hitbox update
 	hitbox.x = position.x;
@@ -52,6 +55,8 @@ void Game::Player::Draw() {
 		0.0f,
 		WHITE
 	);
+	//for debugging
+	//DrawRectangleLinesEx(hitbox, 10, RED);
 
 					
 }

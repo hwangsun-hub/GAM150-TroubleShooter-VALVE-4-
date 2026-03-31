@@ -38,7 +38,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1,  1, 1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{  0,  1,  3,  3,  2,  1,  1,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
 		{ 20, 21, 21, 23, 21, 22, 23, 22, 23, 22, 23, 23, 22, 22, 23, 22, 23, 23, 23, 24 }
@@ -91,8 +91,30 @@ void Game::GameMap::Load() {
 }
 
 void Game::GameMap::Update(Game::Player& player, double dt) {
+	bool isFirstTimeFloor = true;
 	for (GameObject* obj : objects) {
-		obj->Update(player, dt);
+		switch (obj->GetObjectID())
+		{
+		case ObjectID::ID::FLOOR:
+			if (obj->CheckCollision(player.GetHitbox()) == true &&
+				isFirstTimeFloor == true
+				) {
+				player.SetIsOnGround(true);
+				if (obj->GetIsGlitchMode() == true) {
+					player.SetCanJump(false);
+				}
+				else {
+					player.SetCanJump(true);
+				}
+				isFirstTimeFloor = false;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	if (isFirstTimeFloor == true) {
+		player.SetIsOnGround(false);
 	}
 }
 

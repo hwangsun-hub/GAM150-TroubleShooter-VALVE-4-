@@ -1,4 +1,5 @@
 #include "Floor.h"
+#include <iostream>
 
 Floor::Floor(Vector2 pos, Rectangle texture_source) :
 	position(pos),
@@ -17,6 +18,9 @@ Rectangle  Floor::GetHitbox() {
 ObjectID::ID Floor::GetObjectID() {
 	return id;
 }
+bool Floor::GetIsGlitchMode() {
+	return isGlitchMode;
+}
 
 bool  Floor::CheckCollision(Rectangle hibox) {
 	return CheckCollisionRecs(hibox, this->hitbox);
@@ -24,8 +28,8 @@ bool  Floor::CheckCollision(Rectangle hibox) {
 
 void Floor::Load() {
 	texture = LoadTexture("Assets/gam150-1.png");
-	hitbox.width = texture.width;
-	hitbox.height = texture.height;
+	hitbox.width = 64;
+	hitbox.height = 64;
 }
 void  Floor::Update(Game::Player& player, double dt) {
 	if (CheckCollision(player.GetHitbox()) == true) {
@@ -43,4 +47,6 @@ void  Floor::Update(Game::Player& player, double dt) {
 
 void Floor::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
+	//for debuging
+	//DrawRectangleLinesEx(hitbox, 10, RED);
 }

@@ -12,6 +12,7 @@ namespace Game {
 		virtual Vector2 GetPosition() = 0;
 		virtual Rectangle GetHitbox() = 0;
 		virtual ObjectID::ID GetObjectID() = 0;
+		virtual bool GetIsGlitchMode() = 0;
 		virtual bool CheckCollision(Rectangle hibox) = 0;
 
 
