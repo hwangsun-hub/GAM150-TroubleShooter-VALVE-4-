@@ -36,8 +36,11 @@ void Game::Player::Update(double dt) {
 	if (IsOnGround == true) {
 		velocity.y = 0;
 	}
+	else {
+		velocity.y += GRAVITY * dt;
+	}
 	position += velocity * dt;
-	velocity.y += GRAVITY * dt;
+	
 
 	//hitbox update
 	hitbox.x = position.x;

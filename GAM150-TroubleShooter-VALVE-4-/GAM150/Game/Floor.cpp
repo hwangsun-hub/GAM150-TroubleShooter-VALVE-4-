@@ -17,6 +17,9 @@ Rectangle  Floor::GetHitbox() {
 ObjectID::ID Floor::GetObjectID() {
 	return id;
 }
+bool Floor::GetIsGlitchMode() {
+	return isGlitchMode;
+}
 
 bool  Floor::CheckCollision(Rectangle hibox) {
 	return CheckCollisionRecs(hibox, this->hitbox);

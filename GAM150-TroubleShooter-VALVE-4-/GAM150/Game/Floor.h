@@ -13,6 +13,7 @@ public:
 	Vector2 GetPosition() override;
 	Rectangle GetHitbox() override;
 	ObjectID::ID GetObjectID() override;
+	bool GetIsGlitchMode() override;
 	bool CheckCollision(Rectangle hibox) override;
 
 private:
