@@ -10,12 +10,15 @@ namespace Game {
 	{
 	public:
 		GameMap();
+		GameMap(MapName mapname);
 		~GameMap();
 		
 		void LoadMap(MapName mapname);
-		void Load(MapName mapname);
-		void Update(double dt);
-		void draw(MapName mapname);
+		void Load();
+		void Update(Game::Player& player, double dt);
+		void draw();
+		MapName GetCuurentMapName();
+		std::vector<GameObject*> GetGameObject();
 
 
 
@@ -24,6 +27,7 @@ namespace Game {
 		MapName currentMapName = MapName::STAGE3_LEVEL1;
 		std::vector<std::vector<std::vector<int>>> maps;
 		std::vector<GameObject*> objects;
+		static constexpr int TILE_SIZE = 64;
 	};
 
 }

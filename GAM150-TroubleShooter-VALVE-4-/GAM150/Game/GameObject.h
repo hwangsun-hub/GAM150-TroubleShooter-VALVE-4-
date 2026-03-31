@@ -7,7 +7,7 @@ namespace Game {
 	{
 	public:
 		virtual void Load() = 0;
-		virtual void Update(double dt) = 0;
+		virtual void Update(Player& player, double dt) = 0;
 		virtual void Draw() = 0;
 		virtual Vector2 GetPosition() = 0;
 		virtual Rectangle GetHitbox() = 0;

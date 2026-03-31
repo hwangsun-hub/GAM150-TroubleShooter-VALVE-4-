@@ -19,5 +19,6 @@ namespace Game {
 
     private:
         Game::GameMap gameMap;
+        Game::Player player;
     };
 }

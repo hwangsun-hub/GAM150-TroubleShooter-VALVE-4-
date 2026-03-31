@@ -15,4 +15,5 @@ enum class MapName
 	STAGE5_LEVEL1,
 	STAGE5_LEVEL2,
 	STAGE5_LEVEL3,
+	COUNT
 };

@@ -26,7 +26,7 @@ void Game::Player::Update(double dt) {
 	if (IsKeyPressed(KeyboardKey::KEY_SPACE) == true) {
 		if (IsOnGround == true &&
 			CanJump == true) {
-			velocity.y += JUMP_SPEED * dt;
+			velocity.y += JUMP_SPEED;
 			IsOnGround = false;
 		}
 

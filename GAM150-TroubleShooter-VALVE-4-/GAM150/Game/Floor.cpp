@@ -1,10 +1,11 @@
 #include "Floor.h"
 
-Floor::Floor() :
-	position({ 0,0 }),
+Floor::Floor(Vector2 pos, Rectangle texture_source) :
+	position(pos),
 	isGlitchMode(false),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
+	textureSourceRectangle(texture_source),
 	id(ObjectID::ID::FLOOR)
 {}
 Vector2  Floor::GetPosition() {
@@ -26,10 +27,20 @@ void Floor::Load() {
 	hitbox.width = texture.width;
 	hitbox.height = texture.height;
 }
-void  Floor::Update(double dt) {
-	
+void  Floor::Update(Game::Player& player, double dt) {
+	if (CheckCollision(player.GetHitbox()) == true) {
+		player.SetIsOnGround(true);
+		if (isGlitchMode == true) {
+			player.SetCanJump(false);
+		}
+		else {
+			player.SetCanJump(true);
+		}
+	}
+
+
 }
 
 void Floor::Draw() {
-	DrawTexture(texture, position.x, position.y, WHITE);
+	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 }

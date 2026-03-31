@@ -6,10 +6,14 @@ Game::GameMode::GameMode() {
 }
 
 void Game::GameMode::Load() {
+	gameMap.Load();
+	player.Load();
+
 }
 
 void Game::GameMode::Update([[maybe_unused]] double dt) {
-
+	gameMap.Update(player, dt);
+	player.Update(dt);
 }
 
 void Game::GameMode::Unload() {
@@ -17,4 +21,6 @@ void Game::GameMode::Unload() {
 
 void Game::GameMode::Draw() {
 	Engine::Application::GetWindow().Clear(0x0A0A23FF);
+	gameMap.draw();
+	player.Draw();
 }
