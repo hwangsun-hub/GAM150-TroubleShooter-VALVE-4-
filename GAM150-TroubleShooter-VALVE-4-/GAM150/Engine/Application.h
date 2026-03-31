@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "GameStateManager.h"
 #include <chrono>
 
 namespace Engine {
@@ -12,6 +13,10 @@ namespace Engine {
 
         static Engine::Window& GetWindow() {
             return Instance().window;
+        }
+
+        static Engine::GameStateManager& GetGameStateManager() {
+            return Instance().gamestatemanager;
         }
         void Start(std::string window_title);
         void Stop();
@@ -26,10 +31,11 @@ namespace Engine {
 
         int frame_count = 0;
 
-        static constexpr double TargetFPS = 30.0;
+        static constexpr double TargetFPS = 60.0;
         static constexpr int FPSDuration = 5;
         static constexpr int FPSTargetFrames = static_cast<int>(FPSDuration * TargetFPS);
 
         Engine::Window window;
+        Engine::GameStateManager gamestatemanager;
     };
 }

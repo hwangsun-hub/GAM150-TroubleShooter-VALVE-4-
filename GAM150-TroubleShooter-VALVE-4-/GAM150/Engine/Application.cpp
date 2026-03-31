@@ -26,7 +26,7 @@ void Engine::Application::Update() {
             last_test = now;
 
         }
-        //gamestatemanager.Update(dt);
+        gamestatemanager.Update(dt);
         //input.Update();
         window.Update();
         //Update other services

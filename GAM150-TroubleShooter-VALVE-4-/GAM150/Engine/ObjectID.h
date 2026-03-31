@@ -9,6 +9,7 @@ namespace ObjectID {
 		SPIKE,
 		SAW,
 		DOOR,
+		GOAL,
 		COUNT
 	};
 }

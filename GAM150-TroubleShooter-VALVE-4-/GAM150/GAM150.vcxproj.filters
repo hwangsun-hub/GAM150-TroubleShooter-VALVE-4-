@@ -7,9 +7,6 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{681c2381-df2d-4415-9081-6c8dd741973f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{e3284c1d-36f9-4606-bc77-6854f1faa28a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Window.cpp">
@@ -25,8 +22,23 @@
     <ClCompile Include="Game\GameObject.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\GameManager.cpp">
+    <ClCompile Include="Game\GameMode.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameState.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameStateManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameMap.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Floor.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MapName.h">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,13 +57,20 @@
     <ClInclude Include="Engine\ObjectID.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\GameManager.h">
+    <ClInclude Include="Game\GameMode.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameState.h">
       <Filter>Engine</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\Downloads\Retro-Lines-v3.4\Retro-Lines-16x16\Environment.png">
-      <Filter>Assets</Filter>
-    </Image>
+    <ClInclude Include="Engine\GameStateManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMap.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Floor.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
