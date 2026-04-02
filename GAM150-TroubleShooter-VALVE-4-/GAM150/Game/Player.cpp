@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "../Engine/Application.h"
+#include <iostream>
 Game::Player::Player()  {
 
 }
@@ -10,6 +11,51 @@ void Game::Player::Load() {
 						position.y,
 						static_cast<float>(texture.width),
 						static_cast<float>(texture.height) };
+}
+
+void Game::Player::HandleCollision(GameObject* obj, double dt) {
+	switch (obj->GetObjectID())
+	{
+	case ObjectID::ID::PLATFORM:
+	{
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
+
+		if (overlap.width < overlap.height) {
+			float playerCenterX = position.x + hitbox.width * 0.5f;
+			float floorCenterX = obj->GetHitbox().x + obj->GetHitbox().width * 0.5f;
+
+			if (playerCenterX < floorCenterX) {
+				position.x -= MOVE_SPEED * dt;
+			}
+			if (playerCenterX > floorCenterX) {
+				position.x += MOVE_SPEED * dt;
+			}
+		}
+		if (overlap.width > overlap.height) {
+			float playerCenterY = position.y + hitbox.height * 0.5f;
+			float floorCenterY = obj->GetHitbox().y + obj->GetHitbox().height * 0.5f;
+
+			if (playerCenterY < floorCenterY) {
+				position.y -= velocity.y * dt;
+
+				IsOnGround = true;
+			}
+			if (playerCenterY > floorCenterY) {
+				position.y += velocity.y * dt;
+
+			}
+		}
+		break;
+
+	}
+	default:
+		break;
+	}
+	std::cout << dt << "->dt" << std::endl;
+
 }
 
 void Game::Player::Update(double dt) {
@@ -24,31 +70,23 @@ void Game::Player::Update(double dt) {
 	}
 	//jump
 	if (IsKeyPressed(KeyboardKey::KEY_SPACE) == true) {
-		if (IsOnGround == true &&
-			CanJump == true) {
+		if (IsOnGround == true) {
 			velocity.y += JUMP_SPEED;
 			IsOnGround = false;
 		}
 
 	}
 
+
 	//update
-	if (IsOnGround == true) {
-		velocity.y = 0;
-	}
-	else {
-		velocity.y += GRAVITY * dt;
-	}
+
+	velocity.y += GRAVITY * dt;
+	
 	position += velocity * dt;
 
-	//if collision with wall(Platform's left/right side)
-	//then position.x -/+= velocity * dt;
-
-	//if collision with ceiling(Platform's down side)
-	//then position.y += velocity * dt;
-	
 
 	//hitbox update
+
 	hitbox.x = position.x;
 	hitbox.y = position.y;
 }
@@ -68,6 +106,9 @@ void Game::Player::Draw() {
 }
 Vector2 Game::Player::GetPosition() const {
 	return position;
+}
+Vector2 Game::Player::GetVelocity() const {
+	return velocity;
 }
 Rectangle Game::Player::GetHitbox() const {
 	return hitbox;

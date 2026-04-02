@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Platform.h"
 #include "MapName.h"
+#include "Player.h"
 
 namespace Game {
 	class GameMap

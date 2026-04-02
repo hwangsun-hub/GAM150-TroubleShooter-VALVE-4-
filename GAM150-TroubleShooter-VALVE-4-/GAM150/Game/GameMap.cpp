@@ -91,33 +91,13 @@ void Game::GameMap::Load() {
 }
 
 void Game::GameMap::Update(Game::Player& player, double dt) {
-	bool isFirstTimePlatform = true;
+	player.SetIsOnGround(false);
 	for (GameObject* obj : objects) {
-		switch (obj->GetObjectID())
-		{
-		case ObjectID::ID::PLATFORM:
-			//should update later
-			if (obj->CheckCollision(player.GetHitbox()) == true &&
-				isFirstTimePlatform == true
-				) {
-				player.SetIsOnGround(true);
-				if (obj->GetIsGlitchMode() == true) {
-					player.SetCanJump(false);
-				}
-				else {
-					player.SetCanJump(true);
-				}
-				isFirstTimePlatform = false;
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	if (isFirstTimePlatform == true) {
-		player.SetIsOnGround(false);
+		player.HandleCollision(obj, dt);
+
 	}
 }
+
 
 void Game::GameMap::draw() {
 	for (GameObject* obj : objects) {

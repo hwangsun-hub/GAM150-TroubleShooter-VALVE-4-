@@ -1,4 +1,5 @@
 #pragma once
+#include "../Game/GameObject.h"
 #include <raylib.h>
 #include <raymath.h>
 
@@ -8,9 +9,11 @@ namespace Game {
 	public:
 		Player();
 		void Load();
+		void HandleCollision(GameObject* obj, double dt);
 		void Update(double dt);
 		void Draw();
 		Vector2 GetPosition() const;
+		Vector2 GetVelocity() const;
 		Rectangle GetHitbox() const;
 		void SetCanJump(bool CanJump);
 		void SetIsOnGround(bool IsOnGround);

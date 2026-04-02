@@ -31,17 +31,7 @@ void Platform::Load() {
 	hitbox.width = 64;
 	hitbox.height = 64;
 }
-void  Platform::Update(Game::Player& player, double dt) {
-	if (CheckCollision(player.GetHitbox()) == true) {
-		player.SetIsOnGround(true);
-		if (isGlitchMode == true) {
-			player.SetCanJump(false);
-		}
-		else {
-			player.SetCanJump(true);
-		}
-	}
-
+void  Platform::Update(double dt) {
 
 }
 
