@@ -22,29 +22,30 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 			break;
 		}
 		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
-
+		Rectangle objHitbox = obj->GetHitbox();
 		if (overlap.width < overlap.height) {
 			float playerCenterX = position.x + hitbox.width * 0.5f;
-			float floorCenterX = obj->GetHitbox().x + obj->GetHitbox().width * 0.5f;
+			float floorCenterX = objHitbox.x + objHitbox.width * 0.5f;
 
 			if (playerCenterX < floorCenterX) {
-				position.x -= MOVE_SPEED * dt;
+				position.x -= overlap.width;
 			}
-			if (playerCenterX > floorCenterX) {
-				position.x += MOVE_SPEED * dt;
+			else {
+				position.x += overlap.width;
 			}
 		}
-		if (overlap.width > overlap.height) {
+		else {
 			float playerCenterY = position.y + hitbox.height * 0.5f;
-			float floorCenterY = obj->GetHitbox().y + obj->GetHitbox().height * 0.5f;
+			float floorCenterY = obj->GetHitbox().y + objHitbox.height * 0.5f;
 
 			if (playerCenterY < floorCenterY) {
-				position.y -= velocity.y * dt;
-
+				position.y = objHitbox.y - hitbox.height;
+				velocity.y = 0;
 				IsOnGround = true;
 			}
-			if (playerCenterY > floorCenterY) {
-				position.y += velocity.y * dt;
+			else {
+				position.y += overlap.height;
+				velocity.y = 0.0f;
 
 			}
 		}
@@ -54,8 +55,8 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 	default:
 		break;
 	}
-	std::cout << dt << "->dt" << std::endl;
-
+	hitbox.x = position.x;
+	hitbox.y = position.y;
 }
 
 void Game::Player::Update(double dt) {
