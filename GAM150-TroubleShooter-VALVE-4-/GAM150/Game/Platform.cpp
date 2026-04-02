@@ -1,37 +1,37 @@
-#include "Floor.h"
+#include "Platform.h"
 #include <iostream>
 
-Floor::Floor(Vector2 pos, Rectangle texture_source) :
+Platform::Platform(Vector2 pos, Rectangle texture_source) :
 	position(pos),
 	isGlitchMode(false),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
 	textureSourceRectangle(texture_source),
-	id(ObjectID::ID::FLOOR)
+	id(ObjectID::ID::PLATFORM)
 {}
-Vector2  Floor::GetPosition() {
+Vector2  Platform::GetPosition() {
 	return position;
 }
-Rectangle  Floor::GetHitbox() {
+Rectangle  Platform::GetHitbox() {
 	return hitbox;
 }
-ObjectID::ID Floor::GetObjectID() {
+ObjectID::ID Platform::GetObjectID() {
 	return id;
 }
-bool Floor::GetIsGlitchMode() {
+bool Platform::GetIsGlitchMode() {
 	return isGlitchMode;
 }
 
-bool  Floor::CheckCollision(Rectangle hibox) {
+bool  Platform::CheckCollision(Rectangle hibox) {
 	return CheckCollisionRecs(hibox, this->hitbox);
 }
 
-void Floor::Load() {
+void Platform::Load() {
 	texture = LoadTexture("Assets/gam150-1.png");
 	hitbox.width = 64;
 	hitbox.height = 64;
 }
-void  Floor::Update(Game::Player& player, double dt) {
+void  Platform::Update(Game::Player& player, double dt) {
 	if (CheckCollision(player.GetHitbox()) == true) {
 		player.SetIsOnGround(true);
 		if (isGlitchMode == true) {
@@ -45,7 +45,7 @@ void  Floor::Update(Game::Player& player, double dt) {
 
 }
 
-void Floor::Draw() {
+void Platform::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
 	DrawRectangleLinesEx(hitbox, 5, RED);

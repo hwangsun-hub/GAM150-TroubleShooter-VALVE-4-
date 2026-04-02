@@ -41,10 +41,10 @@ void Game::Player::Update(double dt) {
 	}
 	position += velocity * dt;
 
-	//if collision with wall(floor's left/right side)
+	//if collision with wall(Platform's left/right side)
 	//then position.x -/+= velocity * dt;
 
-	//if collision with ceiling(floor's down side)
+	//if collision with ceiling(Platform's down side)
 	//then position.y += velocity * dt;
 	
 

@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <vector>
 #include "GameObject.h"
-#include "Floor.h"
+#include "Platform.h"
 #include "MapName.h"
 
 namespace Game {

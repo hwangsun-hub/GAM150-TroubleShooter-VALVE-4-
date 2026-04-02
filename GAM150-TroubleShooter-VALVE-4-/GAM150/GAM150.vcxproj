@@ -23,7 +23,7 @@
     <ClCompile Include="Engine\GameState.cpp" />
     <ClCompile Include="Engine\GameStateManager.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
-    <ClCompile Include="Game\Floor.cpp" />
+    <ClCompile Include="Game\Platform.cpp" />
     <ClCompile Include="Game\GameMap.cpp" />
     <ClCompile Include="Game\GameMode.cpp" />
     <ClCompile Include="Game\GameObject.cpp" />
@@ -37,7 +37,7 @@
     <ClInclude Include="Engine\GameStateManager.h" />
     <ClInclude Include="Engine\ObjectID.h" />
     <ClInclude Include="Engine\Window.h" />
-    <ClInclude Include="Game\Floor.h" />
+    <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\GameMap.h" />
     <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Game\GameObject.h" />

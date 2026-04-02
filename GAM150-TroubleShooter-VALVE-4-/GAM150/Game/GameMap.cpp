@@ -71,11 +71,11 @@ void Game::GameMap::Load() {
 	LoadMap(currentMapName);
 	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
 		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
-			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Floor
+			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Platform
 				maps[static_cast<int>(currentMapName)][y][x] <= 25) {
 				int tileNum = 5;
 				objects.push_back(
-					new Floor(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
 						Rectangle{  static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
@@ -91,14 +91,14 @@ void Game::GameMap::Load() {
 }
 
 void Game::GameMap::Update(Game::Player& player, double dt) {
-	bool isFirstTimeFloor = true;
+	bool isFirstTimePlatform = true;
 	for (GameObject* obj : objects) {
 		switch (obj->GetObjectID())
 		{
-		case ObjectID::ID::FLOOR:
+		case ObjectID::ID::PLATFORM:
 			//should update later
 			if (obj->CheckCollision(player.GetHitbox()) == true &&
-				isFirstTimeFloor == true
+				isFirstTimePlatform == true
 				) {
 				player.SetIsOnGround(true);
 				if (obj->GetIsGlitchMode() == true) {
@@ -107,14 +107,14 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 				else {
 					player.SetCanJump(true);
 				}
-				isFirstTimeFloor = false;
+				isFirstTimePlatform = false;
 			}
 			break;
 		default:
 			break;
 		}
 	}
-	if (isFirstTimeFloor == true) {
+	if (isFirstTimePlatform == true) {
 		player.SetIsOnGround(false);
 	}
 }

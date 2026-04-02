@@ -3,10 +3,10 @@
 #include "GameObject.h"
 #include "Player.h"
 
-class Floor : public Game::GameObject
+class Platform : public Game::GameObject
 {
 public:
-	Floor(Vector2 pos, Rectangle texture_source);
+	Platform(Vector2 pos, Rectangle texture_source);
 	void Load() override;
 	void Update(Game::Player& player,double dt) override;
 	void Draw() override;
