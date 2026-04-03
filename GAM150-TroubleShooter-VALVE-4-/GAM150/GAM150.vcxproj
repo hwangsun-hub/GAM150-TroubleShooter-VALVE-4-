@@ -29,6 +29,7 @@
     <ClCompile Include="Game\GameObject.cpp" />
     <ClCompile Include="Game\MapName.h" />
     <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Spike.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +43,7 @@
     <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Game\GameObject.h" />
     <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Spike.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

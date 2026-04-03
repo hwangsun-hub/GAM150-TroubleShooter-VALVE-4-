@@ -1,9 +1,9 @@
 #include "Platform.h"
 #include <iostream>
 
-Platform::Platform(Vector2 pos, Rectangle texture_source) :
+Platform::Platform(Vector2 pos, Rectangle texture_source, bool isglitchmoded) :
 	position(pos),
-	isGlitchMode(false),
+	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
 	textureSourceRectangle(texture_source),
@@ -38,5 +38,5 @@ void  Platform::Update(double dt) {
 void Platform::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
-	DrawRectangleLinesEx(hitbox, 5, RED);
+	DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? RED : BLACK);
 }

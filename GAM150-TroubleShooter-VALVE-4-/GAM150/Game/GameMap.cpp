@@ -38,9 +38,9 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1,  1, 1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{  0,  1,  3,  3,  2,  1,  1,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
+		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1,  -1, -1, -1, -1, -1 },
+		{ -1, -1, -1,  1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+		{  0,  1,  3,  3,  2,  40,  26,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
 		{ 20, 21, 21, 23, 21, 22, 23, 22, 23, 22, 23, 23, 22, 22, 23, 22, 23, 23, 23, 24 }
 		};
 		break;
@@ -76,10 +76,24 @@ void Game::GameMap::Load() {
 				int tileNum = 5;
 				objects.push_back(
 					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{  static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
-									TILE_SIZE }
+									TILE_SIZE },
+						false
+					));
+			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] >= 26 &&
+				maps[static_cast<int>(currentMapName)][y][x] <= 50
+				) {
+				int tileNum = 5;
+				objects.push_back(
+					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+									TILE_SIZE,
+									TILE_SIZE },
+						true
 					));
 			}
 		
@@ -92,8 +106,12 @@ void Game::GameMap::Load() {
 
 void Game::GameMap::Update(Game::Player& player, double dt) {
 	player.SetIsOnGround(false);
+	player.SetCanJump(true);
 	for (GameObject* obj : objects) {
 		player.HandleCollision(obj, dt);
+	}
+	for (GameObject* obj : objects) {
+		player.CorrectCollision(obj, dt);
 
 	}
 }

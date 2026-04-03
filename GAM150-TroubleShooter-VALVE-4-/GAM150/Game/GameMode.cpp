@@ -21,7 +21,7 @@ void Game::GameMode::Unload() {
 }
 
 void Game::GameMode::Draw() {
-	Engine::Application::GetWindow().Clear(0x0A0A23FF);
+	Engine::Application::GetWindow().Clear(0x2A4F6BFF);
 	gameMap.draw();
 	player.Draw();
 }

@@ -2,10 +2,10 @@
 #include <raylib.h>
 #include "GameObject.h"
 
-class Platform : public Game::GameObject
+class Spike : public Game::GameObject
 {
 public:
-	Platform(Vector2 pos, Rectangle texture_source, bool isglitchmoded);
+	Spike(Vector2 pos, Rectangle texture_source);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -26,4 +26,3 @@ private:
 
 	static constexpr int SIZE = 64;
 };
-

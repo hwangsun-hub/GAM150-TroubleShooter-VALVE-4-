@@ -14,6 +14,20 @@ void Game::Player::Load() {
 }
 
 void Game::Player::HandleCollision(GameObject* obj, double dt) {
+	switch (obj->GetObjectID()) {
+	case ObjectID::ID::PLATFORM: {
+		if (obj->GetIsGlitchMode() == true &&
+			CheckCollisionRecs(hitbox, obj->GetHitbox())
+			) {
+			CanJump = false;
+		}
+		break;
+	}
+
+	}
+}
+
+void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 	switch (obj->GetObjectID())
 	{
 	case ObjectID::ID::PLATFORM:
@@ -21,6 +35,8 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
 			break;
 		}
+
+
 		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
 		Rectangle objHitbox = obj->GetHitbox();
 		if (overlap.width < overlap.height) {
@@ -42,6 +58,8 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 				position.y = objHitbox.y - hitbox.height;
 				velocity.y = 0;
 				IsOnGround = true;
+
+				
 			}
 			else {
 				position.y += overlap.height;
@@ -71,7 +89,9 @@ void Game::Player::Update(double dt) {
 	}
 	//jump
 	if (IsKeyPressed(KeyboardKey::KEY_SPACE) == true) {
-		if (IsOnGround == true) {
+		if (IsOnGround == true &&
+			CanJump == true
+			) {
 			velocity.y += JUMP_SPEED;
 			IsOnGround = false;
 		}
@@ -84,7 +104,6 @@ void Game::Player::Update(double dt) {
 	velocity.y += GRAVITY * dt;
 	
 	position += velocity * dt;
-
 
 	//hitbox update
 
@@ -101,7 +120,7 @@ void Game::Player::Draw() {
 		WHITE
 	);
 	//for debugging
-	DrawRectangleLinesEx(hitbox, 5, RED);
+	//DrawRectangleLinesEx(hitbox, 5, RED);
 
 					
 }

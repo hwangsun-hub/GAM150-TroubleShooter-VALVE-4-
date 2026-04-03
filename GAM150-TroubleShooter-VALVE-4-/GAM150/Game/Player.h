@@ -10,6 +10,7 @@ namespace Game {
 		Player();
 		void Load();
 		void HandleCollision(GameObject* obj, double dt);
+		void CorrectCollision(GameObject* obj, double dt);
 		void Update(double dt);
 		void Draw();
 		Vector2 GetPosition() const;
@@ -21,7 +22,7 @@ namespace Game {
 
 	private:
 		Texture2D texture;
-		Vector2 position = { 0,500 };
+		Vector2 position = { 100,100 };
 		Vector2 velocity = { 0,0 };
 		Rectangle hitbox;
 
