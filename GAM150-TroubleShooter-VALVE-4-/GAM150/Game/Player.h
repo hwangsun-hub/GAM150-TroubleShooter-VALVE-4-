@@ -29,7 +29,7 @@ namespace Game {
 
 		bool CanJump;
 		bool IsOnGround;
-
+		bool IsAlive;
 		static constexpr int MOVE_SPEED = 250;
 		static constexpr int JUMP_SPEED = -400;
 		static constexpr int GRAVITY = 500;

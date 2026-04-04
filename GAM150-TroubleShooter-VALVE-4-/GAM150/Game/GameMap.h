@@ -5,7 +5,8 @@
 #include "Platform.h"
 #include "MapName.h"
 #include "Player.h"
-
+#include "Block.h"
+#include "Spike.h"
 namespace Game {
 	class GameMap
 	{

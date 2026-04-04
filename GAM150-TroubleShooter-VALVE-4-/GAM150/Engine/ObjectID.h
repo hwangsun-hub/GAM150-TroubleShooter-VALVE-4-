@@ -5,6 +5,7 @@ namespace ObjectID {
 	enum class ID
 	{
 		PLATFORM,
+		BLOCK,
 		WALL,
 		SPIKE,
 		SAW,

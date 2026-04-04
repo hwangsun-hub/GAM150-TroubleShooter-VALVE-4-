@@ -38,8 +38,8 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1,  -1, -1, -1, -1, -1 },
-		{ -1, -1, -1,  1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1,60, 60, -1,  -1, -1, -1, -1, -1 },
+		{ -1, -1, -1,  1, -1, -1, -1, 50, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 		{  0,  1,  3,  3,  2,  40,  26,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
 		{ 20, 21, 21, 23, 21, 22, 23, 22, 23, 22, 23, 23, 22, 22, 23, 22, 23, 23, 23, 24 }
 		};
@@ -71,11 +71,11 @@ void Game::GameMap::Load() {
 	LoadMap(currentMapName);
 	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
 		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
-			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Platform
+			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Block
 				maps[static_cast<int>(currentMapName)][y][x] <= 25) {
 				int tileNum = 5;
 				objects.push_back(
-					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+					new Block(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
 						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
@@ -83,18 +83,40 @@ void Game::GameMap::Load() {
 						false
 					));
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] >= 26 &&
-				maps[static_cast<int>(currentMapName)][y][x] <= 50
+			else if (maps[static_cast<int>(currentMapName)][y][x] >= 26 && //Glitched Block
+				maps[static_cast<int>(currentMapName)][y][x] <= 49
 				) {
 				int tileNum = 5;
 				objects.push_back(
-					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+					new Block(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
 						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
 						true
 					));
+			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 50 //Spike
+				) {
+				objects.push_back(
+					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						Rectangle{  0,
+									0,
+									TILE_SIZE,
+									TILE_SIZE }, 
+						true)
+				);
+			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 60 //Platform
+				) {
+				objects.push_back(
+					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						Rectangle{ 0,
+									0,
+									TILE_SIZE,
+									TILE_SIZE },
+						true)
+				);
 			}
 		
 		}

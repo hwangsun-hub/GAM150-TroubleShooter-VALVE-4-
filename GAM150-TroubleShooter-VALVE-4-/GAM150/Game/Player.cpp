@@ -11,11 +11,13 @@ void Game::Player::Load() {
 						position.y,
 						static_cast<float>(texture.width),
 						static_cast<float>(texture.height) };
+	IsAlive = true;
+	position = { 100,100 };
 }
 
 void Game::Player::HandleCollision(GameObject* obj, double dt) {
 	switch (obj->GetObjectID()) {
-	case ObjectID::ID::PLATFORM: {
+	case ObjectID::ID::BLOCK: {
 		if (obj->GetIsGlitchMode() == true &&
 			CheckCollisionRecs(hitbox, obj->GetHitbox())
 			) {
@@ -32,11 +34,11 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 	{
 	case ObjectID::ID::PLATFORM:
 	{
+		if (velocity.y < 0) break;
+
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
 			break;
 		}
-
-
 		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
 		Rectangle objHitbox = obj->GetHitbox();
 		if (overlap.width < overlap.height) {
@@ -56,10 +58,51 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 
 			if (playerCenterY < floorCenterY) {
 				position.y = objHitbox.y - hitbox.height;
-				velocity.y = 0;
-				IsOnGround = true;
+				if (velocity.y > 0)
+				{
+					velocity.y = 0;
+					IsOnGround = true;
+				}
 
-				
+			}
+			else {
+				position.y += overlap.height;
+				velocity.y = 0.0f;
+
+			}
+		}
+		break;
+	}
+	case ObjectID::ID::BLOCK:
+	{
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
+		Rectangle objHitbox = obj->GetHitbox();
+		if (overlap.width < overlap.height) {
+			float playerCenterX = position.x + hitbox.width * 0.5f;
+			float floorCenterX = objHitbox.x + objHitbox.width * 0.5f;
+
+			if (playerCenterX < floorCenterX) {
+				position.x -= overlap.width;
+			}
+			else {
+				position.x += overlap.width;
+			}
+		}
+		else {
+			float playerCenterY = position.y + hitbox.height * 0.5f;
+			float floorCenterY = obj->GetHitbox().y + objHitbox.height * 0.5f;
+
+			if (playerCenterY < floorCenterY) {
+				position.y = objHitbox.y - hitbox.height;
+				if (velocity.y > 0)
+				{
+					velocity.y = 0;
+					IsOnGround = true;
+				}
+
 			}
 			else {
 				position.y += overlap.height;
@@ -69,6 +112,13 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 		}
 		break;
 
+	}
+	case ObjectID::ID::SPIKE:
+	{
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		IsAlive = false;
 	}
 	default:
 		break;
@@ -98,7 +148,9 @@ void Game::Player::Update(double dt) {
 
 	}
 
-
+	if (IsAlive == false) {
+		Load();
+	}
 	//update
 
 	velocity.y += GRAVITY * dt;
