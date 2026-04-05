@@ -38,5 +38,6 @@ void  Spike::Update(double dt) {
 void Spike::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
-	//DrawRectangleLinesEx(hitbox, 5, RED);
+	if (Engine::Application::DebugMode == true)
+	DrawRectangleLinesEx(hitbox, 5, RED);
 }

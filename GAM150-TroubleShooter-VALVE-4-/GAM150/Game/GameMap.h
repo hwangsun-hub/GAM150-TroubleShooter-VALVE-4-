@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Block.h"
 #include "Spike.h"
+#include "Flag.h"
 namespace Game {
 	class GameMap
 	{
@@ -16,6 +17,7 @@ namespace Game {
 		~GameMap();
 		
 		void LoadMap(MapName mapname);
+		void Unload();
 		void Load();
 		void Update(Game::Player& player, double dt);
 		void draw();

@@ -1,9 +1,10 @@
 #include "Application.h"
 
+bool Engine::Application::DebugMode = false;
+
 Engine::Application::Application()
     : last_tick(std::chrono::system_clock::now())
 {
-
 }
 
 void Engine::Application::Start(std::string window_title) {
@@ -30,6 +31,9 @@ void Engine::Application::Update() {
         //input.Update();
         window.Update();
         //Update other services
+        if (IsKeyReleased(KEY_F1)) {
+            DebugMode = !DebugMode;
+        }
 
     }
 

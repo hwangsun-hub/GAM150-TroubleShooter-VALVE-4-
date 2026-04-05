@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
+#include "../Engine/Application.h"
 #include "../Engine/ObjectID.h"
 namespace Game {
 	class GameObject

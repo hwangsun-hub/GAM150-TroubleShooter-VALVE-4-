@@ -9,6 +9,7 @@ namespace Game {
 	public:
 		Player();
 		void Load();
+		void Unload();
 		void HandleCollision(GameObject* obj, double dt);
 		void CorrectCollision(GameObject* obj, double dt);
 		void Update(double dt);
@@ -18,6 +19,7 @@ namespace Game {
 		Rectangle GetHitbox() const;
 		void SetCanJump(bool CanJump);
 		void SetIsOnGround(bool IsOnGround);
+		bool IsReadyToNextLevel = false;
 
 
 	private:

@@ -9,6 +9,7 @@ int main() {
     Game::GameMode gamemode;
     engine.GetGameStateManager().AddGameState(gamemode);
     while (IsKeyPressed(KEY_A) == false) {
+        
         engine.Update();
     }
     return 0;

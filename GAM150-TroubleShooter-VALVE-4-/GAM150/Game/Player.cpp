@@ -12,7 +12,7 @@ void Game::Player::Load() {
 						static_cast<float>(texture.width),
 						static_cast<float>(texture.height) };
 	IsAlive = true;
-	position = { 100,100 };
+	position = { 128,100 };
 }
 
 void Game::Player::HandleCollision(GameObject* obj, double dt) {
@@ -119,7 +119,17 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 			break;
 		}
 		IsAlive = false;
+		break;
 	}
+	case ObjectID::ID::FLAG: {
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		IsReadyToNextLevel = true;
+
+		break;
+	}
+
 	default:
 		break;
 	}
@@ -161,7 +171,9 @@ void Game::Player::Update(double dt) {
 
 	hitbox.x = position.x;
 	hitbox.y = position.y;
+	std::cout << position.y << std::endl;
 }
+
 void Game::Player::Draw() {
 	DrawTexturePro(
 		texture,
@@ -172,10 +184,16 @@ void Game::Player::Draw() {
 		WHITE
 	);
 	//for debugging
-	//DrawRectangleLinesEx(hitbox, 5, RED);
+	if (Engine::Application::DebugMode == true)
+	DrawRectangleLinesEx(hitbox, 5, RED);
 
 					
 }
+
+void Game::Player::Unload() {
+
+}
+
 Vector2 Game::Player::GetPosition() const {
 	return position;
 }

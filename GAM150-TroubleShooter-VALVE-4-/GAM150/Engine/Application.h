@@ -22,6 +22,7 @@ namespace Engine {
         void Stop();
         void Update();
         //bool HasGameEnded();
+        static bool DebugMode;
 
     private:
         Application();
@@ -37,5 +38,7 @@ namespace Engine {
 
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
+
+
     };
 }

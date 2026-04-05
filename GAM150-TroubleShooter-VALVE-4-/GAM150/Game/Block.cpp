@@ -38,5 +38,6 @@ void  Block::Update(double dt) {
 void Block::Draw() {
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
+	if (Engine::Application::DebugMode == true)
 	DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? RED : BLACK);
 }
