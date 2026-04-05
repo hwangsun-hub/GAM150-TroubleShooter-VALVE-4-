@@ -8,7 +8,9 @@ Engine::Application::Application()
 }
 
 void Engine::Application::Start(std::string window_title) {
+
     window.Start(window_title);
+    LoadAssets();
     //Start other services
     last_test = last_tick;
 }
@@ -37,6 +39,12 @@ void Engine::Application::Update() {
 
     }
 
+}
 
+void Engine::Application::LoadAssets()
+{
+    assets.push_back(LoadTexture("Assets/gam150-1.png"));
+    assets.push_back(LoadTexture("Assets/gam150-2.png"));
+    assets.push_back(LoadTexture("Assets/gam150-player.png"));
 }
 

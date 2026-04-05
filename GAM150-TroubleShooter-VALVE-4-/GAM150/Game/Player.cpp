@@ -5,7 +5,7 @@ Game::Player::Player()  {
 
 }
 void Game::Player::Load() {
-	texture = LoadTexture("Assets/gam150-player.png");
+	texture = Engine::Application::GetAssets()[2];
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	hitbox = Rectangle{ position.x, 
 						position.y,
@@ -171,7 +171,6 @@ void Game::Player::Update(double dt) {
 
 	hitbox.x = position.x;
 	hitbox.y = position.y;
-	std::cout << position.y << std::endl;
 }
 
 void Game::Player::Draw() {

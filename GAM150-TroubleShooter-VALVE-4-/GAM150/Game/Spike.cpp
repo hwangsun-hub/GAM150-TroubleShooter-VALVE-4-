@@ -27,7 +27,7 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 }
 
 void Spike::Load() {
-	texture = LoadTexture("Assets/gam150-2.png");
+	texture = Engine::Application::GetAssets()[1];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }

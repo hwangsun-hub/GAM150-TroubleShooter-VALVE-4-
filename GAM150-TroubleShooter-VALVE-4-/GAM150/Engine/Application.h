@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <raylib.h>
 #include "Window.h"
 #include "GameStateManager.h"
 #include <chrono>
@@ -18,9 +20,14 @@ namespace Engine {
         static Engine::GameStateManager& GetGameStateManager() {
             return Instance().gamestatemanager;
         }
+
+        static std::vector<Texture>& GetAssets() {
+            return Instance().assets;
+        }
         void Start(std::string window_title);
         void Stop();
         void Update();
+        void LoadAssets();
         //bool HasGameEnded();
         static bool DebugMode;
 
@@ -38,6 +45,8 @@ namespace Engine {
 
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
+        
+        std::vector<Texture> assets;
 
 
     };
