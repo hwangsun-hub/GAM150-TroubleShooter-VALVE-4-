@@ -28,6 +28,7 @@
     <ClCompile Include="Game\GameMap.cpp" />
     <ClCompile Include="Game\GameMode.cpp" />
     <ClCompile Include="Game\GameObject.cpp" />
+    <ClCompile Include="Game\GlitchPlate.cpp" />
     <ClCompile Include="Game\MapName.h" />
     <ClCompile Include="Game\Platform.cpp" />
     <ClCompile Include="Game\Player.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Game\GameMap.h" />
     <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Game\GameObject.h" />
+    <ClInclude Include="Game\GlitchPlate.h" />
     <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Spike.h" />

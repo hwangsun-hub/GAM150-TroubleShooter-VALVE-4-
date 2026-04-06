@@ -1,13 +1,17 @@
 #include "Spike.h"
 
-Spike::Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded) :
+Spike::Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isupsidedown) :
 	position(pos),
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
-	hitbox({ position.x, position.y,0,0 }),
+	hitbox({ position.x, position.y + 32,0,0 }),
 	textureSourceRectangle(texture_source),
-	id(ObjectID::ID::SPIKE)
+	id(ObjectID::ID::SPIKE),
+	isUpsidedown(isupsidedown)
 {
+	if (isUpsidedown) {
+		hitbox.y -= 32;
+	}
 }
 Vector2  Spike::GetPosition() {
 	return position;
@@ -29,7 +33,7 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 void Spike::Load() {
 	texture = Engine::Application::GetAssets()[0];
 	hitbox.width = 64;
-	hitbox.height = 64;
+	hitbox.height = 32;
 }
 void  Spike::Update(double dt) {
 

@@ -12,7 +12,8 @@ void Game::Player::Load() {
 						static_cast<float>(texture.width/2),
 						static_cast<float>(texture.height/2) };
 	IsAlive = true;
-	position = { 128,100 };
+	position = { 80,320 };
+	velocity = { 0,0 };
 }
 
 void Game::Player::HandleCollision(GameObject* obj, double dt) {
@@ -23,6 +24,36 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 			) {
 			CanJump = false;
 		}
+		break;
+	}
+	case ObjectID::ID::SPIKE:
+	{
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+
+		if (obj->GetIsGlitchMode() == true) {
+			velocity.y += JUMP_SPEED * 3;
+			obj->SetDead(true);
+		}
+
+		else {
+			IsAlive = false;
+		}
+
+		break;
+	}
+	case ObjectID::ID::FLAG: {
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		if (obj->GetIsGlitchMode() == false) {
+			IsReadyToNextLevel = true;
+		}
+		else {
+			IsAlive = false;
+		}
+
 		break;
 	}
 
@@ -113,30 +144,7 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 		break;
 
 	}
-	case ObjectID::ID::SPIKE:
-	{
-		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
-			break;
-		}
-		
-			if (obj->GetIsGlitchMode() == true) {
-				velocity.y += JUMP_SPEED;
-			}
-			
-			else {
-				IsAlive = false;
-			}
-		
-		break;
-	}
-	case ObjectID::ID::FLAG: {
-		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
-			break;
-		}
-		IsReadyToNextLevel = true;
-
-		break;
-	}
+	
 
 	default:
 		break;
@@ -166,9 +174,7 @@ void Game::Player::Update(double dt) {
 
 	}
 
-	if (IsAlive == false) {
-		Load();
-	}
+	
 	//update
 
 	velocity.y += GRAVITY * dt;
@@ -209,6 +215,9 @@ Vector2 Game::Player::GetVelocity() const {
 }
 Rectangle Game::Player::GetHitbox() const {
 	return hitbox;
+}
+bool Game::Player::GetIsAlive() const{
+	return IsAlive;
 }
 
 void Game::Player::SetCanJump(bool CanJump) {

@@ -31,34 +31,38 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		maps[static_cast<int>(MapName::STAGE3_LEVEL1)] =
 		{
 		{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
-		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
-		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
-		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
-		{ 15,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
-		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
-		{ 15,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
-		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,14 },
-		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
-		{5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9},
-		{ 5,-1,-1,-1,-1,-1,50,-1,55,-1,-1,-1,-1,-1,-1,-1,51,-1,-1,19 },
-		{ 20,23,21,23,22,23,23,21,22,23,23,22,21,22,22,21,22,22,23,24 }
+		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,17,-1,-1,-1,14,-1,-1,-1,-1,-1,19 },
+		{10,-1,-1,-1,51,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9},
+		{5,-1,-1,-1,14,-1,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,-1,-1,19},
+		{15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9},
+		{5,-1,-1,-1,22,24,-1,-1,50,-1,50,-1,-1,-1,-1,50,-1,-1,-1,19},
+		{15,4,-1,-1,-1,-1,-1,0,1,2,3,4,-1,0,1,2,4,-1,0,9},
+		{10,-1,-1,-1,-1,-1,-1,10,-1,-1,-1,14,-1,-1,-1,14,-1,-1,-1,14},
+		{5,-1,-1,-1,-1,-1,-1,20,-1,-1,-1,24,-1,-1,-1,21,21,-1,-1,9},
+		{5,-1,-1,-1,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,9},
+		{5,-1,50,-1,-1,50,-1,-1,-1,50,-1,-1,-1,50,-1,-1,-1,50,0,19},
+		{20,23,21,23,22,23,23,21,22,23,23,22,22,22,22,21,22,22,23,24}
+
+
 		};
 		break;
 	case MapName::STAGE3_LEVEL2:
 		maps[static_cast<int>(MapName::STAGE3_LEVEL2)] =
 		{
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1,60, 60, -1,  -1, -1, -1, -1, -1 },
-		{ -1, -1, -1,  1, -1, -1, -1, 50, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 51, -1 },
-		{  0,  1,  3,  3,  2,  27,  28,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
-		{ 20, 21, 21, 23, 21, 22, 23, 22, 23, 22, 23, 23, 22, 22, 23, 22, 23, 23, 23, 24 }
+		{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
+		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,17,-1,-1,-1,14,-1,-1,-1,-1,-1,19 },
+		{ 10,-1,-1,-1,51,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9 },
+		{ 5,-1,-1,-1,14,-1,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,-1,-1,19 },
+		{ 15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
+		{ 5,-1,-1,-1,22,24,-1,-1,50,-1,50,-1,-1,-1,-1,50,-1,-1,-1,19 },
+		{ 15,29,-1,-1,-1,-1,-1,25,1,2,3,4,-1,25,1,2,4,-1,0,9 },
+		{ 10,-1,-1,-1,-1,-1,-1,10,-1,-1,-1,14,-1,-1,-1,14,-1,-1,60,14 },
+		{ 5,-1,-1,-1,-1,-1,-1,20,-1,-1,-1,24,-1,-1,-1,21,21,-1,-1,9 },
+		{ 5,-1,-1,-1,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,60,-1,-1,-1,9 },
+		{ 5,-1,50,-1,-1,50,-1,-1,-1,50,-1,-1,-1,50,-1,-1,-1,50,0,19 },
+		{ 20,23,21,23,46,23,23,21,47,23,23,22,47,22,22,21,22,22,23,24 }
+
+
 		};
 		break;
 	case MapName::STAGE3_LEVEL3:
@@ -102,7 +106,7 @@ void Game::GameMap::Load() {
 	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
 		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
 			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Block
-				maps[static_cast<int>(currentMapName)][y][x] <= 25) {
+				maps[static_cast<int>(currentMapName)][y][x] <= 24) {
 				int tileNum = 5;
 				objects.push_back(
 					new Block(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
@@ -113,7 +117,7 @@ void Game::GameMap::Load() {
 						false
 					));
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] >= 26 && //Glitched Block
+			else if (maps[static_cast<int>(currentMapName)][y][x] >= 25 && //Glitched Block
 				maps[static_cast<int>(currentMapName)][y][x] <= 49
 				) {
 				int tileNum = 5;
@@ -135,7 +139,9 @@ void Game::GameMap::Load() {
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
-						false)
+						false,
+						false
+						)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 55 //glitched Spike
@@ -147,18 +153,21 @@ void Game::GameMap::Load() {
 									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
-						true)
+						true,
+						false)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 60 //Platform
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 60 //upside down Spike
 				) {
+				int tileNum = 5;
 				objects.push_back(
-					new Platform(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ 0,
-									0,
+					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
-						false)
+						false,
+						true)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 51 //Flag
@@ -181,7 +190,12 @@ void Game::GameMap::Load() {
 	}
 }
 void Game::GameMap::Unload() {
+	for (Game::GameObject* obj : objects)
+	{
+		delete obj;
+	}
 
+	objects.clear();
 }
 void Game::GameMap::Update(Game::Player& player, double dt) {
 	player.SetIsOnGround(false);
@@ -193,6 +207,8 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		player.CorrectCollision(obj, dt);
 
 	}
+	isGlitchPlateActive = false;
+
 	if (player.IsReadyToNextLevel) {
 		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
 		objects.clear();
@@ -201,6 +217,21 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		Load();
 		player.IsReadyToNextLevel = false;
 	}
+	for (int i = objects.size() - 1; i >= 0; i--)
+	{
+		if (objects[i]->GetDead())
+		{
+			delete objects[i];
+			objects.erase(objects.begin() + i);
+		}
+	}
+	
+	if (player.GetIsAlive() == false) {
+		Unload();
+		Load();
+		player.Load();
+	}
+
 }
 
 

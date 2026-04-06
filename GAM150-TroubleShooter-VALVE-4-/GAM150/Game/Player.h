@@ -17,6 +17,7 @@ namespace Game {
 		Vector2 GetPosition() const;
 		Vector2 GetVelocity() const;
 		Rectangle GetHitbox() const;
+		bool GetIsAlive() const;
 		void SetCanJump(bool CanJump);
 		void SetIsOnGround(bool IsOnGround);
 		bool IsReadyToNextLevel = false;

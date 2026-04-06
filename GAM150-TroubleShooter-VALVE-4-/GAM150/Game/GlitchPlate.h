@@ -2,10 +2,10 @@
 #include <raylib.h>
 #include "GameObject.h"
 
-class Spike : public Game::GameObject
+class GlitchPlate : public Game::GameObject
 {
 public:
-	Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isupsidedown);
+	GlitchPlate(Vector2 pos, Rectangle texture_source, bool isglitchmoded);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -15,7 +15,6 @@ public:
 	bool GetIsGlitchMode() override;
 	bool CheckCollision(Rectangle hibox) override;
 
-
 private:
 	Vector2  position;
 	Texture2D texture;
@@ -24,7 +23,7 @@ private:
 	Rectangle hitbox;
 	Rectangle textureSourceRectangle;
 	ObjectID::ID id;
-	bool isUpsidedown;
 
 	static constexpr int SIZE = 64;
 };
+

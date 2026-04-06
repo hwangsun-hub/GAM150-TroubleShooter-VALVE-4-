@@ -11,6 +11,7 @@ namespace ObjectID {
 		SAW,
 		DOOR,
 		FLAG,
+		GLITCHPLATE,
 		COUNT
 	};
 }

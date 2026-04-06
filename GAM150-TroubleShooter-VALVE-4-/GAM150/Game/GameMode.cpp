@@ -14,6 +14,7 @@ void Game::GameMode::Load() {
 void Game::GameMode::Update([[maybe_unused]] double dt) {
 	player.Update(dt);
 	gameMap.Update(player, dt);
+
 }
 
 void Game::GameMode::Unload() {
