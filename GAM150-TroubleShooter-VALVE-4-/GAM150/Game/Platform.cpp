@@ -28,7 +28,7 @@ bool  Platform::CheckCollision(Rectangle hibox) {
 }
 
 void Platform::Load() {
-	texture = Engine::Application::GetAssets()[1];
+	texture = Engine::Application::GetAssets()[0];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }

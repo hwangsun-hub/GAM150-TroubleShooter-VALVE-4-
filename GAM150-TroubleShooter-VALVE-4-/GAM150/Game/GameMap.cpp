@@ -30,18 +30,18 @@ void Game::GameMap::LoadMap(MapName mapname) {
 	case MapName::STAGE3_LEVEL1:
 		maps[static_cast<int>(MapName::STAGE3_LEVEL1)] =
 		{
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, -1 },
-		{ 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1,60, 60, 0,  0, -1, -1, -1, -1 },
-		{ 1, -1, -1,  1, -1, -1, -1, 50, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 70, -1 },
-		{  0,  1,  3,  3,  2,  3,  1,  2,  1,  1,  1,  3,  3,  1,  3,  2,  1,  1,  3,  4 },
-		{ 20, 21, 21, 23, 21, 22, 23, 22, 23, 22, 23, 23, 22, 22, 23, 22, 23, 23, 23, 24 }
+		{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
+		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
+		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
+		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
+		{ 15,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
+		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,19 },
+		{ 15,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
+		{ 10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,14 },
+		{ 5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9 },
+		{5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9},
+		{ 5,-1,-1,-1,-1,-1,50,-1,55,-1,-1,-1,-1,-1,-1,-1,51,-1,-1,19 },
+		{ 20,23,21,23,22,23,23,21,22,23,23,22,21,22,22,21,22,22,23,24 }
 		};
 		break;
 	case MapName::STAGE3_LEVEL2:
@@ -128,13 +128,26 @@ void Game::GameMap::Load() {
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 50 //Spike
 				) {
+				int tileNum = 5;
 				objects.push_back(
 					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{  0,
-									0,
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
-									TILE_SIZE }, 
+									TILE_SIZE },
 						false)
+				);
+			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 55 //glitched Spike
+				) {
+				int tileNum = 5;
+				objects.push_back(
+					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+									TILE_SIZE,
+									TILE_SIZE },
+						true)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 60 //Platform
@@ -148,12 +161,13 @@ void Game::GameMap::Load() {
 						false)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 70 //Flag
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 51 //Flag
 				) {
+				int tileNum = 5;
 				objects.push_back(
 					new Flag(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ TILE_SIZE,
-									0,
+						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
+									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
 						false)
