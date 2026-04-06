@@ -9,8 +9,8 @@ void Game::Player::Load() {
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	hitbox = Rectangle{ position.x, 
 						position.y,
-						static_cast<float>(texture.width),
-						static_cast<float>(texture.height) };
+						static_cast<float>(texture.width/2),
+						static_cast<float>(texture.height/2) };
 	IsAlive = true;
 	position = { 128,100 };
 }
@@ -118,7 +118,15 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
 			break;
 		}
-		IsAlive = false;
+		
+			if (obj->GetIsGlitchMode() == true) {
+				velocity.y += JUMP_SPEED;
+			}
+			
+			else {
+				IsAlive = false;
+			}
+		
 		break;
 	}
 	case ObjectID::ID::FLAG: {
@@ -177,7 +185,7 @@ void Game::Player::Draw() {
 	DrawTexturePro(
 		texture,
 		Rectangle{0, 0, static_cast<float>(texture.width), static_cast<float>(texture.height)},
-		Rectangle {position.x, position.y, static_cast<float>(texture.width), static_cast<float>(texture.height) },
+		Rectangle {position.x, position.y, static_cast<float>(texture.width/2), static_cast<float>(texture.height/2) },
 		Vector2 {0, 0},
 		0.0f,
 		WHITE
