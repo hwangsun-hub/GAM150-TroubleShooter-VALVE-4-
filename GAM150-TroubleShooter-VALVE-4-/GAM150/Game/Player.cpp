@@ -122,7 +122,7 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 				position.x += overlap.width;
 			}
 		}
-		else {
+		else if (overlap.width > overlap.height + 10.0f ) {
 			float playerCenterY = position.y + hitbox.height * 0.5f;
 			float floorCenterY = obj->GetHitbox().y + objHitbox.height * 0.5f;
 
