@@ -4,7 +4,7 @@ Spike::Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isu
 	position(pos),
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
-	hitbox({ position.x, position.y + 32,0,0 }),
+	hitbox({ position.x+10, position.y + 32,0,0 }),
 	textureSourceRectangle(texture_source),
 	id(ObjectID::ID::SPIKE),
 	isUpsidedown(isupsidedown)
@@ -32,7 +32,7 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 
 void Spike::Load() {
 	texture = Engine::Application::GetAssets()[0];
-	hitbox.width = 64;
+	hitbox.width = 44;
 	hitbox.height = 32;
 }
 void  Spike::Update(double dt) {
