@@ -8,7 +8,7 @@ int main() {
     engine.Start("TroubleShooter");
     Game::GameMode gamemode;
     engine.GetGameStateManager().AddGameState(gamemode);
-    while (IsKeyPressed(KEY_A) == false) {
+    while (IsKeyPressed(KEY_ESCAPE) == false) {
         
         engine.Update();
     }

@@ -33,7 +33,8 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 		}
 
 		if (obj->GetIsGlitchMode() == true) {
-			velocity.y += JUMP_SPEED * 3;
+			velocity.y = 0;
+			velocity.y += JUMP_SPEED * 2;
 			obj->SetDead(true);
 		}
 
@@ -173,7 +174,9 @@ void Game::Player::Update(double dt) {
 		}
 
 	}
-
+	if (IsKeyPressed(KeyboardKey::KEY_R) == true) {
+		IsAlive = false;
+	 }
 	
 	//update
 
