@@ -20,6 +20,7 @@ void Engine::Application::Start(std::string window_title) {
 void Engine::Application::Update() {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     double dt = std::chrono::duration<double>(now - last_tick).count();
+    if (dt > 0.02)dt = 0.02;
     if (dt > 1 / TargetFPS) {
         last_tick = now;
         frame_count++;
