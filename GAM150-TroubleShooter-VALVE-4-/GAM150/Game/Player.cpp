@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "../Engine/Application.h"
 #include <iostream>
+
 Game::Player::Player()  {
 
 }
@@ -60,6 +61,7 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 
 	}
 }
+
 
 void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 	switch (obj->GetObjectID())
@@ -123,7 +125,7 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 				position.x += overlap.width;
 			}
 		}
-		else if (overlap.width > overlap.height + 10.0f ) {
+		else if (overlap.width > overlap.height + 5.0f ) {
 			float playerCenterY = position.y + hitbox.height * 0.5f;
 			float floorCenterY = obj->GetHitbox().y + objHitbox.height * 0.5f;
 
@@ -141,6 +143,14 @@ void Game::Player::CorrectCollision(GameObject* obj, double dt) {
 				velocity.y = 0.0f;
 
 			}
+		}
+		else if ((int)overlap.width - (int)overlap.height < 1) {
+			float playerCenterX = position.x + hitbox.width * 0.5f;
+			float floorCenterX = objHitbox.x + objHitbox.width * 0.5f;
+			if (playerCenterX < floorCenterX)
+				position.x -= overlap.width;
+			else
+				position.x += overlap.width;
 		}
 		break;
 
