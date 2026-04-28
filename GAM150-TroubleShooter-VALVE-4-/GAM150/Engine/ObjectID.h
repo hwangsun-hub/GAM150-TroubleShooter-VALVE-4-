@@ -12,6 +12,7 @@ namespace ObjectID {
 		DOOR,
 		FLAG,
 		GLITCHPLATE,
+		TROUBLE,
 		COUNT
 	};
 }

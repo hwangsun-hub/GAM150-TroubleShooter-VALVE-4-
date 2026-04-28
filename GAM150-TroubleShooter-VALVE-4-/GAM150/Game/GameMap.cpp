@@ -228,7 +228,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	}
 	isGlitchPlateActive = false;
 
-	if (player.IsReadyToNextLevel) {
+	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {
 		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
 		objects.clear();
 		ClearBackground (Color{ 42, 79, 107, 255 });

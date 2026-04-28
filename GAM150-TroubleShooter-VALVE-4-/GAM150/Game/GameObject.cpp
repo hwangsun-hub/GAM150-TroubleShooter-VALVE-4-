@@ -1,6 +1,12 @@
 #include "GameObject.h"
-void Game::GameObject::ToggleIsGlitchMode() {
-	isGlitchMode = !isGlitchMode;
+void Game::GameObject::TroubleCollision() {
+	if (isGlitchMode == false) {
+		isGlitchMode = true;
+
+	}
+	else {
+		isDead = true;
+	}
 }
 void Game::GameObject::SetDead(bool isdead) {
 	isDead = isdead;

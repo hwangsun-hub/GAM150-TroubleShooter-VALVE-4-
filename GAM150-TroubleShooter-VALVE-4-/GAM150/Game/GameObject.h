@@ -14,7 +14,7 @@ namespace Game {
 		virtual Rectangle GetHitbox() = 0;
 		virtual ObjectID::ID GetObjectID() = 0;
 		virtual bool GetIsGlitchMode() = 0;
-		void ToggleIsGlitchMode();
+		void TroubleCollision();
 		virtual bool CheckCollision(Rectangle hibox) = 0;
 		void SetDead(bool isdead);
 		bool GetDead() const;
