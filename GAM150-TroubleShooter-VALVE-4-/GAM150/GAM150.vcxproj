@@ -20,14 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\GameObjectManager.cpp" />
     <ClCompile Include="Engine\GameState.cpp" />
     <ClCompile Include="Engine\GameStateManager.cpp" />
+    <ClCompile Include="Engine\Texture.cpp" />
+    <ClCompile Include="Engine\TextureManager.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Game\Block.cpp" />
     <ClCompile Include="Game\Flag.cpp" />
     <ClCompile Include="Game\GameMap.cpp" />
     <ClCompile Include="Game\GameMode.cpp" />
-    <ClCompile Include="Game\GameObject.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Game\GlitchPlate.cpp" />
     <ClCompile Include="Game\MapName.h" />
     <ClCompile Include="Game\Platform.cpp" />
@@ -38,15 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\GameObjectManager.h" />
     <ClInclude Include="Engine\GameState.h" />
     <ClInclude Include="Engine\GameStateManager.h" />
     <ClInclude Include="Engine\ObjectID.h" />
+    <ClInclude Include="Engine\Texture.h" />
+    <ClInclude Include="Engine\TextureManager.h" />
     <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="Game\Block.h" />
     <ClInclude Include="Game\Flag.h" />
     <ClInclude Include="Game\GameMap.h" />
     <ClInclude Include="Game\GameMode.h" />
-    <ClInclude Include="Game\GameObject.h" />
+    <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Game\GlitchPlate.h" />
     <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />

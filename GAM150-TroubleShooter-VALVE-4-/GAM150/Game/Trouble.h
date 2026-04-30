@@ -1,13 +1,13 @@
 #pragma once
 #include <raylib.h>
 #include "../Engine/ObjectID.h"
-#include "GameObject.h"
+#include "../Engine/GameObject.h"
 
 class Trouble{
 public:
 	Trouble(Vector2 pos, Rectangle texture_source);
 	void Load();
-	void Update(Game::GameObject* objects, double dt);
+	void Update(Engine::GameObject* objects, double dt);
 	void Draw();
 	Vector2 GetPosition();
 	Rectangle GetHitbox();

@@ -1,5 +1,5 @@
 #pragma once
-#include "../Game/GameObject.h"
+#include "../Engine/GameObject.h"
 #include <raylib.h>
 #include <raymath.h>
 
@@ -10,8 +10,8 @@ namespace Game {
 		Player();
 		void Load();
 		void Unload();
-		void HandleCollision(GameObject* obj, double dt);
-		void CorrectCollision(GameObject* obj, double dt);
+		void HandleCollision(Engine::GameObject* obj, double dt);
+		void CorrectCollision(Engine::GameObject* obj, double dt);
 		void Update(double dt);
 		void Draw();
 		Vector2 GetPosition() const;

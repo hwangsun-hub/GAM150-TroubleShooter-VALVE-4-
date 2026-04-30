@@ -2,6 +2,7 @@
 #include "../Engine/GameState.h"
 #include "GameMap.h"
 #include "Player.h"
+#include "../Engine/GameObjectManager.h"
 namespace Game {
     class GameMode : public Engine::GameState {
     public:

@@ -13,7 +13,7 @@ void Trouble::Load()
 {
 }
 
-void Trouble::Update(Game::GameObject* objects, double dt)
+void Trouble::Update(Engine::GameObject* objects, double dt)
 {
 	if (objects->CheckCollision(this->GetHitbox()) == true) {
 		objects->TroubleCollision();

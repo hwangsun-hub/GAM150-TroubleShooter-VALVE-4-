@@ -1,8 +1,8 @@
 #pragma once
 #include <raylib.h>
-#include "GameObject.h"
+#include "../Engine/GameObject.h"
 
-class Spike : public Game::GameObject
+class Spike : public Engine::GameObject
 {
 public:
 	Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isupsidedown);

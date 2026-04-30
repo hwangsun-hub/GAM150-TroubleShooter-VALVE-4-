@@ -1,8 +1,8 @@
 #pragma once
 #include <raylib.h>
-#include "GameObject.h"
+#include "../Engine/GameObject.h"
 
-class Platform : public Game::GameObject
+class Platform : public Engine::GameObject
 {
 public:
 	Platform(Vector2 pos, Rectangle texture_source, bool isglitchmoded);

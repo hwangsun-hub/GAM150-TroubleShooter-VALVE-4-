@@ -17,7 +17,7 @@ void Game::Player::Load() {
 	velocity = { 0,0 };
 }
 
-void Game::Player::HandleCollision(GameObject* obj, double dt) {
+void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 	switch (obj->GetObjectID()) {
 	case ObjectID::ID::BLOCK: {
 		if (obj->GetIsGlitchMode() == true &&
@@ -63,7 +63,7 @@ void Game::Player::HandleCollision(GameObject* obj, double dt) {
 }
 
 
-void Game::Player::CorrectCollision(GameObject* obj, double dt) {
+void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
 	switch (obj->GetObjectID())
 	{
 	case ObjectID::ID::PLATFORM:

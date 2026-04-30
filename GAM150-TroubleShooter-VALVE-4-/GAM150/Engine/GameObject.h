@@ -1,9 +1,9 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
-#include "../Engine/Application.h"
-#include "../Engine/ObjectID.h"
-namespace Game {
+#include "Application.h"
+#include "ObjectID.h"
+namespace Engine {
 	class GameObject
 	{
 	public:

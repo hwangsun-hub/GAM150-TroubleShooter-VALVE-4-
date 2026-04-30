@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <vector>
-#include "GameObject.h"
+#include "../Engine/GameObject.h"
 #include "Platform.h"
 #include "MapName.h"
 #include "Player.h"
@@ -23,7 +23,7 @@ namespace Game {
 		void Update(Game::Player& player, double dt);
 		void draw();
 		MapName GetCuurentMapName();
-		std::vector<GameObject*> GetGameObject();
+		std::vector<Engine::GameObject*> GetGameObject();
 
 
 
@@ -31,7 +31,7 @@ namespace Game {
 	private:
 		MapName currentMapName = MapName::STAGE3_LEVEL1;
 		std::vector<std::vector<std::vector<int>>> maps;
-		std::vector<GameObject*> objects;
+		std::vector<Engine::GameObject*> objects;
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
 	};

@@ -7,7 +7,7 @@ Game::GameMap::GameMap()
 }
 
 Game::GameMap::~GameMap() {
-	for (GameObject* obj : objects)
+	for (Engine::GameObject* obj : objects)
 		delete obj;
 }
 
@@ -204,12 +204,12 @@ void Game::GameMap::Load() {
 		
 		}
 	}
-	for (GameObject* obj : objects) {
+	for (Engine::GameObject* obj : objects) {
 		obj->Load();
 	}
 }
 void Game::GameMap::Unload() {
-	for (Game::GameObject* obj : objects)
+	for (Engine::GameObject* obj : objects)
 	{
 		delete obj;
 	}
@@ -219,10 +219,10 @@ void Game::GameMap::Unload() {
 void Game::GameMap::Update(Game::Player& player, double dt) {
 	player.SetIsOnGround(false);
 	player.SetCanJump(true);
-	for (GameObject* obj : objects) {
+	for (Engine::GameObject* obj : objects) {
 		player.HandleCollision(obj, dt);
 	}
-	for (GameObject* obj : objects) {
+	for (Engine::GameObject* obj : objects) {
 		player.CorrectCollision(obj, dt);
 
 	}
@@ -255,7 +255,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 
 
 void Game::GameMap::draw() {
-	for (GameObject* obj : objects) {
+	for (Engine::GameObject* obj : objects) {
 		obj->Draw();
 	}
 }
