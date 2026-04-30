@@ -34,7 +34,7 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Spike.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Trouble.cpp" />
+    <ClCompile Include="Game\Trouble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
@@ -51,7 +51,7 @@
     <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Spike.h" />
-    <ClInclude Include="Trouble.h" />
+    <ClInclude Include="Game\Trouble.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

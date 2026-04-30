@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
-#include "Engine/ObjectID.h"
-#include "Game/GameObject.h"
+#include "../Engine/ObjectID.h"
+#include "GameObject.h"
 
 class Trouble{
 public:
