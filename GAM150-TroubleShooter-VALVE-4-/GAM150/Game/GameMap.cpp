@@ -217,8 +217,10 @@ void Game::GameMap::Unload() {
 	objects.clear();
 }
 void Game::GameMap::Update(Game::Player& player, double dt) {
+
 	player.SetIsOnGround(false);
 	player.SetCanJump(true);
+
 	for (Engine::GameObject* obj : objects) {
 		player.HandleCollision(obj, dt);
 	}
@@ -227,7 +229,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 
 	}
 	isGlitchPlateActive = false;
-
+	
 	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {
 		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
 		objects.clear();
@@ -238,7 +240,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	}
 	for (int i = objects.size() - 1; i >= 0; i--)
 	{
-		if (objects[i]->GetDead())
+		if (objects[i]->GetUnload())
 		{
 			delete objects[i];
 			objects.erase(objects.begin() + i);

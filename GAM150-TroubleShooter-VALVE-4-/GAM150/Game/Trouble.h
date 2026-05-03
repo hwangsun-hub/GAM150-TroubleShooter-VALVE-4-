@@ -12,13 +12,13 @@ public:
 	Vector2 GetPosition();
 	Rectangle GetHitbox();
 	ObjectID::ID GetObjectID();
-	bool GetDead() const;
+	bool GetUnload() const;
 
 private:
 	Vector2  position;
 	Texture2D texture;
 	bool isCollision;
-	bool isDead = false;
+	bool isUnload = false;
 	bool isFlipped = false;
 	Rectangle hitbox;
 	Rectangle textureSourceRectangle;

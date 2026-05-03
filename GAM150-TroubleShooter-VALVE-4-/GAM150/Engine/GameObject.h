@@ -16,8 +16,8 @@ namespace Engine {
 		virtual bool GetIsGlitchMode() = 0;
 		void TroubleCollision();
 		virtual bool CheckCollision(Rectangle hibox) = 0;
-		void SetDead(bool isdead);
-		bool GetDead() const;
+		void Unload(bool isUnload);
+		bool GetUnload() const;
 		void SetActive(bool isactive);
 		bool GetActive() const;
 
@@ -30,7 +30,7 @@ namespace Engine {
 		Rectangle hitbox;
 		ObjectID::ID id;
 
-		bool isDead = false;
+		bool isUnload = false;
 		bool isActive = false;
 
 

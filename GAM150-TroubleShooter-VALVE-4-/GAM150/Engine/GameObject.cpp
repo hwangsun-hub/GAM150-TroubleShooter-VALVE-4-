@@ -5,15 +5,15 @@ void Engine::GameObject::TroubleCollision() {
 
 	}
 	else {
-		isDead = true;
+		isUnload = true;
 	}
 }
-void Engine::GameObject::SetDead(bool isdead) {
-	isDead = isdead;
+void Engine::GameObject::Unload(bool isUnload) {
+	isUnload = isUnload;
 }
 
-bool Engine::GameObject::GetDead() const {
-	return isDead;
+bool Engine::GameObject::GetUnload() const {
+	return isUnload;
 }
 
 void  Engine::GameObject::SetActive(bool isactive) {

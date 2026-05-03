@@ -17,7 +17,7 @@ void Trouble::Update(Engine::GameObject* objects, double dt)
 {
 	if (objects->CheckCollision(this->GetHitbox()) == true) {
 		objects->TroubleCollision();
-		isDead = true;
+		isUnload = true;
 	}
 
 	if (isFlipped == false)
@@ -46,7 +46,7 @@ ObjectID::ID Trouble::GetObjectID()
 	return id;
 }
 
-bool Trouble::GetDead() const
+bool Trouble::GetUnload() const
 {
-	return isDead;
+	return isUnload;
 }
