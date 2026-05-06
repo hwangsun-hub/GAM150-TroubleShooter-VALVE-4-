@@ -9,7 +9,7 @@ void Engine::GameObject::TroubleCollision() {
 	}
 }
 void Engine::GameObject::Unload(bool isUnload) {
-	isUnload = isUnload;
+	this->isUnload = isUnload;
 }
 
 bool Engine::GameObject::GetUnload() const {

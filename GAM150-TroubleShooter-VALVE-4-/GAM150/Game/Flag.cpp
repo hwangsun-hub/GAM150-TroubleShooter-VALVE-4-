@@ -28,7 +28,7 @@ bool  Flag::CheckCollision(Rectangle hibox) {
 }
 
 void Flag::Load() {
-	texture = Engine::Application::GetAssets()[0];
+	texture = Engine::Application::GetAssets()[1];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }

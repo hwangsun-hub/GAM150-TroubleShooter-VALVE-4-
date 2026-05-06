@@ -151,11 +151,11 @@ void Game::GameMap::Load() {
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 50 //Spike
 				) {
-				int tileNum = 5;
+				int tileNum = 2;
 				objects.push_back(
 					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
-									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+						Rectangle{	0,
+									0,
 									TILE_SIZE,
 									TILE_SIZE },
 						false,
@@ -168,8 +168,8 @@ void Game::GameMap::Load() {
 				int tileNum = 5;
 				objects.push_back(
 					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
-									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+						Rectangle{ 0,
+									TILE_SIZE,
 									TILE_SIZE,
 									TILE_SIZE },
 						true,
@@ -181,8 +181,8 @@ void Game::GameMap::Load() {
 				int tileNum = 5;
 				objects.push_back(
 					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
-									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+						Rectangle{ TILE_SIZE,
+									0,
 									TILE_SIZE,
 									TILE_SIZE },
 						false,
@@ -194,8 +194,8 @@ void Game::GameMap::Load() {
 				int tileNum = 5;
 				objects.push_back(
 					new Flag(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						Rectangle{ static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] % tileNum) * TILE_SIZE,
-									static_cast<float>(maps[static_cast<int>(currentMapName)][y][x] / tileNum) * TILE_SIZE,
+						Rectangle{ 0,
+									0,
 									TILE_SIZE,
 									TILE_SIZE },
 						false)

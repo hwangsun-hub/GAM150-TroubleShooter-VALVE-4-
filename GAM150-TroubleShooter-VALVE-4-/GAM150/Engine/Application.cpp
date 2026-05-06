@@ -44,8 +44,11 @@ void Engine::Application::Update() {
 
 void Engine::Application::LoadAssets()
 {
-    assets.push_back(LoadTexture("Assets/gam150-1.png"));
-    assets.push_back(LoadTexture("Assets/gam150-2.png"));
+    assets.push_back(LoadTexture("Assets/Block.png"));
+    assets.push_back(LoadTexture("Assets/Flag.png"));
     assets.push_back(LoadTexture("Assets/gam150-player.png"));
+    assets.push_back(LoadTexture("Assets/Saw.png"));
+    assets.push_back(LoadTexture("Assets/Spike.png"));
+
 }
 
