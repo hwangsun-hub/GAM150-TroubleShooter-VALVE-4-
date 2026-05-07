@@ -46,12 +46,6 @@
     <ClCompile Include="Game\Flag.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GlitchPlate.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Trouble.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\GameObjectManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -97,12 +91,6 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Flag.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\GlitchPlate.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Trouble.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Engine\GameObjectManager.h">

@@ -4,15 +4,19 @@
 #include <array>
 #include "ObjectID.h"
 
-class TextureManager {
-public:
-	TextureManager();
-	Rectangle GetTextureSourceRec(ObjectID::ID id, int map_num, bool isglitchedMode);
+namespace Engine {
+	class TextureManager {
+	public:
+		TextureManager();
+		Rectangle GetTextureSourceRec(ObjectID::ID id, int map_num, bool isglitchedMode);
+		void DrawTexure(ObjectID::ID id, int map_num, Vector2 position, Vector2 size, bool isglitchedMode);
+		void DrawTexure(ObjectID::ID id, int map_num, Vector2 position, bool isglitchedMode);
 
-private:
-	std::vector<std::vector<Rectangle>> textures;
+	private:
+		std::vector<std::vector<Rectangle>> textures;
 
-	static constexpr int TILE_SIZE = 64;
+		static constexpr int TILE_SIZE = 64;
 
-	
-};
+
+	};
+}

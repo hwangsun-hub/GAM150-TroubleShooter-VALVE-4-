@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include "Window.h"
 #include "GameStateManager.h"
+#include "TextureManager.h"
 #include <chrono>
 
 namespace Engine {
@@ -19,6 +20,10 @@ namespace Engine {
 
         static Engine::GameStateManager& GetGameStateManager() {
             return Instance().gamestatemanager;
+        }
+
+        static Engine::TextureManager& GetTextureManager() {
+            return Instance().texturemanager;
         }
 
         static std::vector<Texture>& GetAssets() {
@@ -45,6 +50,8 @@ namespace Engine {
 
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
+        Engine::TextureManager texturemanager;
+
         
         std::vector<Texture> assets;
 

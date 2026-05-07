@@ -30,13 +30,11 @@
     <ClCompile Include="Game\GameMap.cpp" />
     <ClCompile Include="Game\GameMode.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
-    <ClCompile Include="Game\GlitchPlate.cpp" />
     <ClCompile Include="Game\MapName.h" />
     <ClCompile Include="Game\Platform.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Spike.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game\Trouble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
@@ -51,11 +49,9 @@
     <ClInclude Include="Game\GameMap.h" />
     <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Engine\GameObject.h" />
-    <ClInclude Include="Game\GlitchPlate.h" />
     <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Spike.h" />
-    <ClInclude Include="Game\Trouble.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

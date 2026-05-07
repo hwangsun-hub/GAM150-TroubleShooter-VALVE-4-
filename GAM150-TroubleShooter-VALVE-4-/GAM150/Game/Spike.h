@@ -5,7 +5,7 @@
 class Spike : public Engine::GameObject
 {
 public:
-	Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isupsidedown);
+	Spike(Vector2 pos, int tileid, bool isglitchmoded, bool isupsidedown);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -19,13 +19,12 @@ public:
 
 private:
 	Vector2  position;
-	Texture2D texture;
 	bool isGlitchMode;
 	bool isCollision;
 	Rectangle hitbox;
-	Rectangle textureSourceRectangle;
 	ObjectID::ID id;
 	bool isUpsidedown;
+	int tile_id;
 
 	static constexpr int SIZE = 64;
 };

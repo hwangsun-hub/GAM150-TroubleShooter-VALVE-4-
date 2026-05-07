@@ -1,11 +1,11 @@
 #include "Spike.h"
 
-Spike::Spike(Vector2 pos, Rectangle texture_source, bool isglitchmoded, bool isupsidedown) :
+Spike::Spike(Vector2 pos, int tileid, bool isglitchmoded, bool isupsidedown) :
 	position(pos),
+	tile_id(tileid),
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ position.x+10, position.y + 32,0,0 }),
-	textureSourceRectangle(texture_source),
 	id(ObjectID::ID::SPIKE),
 	isUpsidedown(isupsidedown)
 {
@@ -35,7 +35,6 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 }
 
 void Spike::Load() {
-	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::SPIKE)];
 	hitbox.width = 44;
 	hitbox.height = 32;
 }
@@ -44,7 +43,7 @@ void  Spike::Update(double dt) {
 }
 
 void Spike::Draw() {
-	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
+	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
 	//for debuging
 	if (Engine::Application::DebugMode == true)
 	DrawRectangleLinesEx(hitbox, 5, RED);

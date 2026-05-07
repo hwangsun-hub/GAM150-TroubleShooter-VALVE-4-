@@ -3,7 +3,7 @@
 #include <raymath.h>
 #include "Application.h"
 #include "ObjectID.h"
-#include "TextureManager.h"
+
 namespace Engine {
 	class GameObject
 	{
@@ -30,6 +30,8 @@ namespace Engine {
 		bool isCollision;
 		Rectangle hitbox;
 		ObjectID::ID id;
+
+		TextureManager texturemanager;
 
 		bool isUnload = false;
 		bool isActive = false;

@@ -140,37 +140,31 @@ void Game::GameMap::Load() {
 			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Block
 				maps[static_cast<int>(currentMapName)][y][x] <= 24) {
 				objects.push_back(
-					new Block(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::BLOCK,
-							maps[static_cast<int>(currentMapName)][y][x],
-							false
-							),
+					new Block(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x]),
 						false
 					));
 			}
+
 			else if (maps[static_cast<int>(currentMapName)][y][x] >= 25 && //Glitched Block
 				maps[static_cast<int>(currentMapName)][y][x] <= 49
 				) {
 				objects.push_back(
-					new Block(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::BLOCK,
-							maps[static_cast<int>(currentMapName)][y][x] - 25,
-							true
-						),
+					new Block(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 25),
 						true
 					));
+
 			}
+
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 50 //Spike
 				) {
 				objects.push_back(
-					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::SPIKE,
-							maps[static_cast<int>(currentMapName)][y][x] - 50,
-							false
-						),
+					new Spike(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 50),
 						false,
 						false
 						)
@@ -179,52 +173,44 @@ void Game::GameMap::Load() {
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 51 //upside down Spike
 				) {
 				objects.push_back(
-					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::SPIKE,
-							maps[static_cast<int>(currentMapName)][y][x] - 50,
-							false
-						),
+					new Spike(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 50),
 						false,
-						true)
+						true
+					)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 52 //Glitched Spike
 				) {
 				objects.push_back(
-					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::SPIKE,
-							maps[static_cast<int>(currentMapName)][y][x] - 52,
-							true
-						),
+					new Spike(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 52),
 						true,
-						false)
+						false
+					)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 53 //Glitched upsidedown Spike
 				) {
 				objects.push_back(
-					new Spike(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::SPIKE,
-							maps[static_cast<int>(currentMapName)][y][x] - 52,
-							true
-						),
+					new Spike(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 52),
 						true,
-						true)
+						true
+					)
 				);
 			}
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 54 //Flag
 				) {
 				objects.push_back(
-					new Flag(Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						texturemanager.GetTextureSourceRec(
-							ObjectID::ID::FLAG,
-							maps[static_cast<int>(currentMapName)][y][x] - 54,
-							false
-						),
-						false)
+					new Flag(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 54),
+						false
+					)
 				);
 			}
 		

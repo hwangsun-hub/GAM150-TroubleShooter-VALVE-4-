@@ -1,12 +1,12 @@
 #include "Flag.h"
 #include <iostream>
 
-Flag::Flag(Vector2 pos, Rectangle texture_source, bool isglitchmoded) :
+Flag::Flag(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),
 	isGlitchMode(isglitchmoded),
+	tile_id(tileid),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
-	textureSourceRectangle(texture_source),
 	id(ObjectID::ID::FLAG)
 {
 }
@@ -28,7 +28,6 @@ bool  Flag::CheckCollision(Rectangle hibox) {
 }
 
 void Flag::Load() {
-	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::FLAG)];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }
@@ -38,7 +37,7 @@ void  Flag::Update(double dt) {
 
 void Flag::Draw() {
 
-	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
+	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
 	//for debuging
 	if (Engine::Application::DebugMode == true) {
 		DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? PINK : YELLOW);

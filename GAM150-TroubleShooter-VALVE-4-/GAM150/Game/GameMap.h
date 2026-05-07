@@ -9,7 +9,6 @@
 #include "Block.h"
 #include "Spike.h"
 #include "Flag.h"
-#include "GlitchPlate.h"
 namespace Game {
 	class GameMap
 	{
@@ -35,7 +34,6 @@ namespace Game {
 		std::vector<Engine::GameObject*> objects;
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
-		TextureManager texturemanager;
 	};
 
 }

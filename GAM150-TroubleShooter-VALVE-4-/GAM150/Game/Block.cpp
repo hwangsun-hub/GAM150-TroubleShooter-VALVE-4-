@@ -1,12 +1,12 @@
 #include "Block.h"
 #include <iostream>
 
-Block::Block(Vector2 pos, Rectangle texture_source, bool isglitchmoded) :
+Block::Block(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),
+	tile_id(tileid),
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
-	textureSourceRectangle(texture_source),
 	id(ObjectID::ID::BLOCK)
 {}
 Vector2  Block::GetPosition() {
@@ -27,7 +27,6 @@ bool  Block::CheckCollision(Rectangle hibox) {
 }
 
 void Block::Load() {
-	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::BLOCK)];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }
@@ -36,7 +35,7 @@ void  Block::Update(double dt) {
 }
 
 void Block::Draw() {
-	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
+	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
 	//for debuging
 	if (Engine::Application::DebugMode == true)
 	DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? RED : BLACK);

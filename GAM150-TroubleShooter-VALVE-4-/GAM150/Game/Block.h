@@ -5,7 +5,7 @@
 class Block : public Engine::GameObject
 {
 public:
-	Block(Vector2 pos, Rectangle texture_source, bool isglitchmoded);
+	Block(Vector2 pos, int tileid, bool isglitchmoded);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -17,12 +17,11 @@ public:
 
 private:
 	Vector2  position;
-	Texture2D texture;
 	bool isGlitchMode;
 	bool isCollision;
 	Rectangle hitbox;
-	Rectangle textureSourceRectangle;
 	ObjectID::ID id;
+	int tile_id;
 
 	static constexpr int SIZE = 64;
 };
