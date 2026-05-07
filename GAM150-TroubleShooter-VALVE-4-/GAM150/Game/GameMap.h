@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <vector>
 #include "../Engine/GameObject.h"
+#include "../Engine/TextureManager.h"
 #include "Platform.h"
 #include "MapName.h"
 #include "Player.h"
@@ -34,6 +35,7 @@ namespace Game {
 		std::vector<Engine::GameObject*> objects;
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
+		TextureManager texturemanager;
 	};
 
 }

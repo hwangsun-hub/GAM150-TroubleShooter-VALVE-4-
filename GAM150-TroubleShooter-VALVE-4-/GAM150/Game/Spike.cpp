@@ -31,7 +31,7 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 }
 
 void Spike::Load() {
-	texture = Engine::Application::GetAssets()[4];
+	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::SPIKE)];
 	hitbox.width = 44;
 	hitbox.height = 32;
 }

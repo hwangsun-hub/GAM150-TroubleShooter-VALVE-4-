@@ -13,6 +13,7 @@ namespace ObjectID {
 		FLAG,
 		GLITCHPLATE,
 		TROUBLE,
+		PLAYER,
 		COUNT
 	};
 }

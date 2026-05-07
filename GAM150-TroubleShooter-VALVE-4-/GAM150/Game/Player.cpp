@@ -6,7 +6,7 @@ Game::Player::Player()  {
 
 }
 void Game::Player::Load() {
-	texture = Engine::Application::GetAssets()[2];
+	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::PLAYER)];
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	hitbox = Rectangle{ position.x, 
 						position.y,

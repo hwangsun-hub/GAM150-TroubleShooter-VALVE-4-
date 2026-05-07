@@ -27,7 +27,7 @@ bool  Block::CheckCollision(Rectangle hibox) {
 }
 
 void Block::Load() {
-	texture = Engine::Application::GetAssets()[0];
+	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::BLOCK)];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }

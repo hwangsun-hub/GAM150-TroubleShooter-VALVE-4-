@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "ObjectID.h"
 
 bool Engine::Application::DebugMode = false;
 
@@ -44,11 +45,12 @@ void Engine::Application::Update() {
 
 void Engine::Application::LoadAssets()
 {
-    assets.push_back(LoadTexture("Assets/Block.png"));
-    assets.push_back(LoadTexture("Assets/Flag.png"));
-    assets.push_back(LoadTexture("Assets/gam150-player.png"));
-    assets.push_back(LoadTexture("Assets/Saw.png"));
-    assets.push_back(LoadTexture("Assets/Spike.png"));
+    assets.resize(static_cast<int>(ObjectID::ID::COUNT));
+    assets[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Block.png");
+    assets[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Flag.png");
+    assets[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
+    assets[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
+    assets[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
 
 }
 

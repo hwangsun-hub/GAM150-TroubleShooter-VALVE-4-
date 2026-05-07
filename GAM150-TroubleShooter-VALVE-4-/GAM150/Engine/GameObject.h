@@ -3,6 +3,7 @@
 #include <raymath.h>
 #include "Application.h"
 #include "ObjectID.h"
+#include "TextureManager.h"
 namespace Engine {
 	class GameObject
 	{

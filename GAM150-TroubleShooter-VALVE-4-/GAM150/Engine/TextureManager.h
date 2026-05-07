@@ -1,16 +1,18 @@
 #pragma once
-#include <filesystem>
-#include <map>
+#include <raylib.h>
+#include <vector>
+#include <array>
+#include "ObjectID.h"
 
-namespace Engine {
-    class Texture;
+class TextureManager {
+public:
+	TextureManager();
+	Rectangle GetTextureSourceRec(ObjectID::ID id, int map_num, bool isglitchedMode);
 
-    class TextureManager {
-    public:
-        Texture* Load(const std::filesystem::path& image_file);
-        void Unload();
+private:
+	std::vector<std::vector<Rectangle>> textures;
 
-    private:
-        std::map<std::filesystem::path, Texture*> textures;
-    };
-}
+	static constexpr int TILE_SIZE = 64;
+
+	
+};

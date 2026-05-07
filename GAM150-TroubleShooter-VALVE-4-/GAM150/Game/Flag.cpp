@@ -28,7 +28,7 @@ bool  Flag::CheckCollision(Rectangle hibox) {
 }
 
 void Flag::Load() {
-	texture = Engine::Application::GetAssets()[1];
+	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::FLAG)];
 	hitbox.width = 64;
 	hitbox.height = 64;
 }
@@ -37,6 +37,7 @@ void  Flag::Update(double dt) {
 }
 
 void Flag::Draw() {
+
 	DrawTexturePro(texture, textureSourceRectangle, { position.x, position.y, SIZE, SIZE }, Vector2Zero(), 0, WHITE);
 	//for debuging
 	if (Engine::Application::DebugMode == true) {
