@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Spike.h"
 #include "../Engine/Application.h"
 #include <iostream>
 
@@ -30,6 +31,14 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 	case ObjectID::ID::SPIKE:
 	{
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+
+		bool isUpsideDown = static_cast<Spike*>(obj)->IsUpsideDown();
+		if (!isUpsideDown && velocity.y < 0) {  
+			break;
+		}
+		if (isUpsideDown && velocity.y > 0) {   
 			break;
 		}
 

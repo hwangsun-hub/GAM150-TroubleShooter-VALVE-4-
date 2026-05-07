@@ -14,6 +14,7 @@ public:
 	ObjectID::ID GetObjectID() override;
 	bool GetIsGlitchMode() override;
 	bool CheckCollision(Rectangle hibox) override;
+	bool IsUpsideDown();
 
 
 private:

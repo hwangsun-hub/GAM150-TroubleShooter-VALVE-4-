@@ -26,6 +26,10 @@ bool Spike::GetIsGlitchMode() {
 	return isGlitchMode;
 }
 
+bool Spike::IsUpsideDown() {
+	return isUpsidedown;
+}
+
 bool  Spike::CheckCollision(Rectangle hibox) {
 	return CheckCollisionRecs(hibox, this->hitbox);
 }
