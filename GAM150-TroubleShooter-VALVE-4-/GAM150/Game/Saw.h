@@ -24,7 +24,8 @@ private:
 	int tile_id;
 	float rotation;
 	static constexpr int SIZE = 64;
-	static constexpr int SPEED = 50;
+	static constexpr int MOVING_SPEED = 50;
+	static constexpr int ROTATE_SPEED = 200;
 
 	Game::Player& player_position;
 };
