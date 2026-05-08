@@ -7,7 +7,8 @@ Saw::Saw(Vector2 pos, int tileid, bool isglitchmoded) :
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
-	id(ObjectID::ID::SAW)
+	id(ObjectID::ID::SAW),
+	rotation(0)
 {
 }
 Vector2  Saw::GetPosition() {
@@ -32,11 +33,11 @@ void Saw::Load() {
 	hitbox.height = 64;
 }
 void  Saw::Update(double dt) {
-
+	rotation+=dt*100;
 }
 
 void Saw::Draw() {
-	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
+	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode, rotation);
 	//for debuging
 	if (Engine::Application::DebugMode == true)
 		DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? RED : BLACK);

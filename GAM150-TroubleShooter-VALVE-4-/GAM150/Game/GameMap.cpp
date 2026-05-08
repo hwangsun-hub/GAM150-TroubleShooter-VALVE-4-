@@ -249,6 +249,9 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		player.CorrectCollision(obj, dt);
 
 	}
+	for (Engine::GameObject* obj : objects) {
+		obj->Update(dt);
+	}
 	isGlitchPlateActive = false;
 	
 	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {

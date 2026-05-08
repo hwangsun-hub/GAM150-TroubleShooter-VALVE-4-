@@ -48,4 +48,15 @@ namespace Engine {
             WHITE);
     }
 
+    void TextureManager::DrawTexure(ObjectID::ID id, int map_num, Vector2 position, bool isglitchedMode, float rotation)
+    {
+        DrawTexturePro(
+            Engine::Application::GetAssets()[static_cast<int>(id)],
+            GetTextureSourceRec(id, map_num, isglitchedMode),
+            Rectangle{ position.x + TILE_SIZE / 2.0f, position.y + TILE_SIZE / 2.0f, TILE_SIZE, TILE_SIZE },
+            Vector2{ TILE_SIZE /2.0f, TILE_SIZE /2.0f},
+            rotation,
+            WHITE);
+    }
+
 }

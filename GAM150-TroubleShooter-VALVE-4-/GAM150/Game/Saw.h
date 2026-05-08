@@ -22,7 +22,7 @@ private:
 	Rectangle hitbox;
 	ObjectID::ID id;
 	int tile_id;
-
+	float rotation;
 	static constexpr int SIZE = 64;
 };
 

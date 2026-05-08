@@ -11,6 +11,7 @@ namespace Engine {
 		Rectangle GetTextureSourceRec(ObjectID::ID id, int map_num, bool isglitchedMode);
 		void DrawTexure(ObjectID::ID id, int map_num, Vector2 position, Vector2 size, bool isglitchedMode);
 		void DrawTexure(ObjectID::ID id, int map_num, Vector2 position, bool isglitchedMode);
+		void DrawTexure(ObjectID::ID id, int map_num, Vector2 position, bool isglitchedMode, float rotation);
 
 	private:
 		std::vector<std::vector<Rectangle>> textures;
