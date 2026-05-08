@@ -67,7 +67,13 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 
 		break;
 	}
-
+	case ObjectID::ID::SAW: {
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		IsAlive = false;
+		break;
+	}
 	}
 }
 

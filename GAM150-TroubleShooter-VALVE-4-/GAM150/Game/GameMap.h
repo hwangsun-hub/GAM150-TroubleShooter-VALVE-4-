@@ -9,6 +9,8 @@
 #include "Block.h"
 #include "Spike.h"
 #include "Flag.h"
+#include "Saw.h"
+
 namespace Game {
 	class GameMap
 	{

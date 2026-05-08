@@ -55,6 +55,9 @@
     <ClCompile Include="Engine\TextureManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Saw.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Window.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="Engine\TextureManager.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Saw.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 
 
 void Engine::Window::Start(std::string title) {
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
     InitWindow(default_width, default_height, title.c_str());
     size = { default_width, default_height };
     SetExitKey(KEY_NULL);
