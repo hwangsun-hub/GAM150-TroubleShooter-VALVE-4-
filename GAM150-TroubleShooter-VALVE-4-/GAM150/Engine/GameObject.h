@@ -24,12 +24,12 @@ namespace Engine {
 
 
 	private:
-		Vector2  position;
-		Texture2D texture;
-		bool isGlitchMode;
-		bool isCollision;
-		Rectangle hitbox;
-		ObjectID::ID id;
+		Vector2  position = { 0, 0 };
+		Texture2D texture = { 0 };
+		bool isGlitchMode = false;
+		bool isCollision = false;
+		Rectangle hitbox = { 0, 0, 0, 0 };
+		ObjectID::ID id = ObjectID::ID::DEFAULT;
 
 		TextureManager texturemanager;
 
