@@ -1,15 +1,19 @@
 #include "Saw.h"
 #include <iostream>
 
-Saw::Saw(Vector2 pos, int tileid, bool isglitchmoded, Game::Player& player) :
-	position(pos),
+Saw::Saw(Vector2 start_pos, int tileid, bool isglitchmoded, int size, Vector2 direction, Game::Player& player) :
+	start_position(start_pos),
+	position(start_pos),
 	tile_id(tileid),
 	isGlitchMode(isglitchmoded),
 	isCollision(false),
-	hitbox({ position.x, position.y,0,0 }),
+	hitbox({ start_position.x, start_position.y,0,0 }),
 	id(ObjectID::ID::SAW),
 	rotation(0),
-	player_position(player)
+	player_position(player),
+	size(size),
+	direction(direction),
+	going_to_end(true)
 {
 }
 Vector2  Saw::GetPosition() {
@@ -32,9 +36,14 @@ bool  Saw::CheckCollision(Rectangle hibox) {
 void Saw::Load() {
 	hitbox.width = 64;
 	hitbox.height = 64;
+	size = 1;
+	going_to_end = true;
+	end_position = { position.x + SIZE * direction.x,position.y + SIZE * direction.y };
 }
 void  Saw::Update(double dt) {
 	rotation += static_cast<float>(dt) * ROTATE_SPEED;
+	rotation += dt * ROTATE_SPEED;
+
 	if (isGlitchMode == true) {
 		float dx = position.x - player_position.GetPosition().x;
 		float dy = position.y - player_position.GetPosition().y;
@@ -47,9 +56,31 @@ void  Saw::Update(double dt) {
 		position.y -= dy * static_cast<float>(dt) * MOVING_SPEED;
 		hitbox.x = position.x;
 		hitbox.y = position.y;
+		position.x -= dx * dt * MOVING_SPEED;
+		position.y -= dy * dt * MOVING_SPEED;
 
-		//std::cout << position.x << ',' << position.y<<'\n';
+
 	}
+	else {
+		Vector2 target = going_to_end ? end_position : start_position;
+
+		float dx = target.x - position.x;
+		float dy = target.y - position.y;
+		float length = sqrtf(dx * dx + dy * dy);
+
+		if (length < 2.0f) {
+			going_to_end = !going_to_end;
+		}
+		else {
+			dx /= length;
+			dy /= length;
+			position.x += dx * dt * MOVING_SPEED;
+			position.y += dy * dt * MOVING_SPEED;
+		}
+
+	}
+	hitbox.x = position.x;
+	hitbox.y = position.y;
 }
 
 void Saw::Draw() {

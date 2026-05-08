@@ -18,7 +18,7 @@ namespace Game {
 		GameMap();
 		GameMap(MapName mapname);
 		~GameMap();
-		
+
 		void LoadMap(MapName mapname);
 		void Unload();
 		void Load(Game::Player& player);
@@ -33,6 +33,8 @@ namespace Game {
 	private:
 		MapName currentMapName = MapName::STAGE3_LEVEL1;
 		std::vector<std::vector<std::vector<int>>> maps;
+		std::vector<std::vector<std::vector<int>>> maps_for_saw;
+
 		std::vector<Engine::GameObject*> objects;
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
