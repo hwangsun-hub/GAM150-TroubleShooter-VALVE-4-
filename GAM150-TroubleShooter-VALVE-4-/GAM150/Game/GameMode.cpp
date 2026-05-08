@@ -7,7 +7,7 @@ Game::GameMode::GameMode() {
 
 void Game::GameMode::Load() {
 	gameMap.Load(player);
-	player.Load();
+	player.Load(gameMap.GetStartPosition());
 
 }
 

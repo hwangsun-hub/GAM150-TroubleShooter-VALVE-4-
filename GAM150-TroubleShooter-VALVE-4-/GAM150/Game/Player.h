@@ -8,7 +8,7 @@ namespace Game {
 	{
 	public:
 		Player();
-		void Load();
+		void Load(Vector2 start_position);
 		void Unload();
 		void HandleCollision(Engine::GameObject* obj, double dt);
 		void CorrectCollision(Engine::GameObject* obj, double dt);
@@ -25,7 +25,7 @@ namespace Game {
 
 	private:
 		Texture2D texture;
-		Vector2 position = { 100,100 };
+		Vector2 position ;
 		Vector2 velocity = { 0,0 };
 		Rectangle hitbox;
 

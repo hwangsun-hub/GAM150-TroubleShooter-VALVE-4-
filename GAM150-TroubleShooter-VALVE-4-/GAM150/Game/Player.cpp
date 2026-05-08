@@ -6,7 +6,7 @@
 Game::Player::Player()  {
 
 }
-void Game::Player::Load() {
+void Game::Player::Load(Vector2 start_position) {
 	texture = Engine::Application::GetAssets()[static_cast<int>(ObjectID::ID::PLAYER)];
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	hitbox = Rectangle{ position.x, 
@@ -14,7 +14,7 @@ void Game::Player::Load() {
 						static_cast<float>(texture.width/2),
 						static_cast<float>(texture.height/2) };
 	IsAlive = true;
-	position = { 80,320 };
+	position = start_position;
 	velocity = { 0,0 };
 }
 

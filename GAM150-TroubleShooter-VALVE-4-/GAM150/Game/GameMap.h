@@ -26,7 +26,7 @@ namespace Game {
 		void draw();
 		MapName GetCuurentMapName();
 		std::vector<Engine::GameObject*> GetGameObject();
-
+		Vector2 GetStartPosition() const;
 
 
 
@@ -36,6 +36,7 @@ namespace Game {
 		std::vector<Engine::GameObject*> objects;
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
+		Vector2 player_start_position;
 	};
 
 }
