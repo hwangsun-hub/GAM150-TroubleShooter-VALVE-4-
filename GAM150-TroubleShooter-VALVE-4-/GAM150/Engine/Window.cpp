@@ -15,8 +15,8 @@ void Engine::Window::Start(std::string title) {
 void Engine::Window::Update() {
     EndDrawing();
 
-    float current_width = GetScreenWidth();
-    float current_height = GetScreenHeight();
+    float current_width = static_cast<float>(GetScreenWidth());
+    float current_height = static_cast<float>(GetScreenHeight());
     if (current_width != size.x || current_height != size.y) {
         size = { current_width, current_height };
     }

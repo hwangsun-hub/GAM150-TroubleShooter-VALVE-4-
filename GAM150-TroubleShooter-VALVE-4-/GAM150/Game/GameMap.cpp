@@ -278,7 +278,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		Load(player);
 		player.IsReadyToNextLevel = false;
 	}
-	for (int i = objects.size() - 1; i >= 0; i--)
+	for (int i = static_cast<int>(objects.size()) - 1; i >= 0; i--)
 	{
 		if (objects[i]->GetUnload())
 		{

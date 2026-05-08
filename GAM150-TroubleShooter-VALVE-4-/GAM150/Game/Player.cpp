@@ -182,11 +182,11 @@ void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
 void Game::Player::Update(double dt) {
 	//move
 	if (IsKeyDown(KeyboardKey::KEY_LEFT) == true) {
-		position.x -= MOVE_SPEED * dt; //direct feedback
+		position.x -= MOVE_SPEED * static_cast<float>(dt); //direct feedback
 
 	}
 	if (IsKeyDown(KeyboardKey::KEY_RIGHT) == true) {
-		position.x += MOVE_SPEED * dt; //direct feedback
+		position.x += MOVE_SPEED * static_cast<float>(dt); //direct feedback
 
 	}
 	//jump
@@ -205,9 +205,9 @@ void Game::Player::Update(double dt) {
 	
 	//update
 
-	velocity.y += GRAVITY * dt;
+	velocity.y += GRAVITY * static_cast<float>(dt);
 	
-	position += velocity * dt;
+	position += velocity * static_cast<float>(dt);
 
 	//hitbox update
 
