@@ -36,9 +36,9 @@ bool  Saw::CheckCollision(Rectangle hibox) {
 void Saw::Load() {
 	hitbox.width = 64;
 	hitbox.height = 64;
-	size = 1;
+	
 	going_to_end = true;
-	end_position = { position.x + SIZE * direction.x,position.y + SIZE * direction.y };
+	end_position = { position.x + SIZE * direction.x*size,position.y + SIZE * direction.y*size };
 }
 void  Saw::Update(double dt) {
 	rotation += static_cast<float>(dt) * ROTATE_SPEED;

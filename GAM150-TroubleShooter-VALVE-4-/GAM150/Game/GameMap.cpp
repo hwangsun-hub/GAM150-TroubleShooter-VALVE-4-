@@ -67,7 +67,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 			{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
 			{10,-1,-1,-1,-1,-1,-1,-1,-1,17,-1,-1,-1,14,-1,-1,-1,-1,-1,19},
 			{10,-1,-1,-1,54,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9},
-			{5,-1,70,72,14,-1,-1,-1,-1,51,-1,-1,-1,51,-1,-1,-1,-1,-1,19},
+			{5,-1,70,71,14,-1,-1,-1,-1,51,-1,-1,-1,51,-1,-1,-1,-1,-1,19},
 			{15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,-1,-1,9},
 			{5,99,-1,-1,22,24,-1,-1,50,-1,50,-1,-1,-1,-1,50,-1,-1,-1,19},
 			{15,4,-1,-1,-1,-1,-1,0,1,2,3,4,-1,0,1,2,4,-1,0,9},
@@ -99,7 +99,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{
 			{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
 		{10,-1,-1,-1,-1,-1,-1,-1,-1,17,-1,-1,-1,14,-1,-1,-1,-1,-1,19},
-		{10,-1,-1,-1,54,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9},
+		{10,-1,70,73,54,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9},
 		{5,-1,-1,-1,14,-1,-1,-1,-1,51,-1,-1,-1,51,-1,-1,-1,-1,-1,19},
 		{15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9},
 		{5,99,-1,-1,22,24,-1,-1,50,-1,50,-1,-1,-1,-1,50,-1,-1,-1,19},
@@ -132,7 +132,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{
 			{0,1,2,1,1,3,2,2,2,3,1,3,3,2,1,2,1,1,1,4},
 		{10,-1,-1,-1,-1,-1,-1,-1,-1,22,-1,-1,-1,-1,14,-1,-1,51,-1,19},
-		{10,-1,-1,-1,54,-1,-1,-1,-1,51,-1,-1,-1,-1,24,-1,-1,-1,-1,9},
+		{10,-1,70,-1,54,-1,-1,-1,-1,51,-1,-1,-1,-1,24,-1,-1,-1,-1,9},
 		{5,-1,-1,-1,14,-1,-1,-1,50,-1,50,-1,-1,-1,51,-1,50,-1,-1,19},
 		{15,-1,-1,-1,14,-1,-1,-1,2,-1,2,-1,-1,-1,-1,-1,4,-1,0,9},
 		{5,99,-1,20,22,24,-1,25,1,1,2,29,-1,25,2,2,9,-1,-1,19},
@@ -230,7 +230,7 @@ void Game::GameMap::Load(Game::Player& player) {
 				objects.push_back(
 					new Saw(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 70),
+						(maps_for_saw[static_cast<int>(currentMapName)][y][x] - 70),
 						false,
 						size,
 						direction,
@@ -240,36 +240,14 @@ void Game::GameMap::Load(Game::Player& player) {
 			}
 			else if (maps_for_saw[static_cast<int>(currentMapName)][y][x] == 75 //Glitched Saw
 				) {
-				int x_for_row[4] = { 1,-1,0,0 };
-				int y_for_column[4] = { 0,0,1,-1 };
-
-				int sx = x;
-				int sy = y;
-				int size = 0;
-				Vector2 direction{ 0,0 };
-				for (int i = 0; i < 4; i++)
-				{
-					sx += x_for_row[i];
-					sy += y_for_column[i];
-					if (sx > 0 && sx < maps_for_saw[static_cast<int>(currentMapName)][y].size() && sy>0 && sy < maps_for_saw[static_cast<int>(currentMapName)].size())
-					{
-						if (maps_for_saw[static_cast<int>(currentMapName)][sy][sx] > 75 &&
-							maps_for_saw[static_cast<int>(currentMapName)][sy][sx] < 80) {
-							size = 80 - maps_for_saw[static_cast<int>(currentMapName)][sy][sx];
-							direction = { float(x_for_row[i]) ,float(y_for_column[i]) };
-							break;
-						}
-					}
-
-
-				}
+				
 				objects.push_back(
 					new Saw(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 75),
+						(maps_for_saw[static_cast<int>(currentMapName)][y][x] - 75),
 						true,
-						size,
-						direction,
+						0,
+						Vector2 {0,0},
 						player
 					)
 				);
@@ -411,7 +389,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	
 	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {
 		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
-		objects.clear();
+		Unload();
 		ClearBackground (Color{ 42, 79, 107, 255 });
 		player.Load(player_start_position);
 		Load(player);
