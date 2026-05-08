@@ -16,6 +16,10 @@ void Engine::Application::Start(std::string window_title) {
     last_test = last_tick;
 }
 
+void Engine::Application::Stop()
+{
+}
+
 
 
 void Engine::Application::Update() {
@@ -45,12 +49,19 @@ void Engine::Application::Update() {
 
 void Engine::Application::LoadAssets()
 {
-    assets.resize(static_cast<int>(ObjectID::ID::COUNT));
+    assets.resize(static_cast<int>(ObjectID::ID::COUNT)+2);
     assets[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Block.png");
     assets[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Flag.png");
     assets[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
     assets[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
     assets[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
+}
 
+bool Engine::Application::HasGameEnded()
+{
+    if (gamestatemanager.HasGameEnded() == true || window.IsClosed() == true) {
+        return true;
+    }
+    return false;
 }
 

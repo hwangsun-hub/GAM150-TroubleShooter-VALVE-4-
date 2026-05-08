@@ -33,7 +33,7 @@ namespace Engine {
         void Stop();
         void Update();
         void LoadAssets();
-        //bool HasGameEnded();
+        bool HasGameEnded();
         static bool DebugMode;
 
     private:

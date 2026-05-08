@@ -14,10 +14,14 @@ void Game::GameMode::Load() {
 void Game::GameMode::Update([[maybe_unused]] double dt) {
 	player.Update(dt);
 	gameMap.Update(player, dt);
-
+	if (IsKeyPressed(KEY_ONE)) {
+		Engine::Application::GetGameStateManager().SetNextGameState(0);  // mainmenu
+	}
 }
 
 void Game::GameMode::Unload() {
+	gameMap.Unload();
+	player.Unload();
 }
 
 void Game::GameMode::Draw() {
