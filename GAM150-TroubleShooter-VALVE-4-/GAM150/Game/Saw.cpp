@@ -34,7 +34,7 @@ void Saw::Load() {
 	hitbox.height = 64;
 }
 void  Saw::Update(double dt) {
-	rotation+=dt*100;
+	rotation+=dt*200;
 	if (isGlitchMode == true) {
 		float dx = position.x - player_position.GetPosition().x;
 		float dy = position.y - player_position.GetPosition().y;
@@ -43,8 +43,8 @@ void  Saw::Update(double dt) {
 			dx /= length;
 			dy /= length;
 		}
-		position.x -= dx*dt*100;
-		position.y -= dy*dt*100;
+		position.x -= dx*dt* SPEED;
+		position.y -= dy*dt* SPEED;
 		hitbox.x = position.x;
 		hitbox.y = position.y;
 
