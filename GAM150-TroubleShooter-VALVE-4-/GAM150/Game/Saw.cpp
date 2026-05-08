@@ -48,7 +48,7 @@ void  Saw::Update(double dt) {
 		hitbox.x = position.x;
 		hitbox.y = position.y;
 
-		std::cout << position.x << ',' << position.y<<'\n';
+		//std::cout << position.x << ',' << position.y<<'\n';
 	}
 }
 
