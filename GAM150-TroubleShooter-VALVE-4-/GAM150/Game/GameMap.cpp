@@ -51,7 +51,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{10,-1,-1,-1,-1,-1,-1,-1,-1,17,-1,-1,-1,14,-1,-1,-1,-1,-1,19},
 		{10,-1,-1,-1,54,-1,-1,-1,-1,22,-1,-1,-1,14,-1,-1,-1,-1,-1,9},
 		{5,-1,55,-1,14,-1,-1,-1,-1,51,-1,-1,-1,51,-1,-1,-1,-1,-1,19},
-		{15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9},
+		{15,-1,-1,-1,14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,56,-1,-1,9},
 		{5,-1,-1,-1,22,24,-1,-1,50,-1,50,-1,-1,-1,-1,50,-1,-1,-1,19},
 		{15,4,-1,-1,-1,-1,-1,0,1,2,3,4,-1,0,1,2,4,-1,0,9},
 		{10,-1,-1,-1,-1,-1,-1,10,-1,-1,-1,14,-1,-1,-1,14,-1,-1,-1,14},
@@ -133,7 +133,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 
 }
 
-void Game::GameMap::Load() {
+void Game::GameMap::Load(Game::Player& player) {
 	LoadMap(currentMapName);
 	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
 		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
@@ -219,7 +219,19 @@ void Game::GameMap::Load() {
 					new Saw(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
 						(maps[static_cast<int>(currentMapName)][y][x] - 55),
-						false
+						false,
+						player
+					)
+				);
+			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 56 //Glitched Saw
+				) {
+				objects.push_back(
+					new Saw(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 56),
+						true,
+						player
 					)
 				);
 			}
@@ -259,7 +271,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		objects.clear();
 		ClearBackground (Color{ 42, 79, 107, 255 });
 		player.Load();
-		Load();
+		Load(player);
 		player.IsReadyToNextLevel = false;
 	}
 	for (int i = objects.size() - 1; i >= 0; i--)
@@ -273,7 +285,7 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	
 	if (player.GetIsAlive() == false) {
 		Unload();
-		Load();
+		Load(player);
 		player.Load();
 	}
 

@@ -21,7 +21,7 @@ namespace Game {
 		
 		void LoadMap(MapName mapname);
 		void Unload();
-		void Load();
+		void Load(Game::Player& player);
 		void Update(Game::Player& player, double dt);
 		void draw();
 		MapName GetCuurentMapName();

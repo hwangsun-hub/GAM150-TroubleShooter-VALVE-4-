@@ -1,11 +1,11 @@
 #pragma once
 #include <raylib.h>
 #include "../Engine/GameObject.h"
-
+#include "Player.h"
 class Saw : public Engine::GameObject
 {
 public:
-	Saw(Vector2 pos, int tileid, bool isglitchmoded);
+	Saw(Vector2 pos, int tileid, bool isglitchmoded, Game::Player& player);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -24,5 +24,6 @@ private:
 	int tile_id;
 	float rotation;
 	static constexpr int SIZE = 64;
+	Game::Player& player_position;
 };
 

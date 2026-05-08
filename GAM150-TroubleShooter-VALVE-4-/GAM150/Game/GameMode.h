@@ -11,7 +11,6 @@ namespace Game {
         void Update([[maybe_unused]] double dt) override;
         void Unload() override;
         void Draw() override;
-
         std::string GetName() override {
             return "GameMode";
         }

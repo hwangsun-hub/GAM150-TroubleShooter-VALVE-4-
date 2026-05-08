@@ -6,7 +6,7 @@ Game::GameMode::GameMode() {
 }
 
 void Game::GameMode::Load() {
-	gameMap.Load();
+	gameMap.Load(player);
 	player.Load();
 
 }
