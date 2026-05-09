@@ -14,6 +14,9 @@ void Game::Player::Load(Vector2 start_position) {
 						static_cast<float>(texture.width/2),
 						static_cast<float>(texture.height/2) };
 	IsAlive = true;
+	IsJump = false;
+	IsLookingRight = true;
+	IsTroubleShoot = false;
 	position = start_position;
 	velocity = { 0,0 };
 }
@@ -44,7 +47,7 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 
 		if (obj->GetIsGlitchMode() == true) {
 			velocity.y = 0;
-			velocity.y += JUMP_SPEED * 2;
+			velocity.y += isUpsideDown ?  -JUMP_SPEED * 2 : JUMP_SPEED * 2;
 			obj->Unload(true);
 		}
 
@@ -183,11 +186,11 @@ void Game::Player::Update(double dt) {
 	//move
 	if (IsKeyDown(KeyboardKey::KEY_LEFT) == true) {
 		position.x -= MOVE_SPEED * static_cast<float>(dt); //direct feedback
-
+		IsLookingRight = false;
 	}
 	if (IsKeyDown(KeyboardKey::KEY_RIGHT) == true) {
 		position.x += MOVE_SPEED * static_cast<float>(dt); //direct feedback
-
+		IsLookingRight = true;
 	}
 	//jump
 	if (IsKeyPressed(KeyboardKey::KEY_SPACE) == true) {
@@ -195,10 +198,29 @@ void Game::Player::Update(double dt) {
 			CanJump == true
 			) {
 			velocity.y += JUMP_SPEED;
+			IsJump = true;
 			IsOnGround = false;
 		}
 
 	}
+	//can adjust jump
+	if (IsKeyReleased(KeyboardKey::KEY_SPACE) == true &&
+		IsJump == true
+		) {
+		if (velocity.y < 0) {
+			velocity.y = 0;
+		}
+		IsJump = false;
+	}
+	//shoot trouble
+	if (IsKeyPressed(KeyboardKey::KEY_Z)) {
+		IsTroubleShoot = true;
+	}
+
+
+
+
+	//reset
 	if (IsKeyPressed(KeyboardKey::KEY_R) == true) {
 		IsAlive = false;
 	 }
@@ -254,4 +276,18 @@ void Game::Player::SetCanJump(bool CanJump) {
 
 void Game::Player::SetIsOnGround(bool IsOnGround) {
 	this->IsOnGround = IsOnGround;
+}
+
+bool Game::Player::CheckTroubleShoot()
+{
+	if (IsTroubleShoot == true) {
+		IsTroubleShoot = false;
+		return true;
+	}
+	return false;
+}
+
+bool Game::Player::GetIsLookingRight() const
+{
+	return IsLookingRight;
 }

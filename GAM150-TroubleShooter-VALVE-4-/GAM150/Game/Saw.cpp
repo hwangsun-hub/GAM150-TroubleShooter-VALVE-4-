@@ -5,7 +5,6 @@ Saw::Saw(Vector2 start_pos, int tileid, bool isglitchmoded, int size, Vector2 di
 	start_position(start_pos),
 	position(start_pos),
 	tile_id(tileid),
-	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ start_position.x, start_position.y,0,0 }),
 	id(ObjectID::ID::SAW),
@@ -15,6 +14,7 @@ Saw::Saw(Vector2 start_pos, int tileid, bool isglitchmoded, int size, Vector2 di
 	direction(direction),
 	going_to_end(true)
 {
+	isGlitchMode = isglitchmoded;
 }
 Vector2  Saw::GetPosition() {
 	return position;
@@ -56,8 +56,6 @@ void  Saw::Update(double dt) {
 		position.y -= dy * static_cast<float>(dt) * MOVING_SPEED;
 		hitbox.x = position.x;
 		hitbox.y = position.y;
-		position.x -= dx * dt * MOVING_SPEED;
-		position.y -= dy * dt * MOVING_SPEED;
 
 
 	}

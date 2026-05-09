@@ -371,7 +371,17 @@ void Game::GameMap::Unload() {
 	objects.clear();
 }
 void Game::GameMap::Update(Game::Player& player, double dt) {
+	if (player.CheckTroubleShoot()) {
+			//making touble
+		troubles.push_back(
+			new Trouble(
+				player.GetPosition(),
+				player.GetIsLookingRight()
+			)
+		);
+	}
 
+	
 	player.SetIsOnGround(false);
 	player.SetCanJump(true);
 
@@ -385,7 +395,13 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	for (Engine::GameObject* obj : objects) {
 		obj->Update(dt);
 	}
-	isGlitchPlateActive = false;
+
+	for (Trouble* trouble : troubles) {
+		for (Engine::GameObject* obj : objects) {
+			trouble->Update(obj, dt);
+		}
+	}
+	
 	
 	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {
 		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
@@ -403,6 +419,15 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 			objects.erase(objects.begin() + i);
 		}
 	}
+
+	for (int i = static_cast<int>(troubles.size()) - 1; i >= 0; i--)
+	{
+		if (troubles[i]->GetUnload())
+		{
+			delete troubles[i];
+			troubles.erase(troubles.begin() + i);
+		}
+	}
 	
 	if (player.GetIsAlive() == false) {
 		Unload();
@@ -416,6 +441,9 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 void Game::GameMap::draw() {
 	for (Engine::GameObject* obj : objects) {
 		obj->Draw();
+	}
+	for (Trouble* trouble : troubles) {
+		trouble->Draw();
 	}
 }
 

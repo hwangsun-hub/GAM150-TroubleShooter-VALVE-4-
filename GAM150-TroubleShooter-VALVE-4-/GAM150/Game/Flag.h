@@ -17,7 +17,6 @@ public:
 
 private:
 	Vector2  position;
-	bool isGlitchMode;
 	bool isCollision;
 	Rectangle hitbox;
 	ObjectID::ID id;

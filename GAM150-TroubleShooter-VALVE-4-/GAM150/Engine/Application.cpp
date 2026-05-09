@@ -55,6 +55,7 @@ void Engine::Application::LoadAssets()
     assets[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
     assets[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
     assets[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
+    assets[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Trouble.png");
 }
 
 bool Engine::Application::HasGameEnded()

@@ -20,6 +20,8 @@ namespace Game {
 		bool GetIsAlive() const;
 		void SetCanJump(bool CanJump);
 		void SetIsOnGround(bool IsOnGround);
+		bool CheckTroubleShoot();
+		bool GetIsLookingRight() const;
 		bool IsReadyToNextLevel = false;
 
 
@@ -29,10 +31,15 @@ namespace Game {
 		Vector2 velocity = { 0,0 };
 		Rectangle hitbox;
 
+		int trouble_bullet;
 
 		bool CanJump;
 		bool IsOnGround;
+		bool IsJump;
 		bool IsAlive;
+		bool IsLookingRight;
+		bool IsTroubleShoot;
+		
 		static constexpr int MOVE_SPEED = 250;
 		static constexpr int JUMP_SPEED = -400;
 		static constexpr int GRAVITY = 500;

@@ -15,7 +15,7 @@ namespace Engine {
 		virtual Rectangle GetHitbox() = 0;
 		virtual ObjectID::ID GetObjectID() = 0;
 		virtual bool GetIsGlitchMode() = 0;
-		void TroubleCollision();
+		virtual void TroubleCollision();
 		virtual bool CheckCollision(Rectangle hibox) = 0;
 		void Unload(bool isUnload);
 		bool GetUnload() const;
@@ -23,7 +23,7 @@ namespace Engine {
 		bool GetActive() const;
 
 
-	private:
+	protected:
 		Vector2  position = { 0, 0 };
 		Texture2D texture = { 0 };
 		bool isGlitchMode = false;

@@ -1,5 +1,6 @@
 #include "GameObject.h"
 void Engine::GameObject::TroubleCollision() {
+
 	if (isGlitchMode == false) {
 		isGlitchMode = true;
 

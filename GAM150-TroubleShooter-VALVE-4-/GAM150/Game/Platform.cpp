@@ -3,12 +3,12 @@
 
 Platform::Platform(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),
-	isGlitchMode(isglitchmoded),
 	tile_id(tileid),
 	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
 	id(ObjectID::ID::PLATFORM)
 {
+	isGlitchMode = isglitchmoded;
 }
 Vector2  Platform::GetPosition() {
 	return position;

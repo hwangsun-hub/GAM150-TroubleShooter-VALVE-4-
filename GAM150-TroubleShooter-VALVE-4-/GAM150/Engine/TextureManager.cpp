@@ -59,4 +59,13 @@ namespace Engine {
             WHITE);
     }
 
+    void TextureManager::DrawTexure(ObjectID::ID id, Vector2 position)
+    {
+        DrawTextureV(
+            Engine::Application::GetAssets()[static_cast<int>(id)],
+            position,
+            WHITE
+        );
+    }
+
 }

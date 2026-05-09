@@ -1,14 +1,15 @@
 #include "Spike.h"
+#include <iostream>
 
 Spike::Spike(Vector2 pos, int tileid, bool isglitchmoded, bool isupsidedown) :
 	position(pos),
 	tile_id(tileid),
-	isGlitchMode(isglitchmoded),
 	isCollision(false),
 	hitbox({ position.x+10, position.y + 32,0,0 }),
 	id(ObjectID::ID::SPIKE),
 	isUpsidedown(isupsidedown)
 {
+	isGlitchMode = isglitchmoded;
 	if (isUpsidedown) {
 		hitbox.y -= 32;
 	}
@@ -37,9 +38,9 @@ bool  Spike::CheckCollision(Rectangle hibox) {
 void Spike::Load() {
 	hitbox.width = 44;
 	hitbox.height = 32;
+
 }
 void  Spike::Update(double dt) {
-
 }
 
 void Spike::Draw() {
