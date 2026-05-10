@@ -54,9 +54,6 @@ void  Saw::Update(double dt) {
 		}
 		position.x -= dx * static_cast<float>(dt) * MOVING_SPEED;
 		position.y -= dy * static_cast<float>(dt) * MOVING_SPEED;
-		hitbox.x = position.x;
-		hitbox.y = position.y;
-
 
 	}
 	else {
