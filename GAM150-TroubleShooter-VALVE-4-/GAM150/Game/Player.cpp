@@ -2,7 +2,7 @@
 #include "Spike.h"
 #include "../Engine/Application.h"
 #include <iostream>
-
+#include "GameMode.h"
 Game::Player::Player()  {
 
 }
@@ -214,7 +214,10 @@ void Game::Player::Update(double dt) {
 	}
 	//shoot trouble
 	if (IsKeyPressed(KeyboardKey::KEY_Z)) {
-		IsTroubleShoot = true;
+		if (trouble_bullet) {
+			IsTroubleShoot = true;
+			trouble_bullet--;
+		}
 	}
 
 
@@ -289,4 +292,9 @@ bool Game::Player::CheckTroubleShoot()
 bool Game::Player::GetIsLookingRight() const
 {
 	return IsLookingRight;
+}
+
+void Game::Player::SetTroubleBullet(int max)
+{
+	trouble_bullet = max;
 }

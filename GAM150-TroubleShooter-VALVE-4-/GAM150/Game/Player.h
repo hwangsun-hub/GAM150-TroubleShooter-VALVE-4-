@@ -23,8 +23,8 @@ namespace Game {
 		bool CheckTroubleShoot();
 		bool GetIsLookingRight() const;
 		bool IsReadyToNextLevel = false;
-
-
+		void SetTroubleBullet(int max);
+		int GetCurrentTroubleBullet() const { return trouble_bullet; }
 	private:
 		Texture2D texture;
 		Vector2 position ;

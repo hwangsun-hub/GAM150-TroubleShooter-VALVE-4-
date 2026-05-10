@@ -4,7 +4,8 @@
 #include "Player.h"
 #include "../Engine/GameObjectManager.h"
 #include "dialogue.h"
-
+#include "UI.h"
+#include <map>
 namespace Game {
     class GameMode : public Engine::GameState {
     public:
@@ -17,12 +18,13 @@ namespace Game {
             return "GameMode";
         }
         std::string GetCurentMapName() const;
-
+        
 
     private:
         MapName currentMapName = MapName::STAGE2_LEVEL1;
         Game::GameMap gameMap;
         Game::Player player;
+        UI ui;
         Dialogue dialogue;
         enum class gamestate
         {
@@ -31,6 +33,26 @@ namespace Game {
             
         };
         gamestate gamestate;
+        std::map<MapName, int> max_trouble = {
+            { MapName::STAGE1_LEVEL1, 0 },
+            { MapName::STAGE1_LEVEL2, 0 },
+            { MapName::STAGE1_LEVEL3, 0 },
 
+            { MapName::STAGE2_LEVEL1, 2 },
+            { MapName::STAGE2_LEVEL2, 3 },
+            { MapName::STAGE2_LEVEL3, 4 },
+
+            { MapName::STAGE3_LEVEL1, 1 },
+            { MapName::STAGE3_LEVEL2, 2 },
+            { MapName::STAGE3_LEVEL3, 2 },
+
+            { MapName::STAGE4_LEVEL1, 2 },
+            { MapName::STAGE4_LEVEL2, 2 },
+            { MapName::STAGE4_LEVEL3, 2 },
+
+            { MapName::STAGE5_LEVEL1, 2 },
+            { MapName::STAGE5_LEVEL2, 2 },
+            { MapName::STAGE5_LEVEL3, 2 }
+        };
     };
 }

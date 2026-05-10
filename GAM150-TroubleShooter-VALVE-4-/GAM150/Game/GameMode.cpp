@@ -21,6 +21,8 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 	switch (gamestate) {
 		case gamestate::Dialogue:
 			dialogue.Update();
+			player.SetTroubleBullet(max_trouble[currentMapName]);
+
 			if (dialogue.IsFinished()) gamestate = gamestate::Playing;
 			break;
 		case gamestate::Playing:
@@ -36,6 +38,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 
 				gameMap.Load(player, currentMapName);
 				player.Load(gameMap.GetStartPosition());
+				player.SetTroubleBullet(max_trouble[currentMapName]);
 				dialogue.Load(GetCurentMapName().c_str());
 				player.IsReadyToNextLevel = false;
 				gamestate = gamestate::Dialogue;
@@ -49,11 +52,13 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				gameMap.Load(player, currentMapName);
 				dialogue.Load(GetCurentMapName().c_str());
 				player.Load(gameMap.GetStartPosition());
+				player.SetTroubleBullet(max_trouble[currentMapName]);
+
 			}
 			break;
 
 	}
-	
+	ui.Update(player);
 	if (IsKeyPressed(KEY_ONE)) {
 		Engine::Application::GetGameStateManager().SetNextGameState(0);  // mainmenu
 	}
@@ -71,4 +76,5 @@ void Game::GameMode::Draw() {
 	if (gamestate == gamestate::Dialogue) {
 		dialogue.Draw();
 	}
+	ui.Draw(player);
 }
