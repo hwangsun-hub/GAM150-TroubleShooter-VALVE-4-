@@ -32,7 +32,7 @@ namespace Game {
 
 
 	private:
-		MapName currentMapName = MapName::STAGE3_LEVEL1;
+		MapName currentMapName = MapName::STAGE2_LEVEL1;
 		std::vector<std::vector<std::vector<int>>> maps;
 		std::vector<std::vector<std::vector<int>>> maps_for_saw;
 		std::vector<Trouble*> troubles;
