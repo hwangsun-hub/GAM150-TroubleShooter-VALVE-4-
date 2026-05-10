@@ -27,7 +27,8 @@ namespace Game {
         enum class gamestate
         {
             Playing,
-            Dialogue
+            Dialogue,
+            
         };
         gamestate gamestate;
 

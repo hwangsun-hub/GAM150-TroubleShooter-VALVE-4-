@@ -496,9 +496,6 @@ void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) 
 			trouble->Update(obj, dt);
 		}
 	}
-	
-	
-	
 
 	for (int i = static_cast<int>(objects.size()) - 1; i >= 0; i--)
 	{

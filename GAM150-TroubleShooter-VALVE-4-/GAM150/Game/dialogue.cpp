@@ -43,18 +43,15 @@ void Dialogue::Load(const std::filesystem::path& dialogue_file)
     {
         IsTalking = true;
         current_dialogue = 0;
-        std::cout << "size: " << dialogues.size() << std::endl;
     }
     else
     {
-        std::cout << "EMpty: " << dialogues.size() << std::endl;
         IsTalking = false;
     }
 }
 
 void Dialogue::Unload()
 {
-    std::cout << "Unload: " << dialogues.size() << std::endl;
     current_dialogue = 0;
     dialogues.clear();
 }

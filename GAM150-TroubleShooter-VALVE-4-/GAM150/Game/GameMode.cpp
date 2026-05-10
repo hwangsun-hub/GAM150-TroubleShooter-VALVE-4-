@@ -51,6 +51,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				player.Load(gameMap.GetStartPosition());
 			}
 			break;
+
 	}
 	
 	if (IsKeyPressed(KEY_ONE)) {
