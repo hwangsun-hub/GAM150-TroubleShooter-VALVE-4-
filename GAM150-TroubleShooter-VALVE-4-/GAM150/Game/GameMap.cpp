@@ -5,11 +5,12 @@ Game::GameMap::GameMap()
 
 
 }
-
 Game::GameMap::~GameMap() {
 	for (Engine::GameObject* obj : objects)
 		delete obj;
 }
+
+
 
 void Game::GameMap::LoadMap(MapName mapname) {
 	maps.resize(static_cast<int>(MapName::COUNT));
@@ -286,7 +287,9 @@ void Game::GameMap::LoadMap(MapName mapname) {
 
 }
 
-void Game::GameMap::Load(Game::Player& player) {
+void Game::GameMap::Load(Game::Player& player,MapName mapname) {
+	currentMapName = mapname;
+
 	LoadMap(currentMapName);
 	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
 		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
@@ -460,7 +463,9 @@ void Game::GameMap::Unload() {
 
 	objects.clear();
 }
-void Game::GameMap::Update(Game::Player& player, double dt) {
+
+void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) {
+
 	if (player.CheckTroubleShoot()) {
 			//making touble
 		troubles.push_back(
@@ -493,14 +498,8 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 	}
 	
 	
-	if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10)) {
-		currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
-		Unload();
-		ClearBackground (Color{ 42, 79, 107, 255 });
-		player.Load(player_start_position);
-		Load(player);
-		player.IsReadyToNextLevel = false;
-	}
+	
+
 	for (int i = static_cast<int>(objects.size()) - 1; i >= 0; i--)
 	{
 		if (objects[i]->GetUnload())
@@ -519,11 +518,6 @@ void Game::GameMap::Update(Game::Player& player, double dt) {
 		}
 	}
 	
-	if (player.GetIsAlive() == false) {
-		Unload();
-		Load(player);
-		player.Load(player_start_position);
-	}
 
 }
 
@@ -536,6 +530,8 @@ void Game::GameMap::draw() {
 		trouble->Draw();
 	}
 }
+
+
 
 Vector2 Game::GameMap::GetStartPosition() const
 {

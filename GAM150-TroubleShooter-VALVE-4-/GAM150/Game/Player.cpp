@@ -254,7 +254,6 @@ void Game::Player::Draw() {
 }
 
 void Game::Player::Unload() {
-
 }
 
 Vector2 Game::Player::GetPosition() const {

@@ -11,6 +11,7 @@
 #include "Flag.h"
 #include "Saw.h"
 #include "Trouble.h"
+#include "dialogue.h"
 
 namespace Game {
 	class GameMap
@@ -22,17 +23,15 @@ namespace Game {
 
 		void LoadMap(MapName mapname);
 		void Unload();
-		void Load(Game::Player& player);
-		void Update(Game::Player& player, double dt);
+		void Load(Game::Player& player, MapName mapname);
+		void Update(Game::Player& player, Dialogue& dialogue, double dt);
 		void draw();
-		MapName GetCuurentMapName();
 		std::vector<Engine::GameObject*> GetGameObject();
 		Vector2 GetStartPosition() const;
 
 
-
 	private:
-		MapName currentMapName = MapName::STAGE2_LEVEL1;
+		MapName currentMapName;
 		std::vector<std::vector<std::vector<int>>> maps;
 		std::vector<std::vector<std::vector<int>>> maps_for_saw;
 		std::vector<Trouble*> troubles;
@@ -41,6 +40,7 @@ namespace Game {
 		static constexpr int TILE_SIZE = 64;
 		bool isGlitchPlateActive = false;
 		Vector2 player_start_position;
+		
 	};
 
 }
