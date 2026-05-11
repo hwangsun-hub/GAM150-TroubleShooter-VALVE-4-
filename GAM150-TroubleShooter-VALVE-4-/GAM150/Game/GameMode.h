@@ -21,7 +21,7 @@ namespace Game {
         
 
     private:
-        MapName currentMapName = MapName::STAGE1_LEVEL1;
+        MapName currentMapName = MapName::STAGE0_LEVEL1;
         Game::GameMap gameMap;
         Game::Player player;
         UI ui;
@@ -34,21 +34,25 @@ namespace Game {
         };
         gamestate gamestate;
         std::map<MapName, int> max_trouble = {
-            { MapName::STAGE1_LEVEL1, 0 },
-            { MapName::STAGE1_LEVEL2, 0 },
-            { MapName::STAGE1_LEVEL3, 0 },
+              { MapName::STAGE0_LEVEL1, 0 },
+            { MapName::STAGE0_LEVEL2, 0 },
+            { MapName::STAGE0_LEVEL3, 1 },
 
-            { MapName::STAGE2_LEVEL1, 2 },
-            { MapName::STAGE2_LEVEL2, 3 },
-            { MapName::STAGE2_LEVEL3, 4 },
+            { MapName::STAGE1_LEVEL1, 2 },
+            { MapName::STAGE1_LEVEL2, 3 },
+            { MapName::STAGE1_LEVEL3, 4 },
 
-            { MapName::STAGE3_LEVEL1, 1 },
-            { MapName::STAGE3_LEVEL2, 2 },
-            { MapName::STAGE3_LEVEL3, 2 },
+            { MapName::STAGE2_LEVEL1, 0 },
+            { MapName::STAGE2_LEVEL2, 0 },
+            { MapName::STAGE2_LEVEL3, 0 },
 
-            { MapName::STAGE4_LEVEL1, 2 },
-            { MapName::STAGE4_LEVEL2, 2 },
-            { MapName::STAGE4_LEVEL3, 2 },
+            { MapName::STAGE3_LEVEL1, 0 },
+            { MapName::STAGE3_LEVEL2, 0 },
+            { MapName::STAGE3_LEVEL3, 0 },
+
+            { MapName::STAGE4_LEVEL1, 100 },
+            { MapName::STAGE4_LEVEL2, 0 },
+            { MapName::STAGE4_LEVEL3, 0 },
 
             { MapName::STAGE5_LEVEL1, 2 },
             { MapName::STAGE5_LEVEL2, 2 },
