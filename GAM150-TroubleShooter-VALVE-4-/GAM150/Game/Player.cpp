@@ -79,7 +79,13 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 	}
 	}
 }
-
+void Game::Player::CheckOutOfScreen(void)
+{
+	if ( position.y > screen_height)
+	{
+		IsAlive = false;
+	}
+}
 
 void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
 	switch (obj->GetObjectID())
@@ -221,7 +227,7 @@ void Game::Player::Update(double dt) {
 	}
 
 
-
+	CheckOutOfScreen();
 
 	//reset
 	if (IsKeyPressed(KeyboardKey::KEY_R) == true) {
@@ -298,3 +304,4 @@ void Game::Player::SetTroubleBullet(int max)
 {
 	trouble_bullet = max;
 }
+

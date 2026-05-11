@@ -43,6 +43,8 @@ namespace Game {
 		static constexpr int MOVE_SPEED = 250;
 		static constexpr int JUMP_SPEED = -400;
 		static constexpr int GRAVITY = 500;
-
+		int screen_width = GetScreenWidth();
+		int screen_height = GetScreenHeight();
+		void CheckOutOfScreen(void);
 	};
 }
