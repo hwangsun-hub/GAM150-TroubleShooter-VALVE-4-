@@ -21,7 +21,7 @@ namespace Game {
         
 
     private:
-        MapName currentMapName = MapName::STAGE2_LEVEL1;
+        MapName currentMapName = MapName::STAGE1_LEVEL1;
         Game::GameMap gameMap;
         Game::Player player;
         UI ui;

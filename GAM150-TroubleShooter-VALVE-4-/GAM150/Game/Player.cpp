@@ -47,7 +47,7 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 
 		if (obj->GetIsGlitchMode() == true) {
 			velocity.y = 0;
-			velocity.y += isUpsideDown ?  -JUMP_SPEED * 2 : JUMP_SPEED * 2;
+			velocity.y += isUpsideDown ?  ( - JUMP_SPEED )  : JUMP_SPEED * 2;
 			obj->Unload(true);
 		}
 
