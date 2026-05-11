@@ -489,7 +489,7 @@ void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 			}*/
 			else if (maps[static_cast<int>(currentMapName)][y][x] == 99 //player_start_position
 				) {
-				player_start_position = { static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE };
+				player_start_position = { static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE+ TILE_SIZE/2};
 			}
 		}
 	}
