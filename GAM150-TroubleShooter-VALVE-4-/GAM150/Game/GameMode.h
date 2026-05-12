@@ -34,7 +34,7 @@ namespace Game {
         };
         gamestate gamestate;
         std::map<MapName, int> max_trouble = {
-              { MapName::STAGE0_LEVEL1, 0 },
+            { MapName::STAGE0_LEVEL1, 0 },
             { MapName::STAGE0_LEVEL2, 0 },
             { MapName::STAGE0_LEVEL3, 1 },
 

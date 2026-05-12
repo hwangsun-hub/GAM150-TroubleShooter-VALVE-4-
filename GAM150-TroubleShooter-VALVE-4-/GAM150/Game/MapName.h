@@ -30,6 +30,10 @@ enum class MapName
 #include <string>
 inline  std::string MapNames[] =
 {
+	"STAGE0_LEVEL1",
+	"STAGE0_LEVEL2",
+	"STAGE0_LEVEL3",
+
 	"STAGE1_LEVEL1",
 	"STAGE1_LEVEL2",
 	"STAGE1_LEVEL3",
