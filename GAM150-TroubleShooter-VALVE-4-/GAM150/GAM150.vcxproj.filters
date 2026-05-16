@@ -64,8 +64,11 @@
     <ClCompile Include="Game\Trouble.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\dialogue.cpp">
-      <Filter>Engine</Filter>
+    <ClCompile Include="Game\UI.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\dialogue.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,8 +126,11 @@
     <ClInclude Include="Game\Trouble.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\dialogue.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Game\UI.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\dialogue.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

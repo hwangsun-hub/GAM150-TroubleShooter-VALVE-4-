@@ -6,15 +6,25 @@ Game::GameMode::GameMode() {
 }
 #include <iostream>
 
-std::string Game::GameMode::GetCurentMapName() const
+std::string Game::GameMode::GetCurentMapNameForDialogue() const
 {
 	return std::string("Assets/Dialogue/") + MapNames[static_cast<int>(currentMapName)] + std::string(".dialogue");
+}
+std::string Game::GameMode::GetCurrentMapName() const
+{
+	return MapNames[static_cast<int>(currentMapName)];
+}
+void Game::GameMode::ChangeMap(MapName newMap)
+{
+	currentMapName = newMap;
+	ui.WhenMapChanged(GetCurrentMapName());
 }
 void Game::GameMode::Load() {
 	gameMap.Load(player, currentMapName);
 	player.Load(gameMap.GetStartPosition());
-	dialogue.Load(GetCurentMapName().c_str());
+	dialogue.Load(GetCurentMapNameForDialogue().c_str());
 	gamestate = gamestate::Dialogue;
+	ChangeMap(currentMapName);
 }
 
 void Game::GameMode::Update([[maybe_unused]] double dt) {
@@ -30,7 +40,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 			gameMap.Update(player, dialogue, dt);
 			if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10))
 			{
-				currentMapName = static_cast<MapName>(static_cast<int>(currentMapName) + 1);
+			    ChangeMap(static_cast<MapName>(static_cast<int>(currentMapName) + 1));
 				gameMap.Unload();
 				ClearBackground(Color{ 42, 79, 107, 255 });
 				dialogue.Unload();
@@ -39,7 +49,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				gameMap.Load(player, currentMapName);
 				player.Load(gameMap.GetStartPosition());
 				player.SetTroubleBullet(max_trouble[currentMapName]);
-				dialogue.Load(GetCurentMapName().c_str());
+				dialogue.Load(GetCurentMapNameForDialogue().c_str());
 				player.IsReadyToNextLevel = false;
 				gamestate = gamestate::Dialogue;
 			}
@@ -50,7 +60,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				
 				player.Unload();
 				gameMap.Load(player, currentMapName);
-				dialogue.Load(GetCurentMapName().c_str());
+				dialogue.Load(GetCurentMapNameForDialogue().c_str());
 				player.Load(gameMap.GetStartPosition());
 				player.SetTroubleBullet(max_trouble[currentMapName]);
 
@@ -65,8 +75,9 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 }
 
 void Game::GameMode::Unload() {
-	gameMap.Unload(); //game map에서 맵이 바뀌는거라 여기 unload는 선택창 갈때말고 실행 안됨
-	
+	gameMap.Unload(); 
+	player.Unload();
+	dialogue.Unload();
 }
 
 void Game::GameMode::Draw() {

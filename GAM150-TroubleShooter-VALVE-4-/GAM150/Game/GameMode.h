@@ -17,9 +17,9 @@ namespace Game {
         std::string GetName() override {
             return "GameMode";
         }
-        std::string GetCurentMapName() const;
-        
-
+        std::string GetCurentMapNameForDialogue() const;
+        std::string GetCurrentMapName() const;
+        void ChangeMap(MapName newMap);
     private:
         MapName currentMapName = MapName::STAGE0_LEVEL1;
         Game::GameMap gameMap;
