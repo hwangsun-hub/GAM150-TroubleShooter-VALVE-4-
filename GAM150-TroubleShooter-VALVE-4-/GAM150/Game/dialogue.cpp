@@ -11,6 +11,7 @@ Dialogue::Dialogue(const std::filesystem::path& dialogue_file) : current_dialogu
 
 void Dialogue::Load(const std::filesystem::path& dialogue_file)
 {
+    font = GetFontDefault();
     dialogueTexture = LoadTexture("Assets/Dialogue/dialogue.png");
     if (dialogue_file.extension() != ".dialogue") {
         std::cout << std::string(dialogue_file.generic_string() + " is not a .dialogue file");

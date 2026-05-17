@@ -2,7 +2,7 @@
 #include "Spike.h"
 #include "../Engine/Application.h"
 #include <iostream>
-#include "GameMode.h"
+/*#include "GameMode.h"*/
 Game::Player::Player()  {
 
 }
@@ -19,6 +19,7 @@ void Game::Player::Load(Vector2 start_position) {
 	IsTroubleShoot = false;
 	position = start_position;
 	velocity = { 0,0 };
+	trouble_bullet = 0;
 }
 
 void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
@@ -77,7 +78,22 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 		IsAlive = false;
 		break;
 	}
+	case ObjectID::ID::SELECTBOX: {
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		if (obj->GetIsGlitchMode() == false) {
+			IsReadyToNextLevel = true;
+		
+		}
+		else {
+			IsAlive = false;
+		}
+
+		break;
 	}
+	}
+
 }
 void Game::Player::CheckOutOfScreen(void)
 {

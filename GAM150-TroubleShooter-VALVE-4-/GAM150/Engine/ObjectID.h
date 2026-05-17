@@ -14,6 +14,7 @@ namespace ObjectID {
 		GLITCHPLATE,
 		TROUBLE,
 		PLAYER,
+		SELECTBOX,
 		COUNT,
 		DEFAULT
 	};

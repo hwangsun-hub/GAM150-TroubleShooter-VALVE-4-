@@ -33,9 +33,12 @@
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Game\MainMenu.cpp" />
     <ClCompile Include="Game\MapName.h" />
+    <ClCompile Include="Game\Option.cpp" />
     <ClCompile Include="Game\Platform.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Saw.cpp" />
+    <ClCompile Include="Game\SelectBox.cpp" />
+    <ClCompile Include="Game\SelectStage.cpp" />
     <ClCompile Include="Game\Spike.cpp" />
     <ClCompile Include="Game\Trouble.cpp" />
     <ClCompile Include="Game\UI.cpp" />
@@ -56,10 +59,14 @@
     <ClInclude Include="Game\GameMode.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Game\MainMenu.h" />
+    <ClInclude Include="Game\Option.h" />
     <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Saw.h" />
+    <ClInclude Include="Game\SelectBox.h" />
+    <ClInclude Include="Game\SelectStage.h" />
     <ClInclude Include="Game\Spike.h" />
+    <ClInclude Include="Game\States.h" />
     <ClInclude Include="Game\Trouble.h" />
     <ClInclude Include="Game\UI.h" />
   </ItemGroup>

@@ -1,5 +1,4 @@
 #include "Block.h"
-#include <iostream>
 
 Block::Block(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),

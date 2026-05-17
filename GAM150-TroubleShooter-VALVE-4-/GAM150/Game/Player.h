@@ -2,7 +2,7 @@
 #include "../Engine/GameObject.h"
 #include <raylib.h>
 #include <raymath.h>
-
+#include "MapName.h"
 namespace Game {
 	class Player
 	{
@@ -25,6 +25,7 @@ namespace Game {
 		bool IsReadyToNextLevel = false;
 		void SetTroubleBullet(int max);
 		int GetCurrentTroubleBullet() const { return trouble_bullet; }
+		MapName selectedMapName = MapName::SelectStage;
 	private:
 		Texture2D texture;
 		Vector2 position ;

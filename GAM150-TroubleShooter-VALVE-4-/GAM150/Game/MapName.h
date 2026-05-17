@@ -1,5 +1,13 @@
+#pragma once
 enum class MapName
 {
+	SelectStage,
+	STAGE0,
+	STAGE1,
+	STAGE2,
+	STAGE3,
+	STAGE4,
+	STAGE5,
 
 	STAGE0_LEVEL1,
 	STAGE0_LEVEL2,
@@ -25,11 +33,21 @@ enum class MapName
 	STAGE5_LEVEL2,
 	STAGE5_LEVEL3,
 
+	
+
 	COUNT
 };
 #include <string>
 inline  std::string MapNames[] =
 {
+	"SelectStage",
+	"STAGE0",
+	"STAGE1",
+	"STAGE2",
+	"STAGE3",
+	"STAGE4",
+	"STAGE5",
+
 	"STAGE0_LEVEL1",
 	"STAGE0_LEVEL2",
 	"STAGE0_LEVEL3",
@@ -56,3 +74,6 @@ inline  std::string MapNames[] =
 
 	"COUNT"
 };
+
+
+
