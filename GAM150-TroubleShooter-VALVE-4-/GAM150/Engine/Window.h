@@ -14,8 +14,9 @@ namespace Engine {
 
     private:
         Vector2 size;
-        static constexpr int default_width = 1280;
-        static constexpr int default_height = 768;
+        static constexpr int TILE_SIZE = 64;
+        static constexpr int default_width = TILE_SIZE * 25;
+        static constexpr int default_height = TILE_SIZE * 15;
         static constexpr unsigned int default_background = 0xFFFFFFFF;
         
     };

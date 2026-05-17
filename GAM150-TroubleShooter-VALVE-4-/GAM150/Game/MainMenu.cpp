@@ -32,7 +32,7 @@ void Game::MainMenu::Update(double dt)
         if (choose_index < 0) choose_index = 2;
     }
 
-    choose_y = 355 + choose_index * 65;
+    choose_y = 460 + choose_index * 77;
 
     if (IsKeyPressed(KEY_ENTER)) {
         switch (choose_index) {
@@ -121,7 +121,7 @@ void Game::MainMenu::Draw()
         WHITE
     );
 
-    DrawTexture(texture_choose, 350, choose_y, WHITE);
+    DrawTexture(texture_choose, 440, choose_y, WHITE);
 
 
 }

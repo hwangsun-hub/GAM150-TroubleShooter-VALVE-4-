@@ -16,10 +16,11 @@ private:
 	std::vector<std::pair<std::string, std::string>> dialogues;
 	int current_dialogue = 0;
 	Font font = GetFontDefault();
-	Vector2 name_position{150,500};
-	Vector2 dialogue_position{ 120,590 };
-	float fontSize = 50.0f;
+	Vector2 name_position;
+	Vector2 dialogue_position;
+	float fontSize = 40.0f;
 	float spacing = 2.0f;
 	Color tint = BLACK;
 	bool IsTalking = true;
+	Texture2D dialogueTexture;
 };

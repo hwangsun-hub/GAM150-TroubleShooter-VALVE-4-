@@ -1,7 +1,6 @@
 #include "dialogue.h"
 #include <iostream>
 #include <string>
-
 Dialogue::Dialogue()
 {
 }
@@ -12,6 +11,7 @@ Dialogue::Dialogue(const std::filesystem::path& dialogue_file) : current_dialogu
 
 void Dialogue::Load(const std::filesystem::path& dialogue_file)
 {
+    dialogueTexture = LoadTexture("Assets/Dialogue/dialogue.png");
     if (dialogue_file.extension() != ".dialogue") {
         std::cout << std::string(dialogue_file.generic_string() + " is not a .dialogue file");
         return;
@@ -34,7 +34,9 @@ void Dialogue::Load(const std::filesystem::path& dialogue_file)
         if (name == "I" || name == "Enemy") {
             dialogues.push_back({ name, text });
         }
-        
+        else if (name == "Plus") {
+            dialogues.back().second += "\n"+text;
+        }
         else {
             std::cout << "Wrong name" << std::endl;
         }
@@ -48,6 +50,8 @@ void Dialogue::Load(const std::filesystem::path& dialogue_file)
     {
         IsTalking = false;
     }
+    name_position = { ((float)GetScreenWidth() -  dialogueTexture.width)/2,600 };
+    dialogue_position = { name_position.x, name_position.y + 50 };
 }
 
 void Dialogue::Unload()
@@ -59,10 +63,9 @@ void Dialogue::Unload()
 void Dialogue::Draw()
 {
     if (IsTalking) {
-        DrawRectangle(name_position.x -10, name_position.y-10 , 100, fontSize+10, WHITE);
-        DrawRectangle(dialogue_position.x-10 , dialogue_position.y-10 , 300, fontSize + 10, WHITE);
+        DrawTextureEx(dialogueTexture, { name_position.x - 20 ,name_position.y - 10 }, 0.0f, 1.0f, WHITE);
         DrawTextEx(font, dialogues[current_dialogue].first.c_str(), name_position, fontSize, spacing, tint);
-        DrawTextEx(font, dialogues[current_dialogue].second.c_str(), dialogue_position, fontSize, spacing, tint);
+        DrawTextEx(font, dialogues[current_dialogue].second.c_str(), dialogue_position, fontSize-10.0f, spacing, tint);
     }
 }
 

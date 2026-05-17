@@ -4,7 +4,6 @@
 #include "Window.h"
 #include "GameStateManager.h"
 #include "TextureManager.h"
-#include "AudioManager.h"
 #include <chrono>
 
 namespace Engine {
@@ -26,9 +25,7 @@ namespace Engine {
         static Engine::TextureManager& GetTextureManager() {
             return Instance().texturemanager;
         }
-        static Engine::AudioManager& GetAudioManager() {
-            return Instance().audiomanager;
-        }
+     
         
 
         static std::vector<Texture>& GetAssets() {
@@ -56,7 +53,6 @@ namespace Engine {
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
         Engine::TextureManager texturemanager;
-        Engine::AudioManager audiomanager;
         
         std::vector<Texture> assets;
 
