@@ -24,6 +24,7 @@ namespace Engine {
 
 
 	protected:
+		static constexpr int SIZE = 64;
 		Vector2  position = { 0, 0 };
 		Texture2D texture = { 0 };
 		bool isGlitchMode = false;

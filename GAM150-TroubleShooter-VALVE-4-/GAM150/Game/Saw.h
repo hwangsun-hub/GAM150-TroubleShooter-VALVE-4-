@@ -24,7 +24,6 @@ private:
 	ObjectID::ID id;
 	int tile_id;
 	float rotation;
-	static constexpr int SIZE = 64;
 	static constexpr int MOVING_SPEED = 50;
 	static constexpr int ROTATE_SPEED = 200;
 	int size;

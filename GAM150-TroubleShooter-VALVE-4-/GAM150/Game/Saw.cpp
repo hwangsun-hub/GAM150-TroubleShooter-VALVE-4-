@@ -34,8 +34,8 @@ bool  Saw::CheckCollision(Rectangle hibox) {
 }
 
 void Saw::Load() {
-	hitbox.width = 64;
-	hitbox.height = 64;
+	hitbox.width = SIZE;
+	hitbox.height = SIZE;
 	
 	going_to_end = true;
 	end_position = { position.x + SIZE * direction.x*size,position.y + SIZE * direction.y*size };

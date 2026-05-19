@@ -28,8 +28,8 @@ bool  Flag::CheckCollision(Rectangle hibox) {
 }
 
 void Flag::Load() {
-	hitbox.width = 64;
-	hitbox.height = 64;
+	hitbox.width = SIZE;
+	hitbox.height = SIZE;
 }
 void  Flag::Update(double dt) {
 

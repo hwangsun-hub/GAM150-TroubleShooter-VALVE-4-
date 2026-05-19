@@ -22,6 +22,5 @@ private:
 	ObjectID::ID id;
 	int tile_id;
 
-	static constexpr int SIZE = 32;
 };
 
