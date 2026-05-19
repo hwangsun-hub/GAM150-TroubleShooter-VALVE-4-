@@ -162,6 +162,8 @@
     <ClInclude Include="Game\Door.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\SaveFile.h" />
+    <ClInclude Include="Engine\SaveFile.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
