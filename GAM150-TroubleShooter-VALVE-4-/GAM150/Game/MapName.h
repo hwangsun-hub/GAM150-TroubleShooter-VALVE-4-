@@ -1,15 +1,15 @@
 #pragma once
 enum class MapName
 {
-	SelectStage,
-	STAGE0,
-	STAGE1,
-	STAGE2,
-	STAGE3,
-	STAGE4,
-	STAGE5,
+	SelectStage, //100
+	STAGE0, //101
+	STAGE1, //102
+	STAGE2,	//103	
+	STAGE3,	//104	
+	STAGE4,	//105
+	STAGE5,	//106	
 
-	STAGE0_LEVEL1,
+	STAGE0_LEVEL1,	//107
 	STAGE0_LEVEL2,
 	STAGE0_LEVEL3,
 

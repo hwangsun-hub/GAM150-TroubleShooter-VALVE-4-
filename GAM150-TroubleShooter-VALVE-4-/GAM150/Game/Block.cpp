@@ -27,7 +27,8 @@ bool  Block::CheckCollision(Rectangle hibox) {
 }
 
 void Block::Load() {
-	hitbox.width = hitbox.height = Engine::GameObject::SIZE;
+	hitbox.width = SIZE;
+	hitbox.height = SIZE;
 }
 void  Block::Update(double dt) {
 

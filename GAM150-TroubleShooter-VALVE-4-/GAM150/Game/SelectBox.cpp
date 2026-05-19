@@ -33,8 +33,8 @@ MapName SelectBox::GetMapName()
 }
 
 void SelectBox::Load() {
-	hitbox.width = 64;
-	hitbox.height = 64;
+	hitbox.width = SIZE;
+	hitbox.height = SIZE;
 }
 void  SelectBox::Update(double dt) {
 

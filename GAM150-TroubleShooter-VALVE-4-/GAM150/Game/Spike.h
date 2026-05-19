@@ -25,5 +25,4 @@ private:
 	bool isUpsidedown;
 	int tile_id;
 
-	static constexpr int SIZE = 64;
 };

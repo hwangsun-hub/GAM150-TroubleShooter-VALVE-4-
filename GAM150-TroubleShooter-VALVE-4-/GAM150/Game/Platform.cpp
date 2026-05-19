@@ -28,8 +28,8 @@ bool  Platform::CheckCollision(Rectangle hibox) {
 }
 
 void Platform::Load() {
-	hitbox.width = 64;
-	hitbox.height = 64;
+	hitbox.width = SIZE;
+	hitbox.height = SIZE;
 }
 void  Platform::Update(double dt) {
 
