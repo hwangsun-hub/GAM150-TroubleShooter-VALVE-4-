@@ -2,10 +2,8 @@
 #include <raylib.h>
 #include "../Engine/GameObject.h"
 
-class Block : public Engine::GameObject
-{
-public:
-	Block(Vector2 pos, int tileid, bool isglitchmoded);
+class Door : public Engine::GameObject {
+	Door(Vector2 pos, int tileid, bool isglitchmoded);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -21,7 +19,4 @@ private:
 	Rectangle hitbox;
 	ObjectID::ID id;
 	int tile_id;
-
-
 };
-

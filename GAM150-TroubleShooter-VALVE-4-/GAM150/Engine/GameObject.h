@@ -36,7 +36,7 @@ namespace Engine {
 		bool isUnload = false;
 		bool isActive = false;
 
-
+		static constexpr int SIZE = 64;
 	};
 
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\AudioManager.cpp" />
     <ClCompile Include="Game\dialogue.cpp" />
     <ClCompile Include="Engine\GameObjectManager.cpp" />
     <ClCompile Include="Engine\GameState.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="Engine\TextureManager.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Game\Block.cpp" />
+    <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Flag.cpp" />
     <ClCompile Include="Game\GameMap.cpp" />
     <ClCompile Include="Game\GameMode.cpp" />
@@ -46,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\AudioManager.h" />
     <ClInclude Include="Game\dialogue.h" />
     <ClInclude Include="Engine\GameObjectManager.h" />
     <ClInclude Include="Engine\GameState.h" />
@@ -54,6 +57,7 @@
     <ClInclude Include="Engine\TextureManager.h" />
     <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="Game\Block.h" />
+    <ClInclude Include="Game\Door.h" />
     <ClInclude Include="Game\Flag.h" />
     <ClInclude Include="Game\GameMap.h" />
     <ClInclude Include="Game\GameMode.h" />
