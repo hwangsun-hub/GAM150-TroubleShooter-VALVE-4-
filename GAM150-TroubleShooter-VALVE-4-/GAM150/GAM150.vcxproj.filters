@@ -79,11 +79,11 @@
     <ClCompile Include="Game\SelectStage.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\AudioManager.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Door.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SaveFile.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,11 +159,9 @@
     <ClInclude Include="Game\SelectStage.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AudioManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Door.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\SaveFile.h" />
   </ItemGroup>
 </Project>
