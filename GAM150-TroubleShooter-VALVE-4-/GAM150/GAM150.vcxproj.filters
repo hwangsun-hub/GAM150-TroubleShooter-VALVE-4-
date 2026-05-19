@@ -70,8 +70,14 @@
     <ClCompile Include="Game\dialogue.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\AudioManager.cpp">
-      <Filter>Engine</Filter>
+    <ClCompile Include="Game\Option.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SelectBox.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SelectStage.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -135,8 +141,17 @@
     <ClInclude Include="Game\dialogue.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AudioManager.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Game\States.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Option.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SelectBox.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SelectStage.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
