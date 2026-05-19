@@ -1,4 +1,4 @@
-#include "dialogue.h"
+#include "Dialogue.h"
 #include <iostream>
 #include <string>
 Dialogue::Dialogue()
