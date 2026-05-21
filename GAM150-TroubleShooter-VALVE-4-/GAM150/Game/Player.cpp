@@ -94,7 +94,7 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 	case ObjectID::ID::DOOR: {
 		Door* door = static_cast<Door*>(obj);
 
-		if (arrivedDoor /*&& !CheckCollisionRecs(hitbox, arrivedDoor->GetHitbox())*/) {
+		if (arrivedDoor && !CheckCollisionRecs(hitbox, arrivedDoor->GetHitbox())) {
 			arrivedDoor = nullptr;
 		}
 		if (door == arrivedDoor) break;
@@ -111,7 +111,8 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 		
 		}
 		else {
-			IsAlive = false;
+			door->GetAnotherDoor()->Unload(true);
+			door->Unload(true);
 		}
 
 		break;

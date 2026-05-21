@@ -3,10 +3,9 @@
 Door::Door(Vector2 pos, int tileid, bool isglitchmoded):
 	position(pos),
 	tile_id(tileid),
-	isglitchmoded(isglitchmoded),
+	isGlitchMode(isglitchmoded),
 	hitbox({ position.x, position.y,SIZE,SIZE }),
-	id(ObjectID::ID::DOOR),
-	isActive(false)
+	id(ObjectID::ID::DOOR)
 {
 }
 
@@ -43,7 +42,7 @@ ObjectID::ID Door::GetObjectID()
 
 bool Door::GetIsGlitchMode()
 {
-	return isglitchmoded;
+	return isGlitchMode;
 }
 
 bool Door::CheckCollision(Rectangle hibox)
@@ -56,10 +55,28 @@ void Door::SetAnotherDoor(Door* anotherDoor)
 	this->anotherDoor = anotherDoor;
 }
 
+void Door::SetIsGlitchemoded(bool isglitchmoded)
+{
+	isGlitchMode = isglitchmoded;
+}
+
+void Door::TroubleCollision()
+{
+	if (isGlitchMode == false) {
+		isGlitchMode = true;
+		anotherDoor->SetIsGlitchemoded(true);
+	}
+	else {
+		isUnload = true;
+		anotherDoor->Unload(true);
+	}
+
+}
 
 
 
-Door* Door::GetAnotherDoor()
+
+Door*& Door::GetAnotherDoor()
 {
 	return anotherDoor;
 }

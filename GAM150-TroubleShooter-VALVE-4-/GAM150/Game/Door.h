@@ -14,16 +14,17 @@ public:
 	bool GetIsGlitchMode() override;
 	bool CheckCollision(Rectangle hibox) override;
 	void SetAnotherDoor(Door* anotherDoor);
-	Door* GetAnotherDoor();
-	bool isActive=false;
-	bool wasOverlapping = false;
+	void SetIsGlitchemoded(bool isglitchmoded);
+	void TroubleCollision() override;
+	Door*& GetAnotherDoor();
+	
 
 private:
 	Vector2  position;
 	Rectangle hitbox;
 	ObjectID::ID id;
 	int tile_id;
-	bool isglitchmoded;
+	bool isGlitchMode;
 	Door* anotherDoor;
 
 };

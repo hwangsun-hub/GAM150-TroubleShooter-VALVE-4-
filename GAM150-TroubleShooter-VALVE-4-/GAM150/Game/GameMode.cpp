@@ -76,6 +76,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 }
 
 void Game::GameMode::Unload() {
+
 	gameMap.Unload(); 
 	player.Unload();
 	dialogue.Unload();

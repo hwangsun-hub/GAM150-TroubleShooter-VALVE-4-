@@ -459,7 +459,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 
 void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 	currentMapName = mapname;
-
+	std::vector<Door*>doors;
 	LoadMap(currentMapName);
 	std::vector<std::vector<int>>& currentMap = maps[static_cast<int>(currentMapName)];
 	for (int y = 0; y < currentMap.size(); y++) {
@@ -617,7 +617,8 @@ void Game::GameMap::Unload() {
 	}
 	troubles.clear();
 	objects.clear();
-	doors.clear();
+
+	
 }
 
 void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) {
