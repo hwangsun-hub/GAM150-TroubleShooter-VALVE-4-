@@ -19,6 +19,7 @@ void Game::Player::Load(Vector2 start_position) {
 	position = start_position;
 	velocity = { 0,0 };
 	trouble_bullet = 0;
+	IsCollisionWithGlitchedDoor = false;
 }
 
 void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
@@ -111,8 +112,11 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 		
 		}
 		else {
+			player2Pos = door->GetAnotherDoor()->GetPosition();
 			door->GetAnotherDoor()->Unload(true);
 			door->Unload(true);
+			IsCollisionWithGlitchedDoor = true;
+
 		}
 
 		break;
@@ -347,5 +351,10 @@ bool Game::Player::GetIsLookingRight() const
 void Game::Player::SetTroubleBullet(int max)
 {
 	trouble_bullet = max;
+}
+
+Vector2 Game::Player::Getplayer2Pos()
+{
+	return player2Pos;
 }
 

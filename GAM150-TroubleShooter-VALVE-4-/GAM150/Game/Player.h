@@ -28,6 +28,8 @@ namespace Game {
 		void SetTroubleBullet(int max);
 		int GetCurrentTroubleBullet() const { return trouble_bullet; }
 		MapName selectedMapName = MapName::SelectStage;
+		bool IsCollisionWithGlitchedDoor = false;
+		Vector2 Getplayer2Pos();
 	private:
 		Texture2D texture;
 		Vector2 position ;
@@ -50,5 +52,6 @@ namespace Game {
 		int screen_width = GetScreenWidth();
 		int screen_height = GetScreenHeight();
 		void CheckOutOfScreen(void);
+		Vector2 player2Pos;
 	};
 }

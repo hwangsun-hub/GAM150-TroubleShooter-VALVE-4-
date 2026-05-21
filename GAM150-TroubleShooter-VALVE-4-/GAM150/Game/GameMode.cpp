@@ -26,6 +26,7 @@ void Game::GameMode::Load() {
 	dialogue.Load(GetCurentMapNameForDialogue().c_str());
 	gamestate = gamestate::Dialogue;
 	ChangeMap(currentMapName);
+	IsPlayer2Maked = false;
 }
 
 void Game::GameMode::Update([[maybe_unused]] double dt) {
@@ -39,6 +40,20 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 		case gamestate::Playing:
 			player.Update(dt);
 			gameMap.Update(player, dialogue, dt);
+			if (IsPlayer2Maked) {
+				player2.Update(dt);
+				gameMap.Update(player2, dialogue, dt);
+			}
+			else {
+				if (player.IsCollisionWithGlitchedDoor) {
+					IsPlayer2Maked = true;
+
+					Vector2 startPosition = player.Getplayer2Pos();
+
+					player2.Load(startPosition); 
+					
+				}
+			}
 			if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10))
 			{
 			    ChangeMap(static_cast<MapName>(static_cast<int>(currentMapName) + 1));
@@ -88,6 +103,9 @@ void Game::GameMode::Draw() {
 	player.Draw();
 	if (gamestate == gamestate::Dialogue) {
 		dialogue.Draw();
+	}
+	if (IsPlayer2Maked) {
+		player2.Draw();
 	}
 	ui.Draw(player);
 }
