@@ -597,9 +597,19 @@ void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 				) {
 				player_start_position = { static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE+ TILE_SIZE/2};
 			}
+			else if (maps[static_cast<int>(currentMapName)][y][x] == 54 //Flag
+				) {
+				objects.push_back(
+					new Flag(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+						(maps[static_cast<int>(currentMapName)][y][x] - 54),
+						false
+					)
+				);
+			}
 		}
 	}
-	if (doors[0] && doors[1]) {
+	if (doors.size() == 2 && doors[0] && doors[1]) {
 		doors[0]->SetAnotherDoor(doors[1]);
 		doors[1]->SetAnotherDoor(doors[0]);
 	}

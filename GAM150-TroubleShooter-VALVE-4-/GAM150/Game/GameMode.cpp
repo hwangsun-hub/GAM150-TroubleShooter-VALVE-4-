@@ -39,7 +39,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 			break;
 		case gamestate::Playing:
 			player.Update(dt);
-			gameMap.Update(player, dialogue, dt);
+     			gameMap.Update(player, dialogue, dt);
 			if (IsPlayer2Maked) {
 				player2.Update(dt);
 				gameMap.Update(player2, dialogue, dt);
@@ -54,14 +54,19 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 					
 				}
 			}
-			if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10))
+			if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10) || (IsPlayer2Maked && player2.IsReadyToNextLevel))
 			{
+				
+				player2.Unload();
 			    ChangeMap(static_cast<MapName>(static_cast<int>(currentMapName) + 1));
 				gameMap.Unload();
 				ClearBackground(Color{ 42, 79, 107, 255 });
 				dialogue.Unload();
 				player.Unload();
-
+				if (IsPlayer2Maked) {
+					player2.Unload();
+					IsPlayer2Maked = false;
+				}
 				gameMap.Load(player, currentMapName);
 				player.Load(gameMap.GetStartPosition());
 				player.SetTroubleBullet(max_trouble[currentMapName]);
@@ -75,6 +80,10 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				dialogue.Unload();
 				
 				player.Unload();
+				if (IsPlayer2Maked) {
+					player2.Unload();
+					IsPlayer2Maked = false;
+				}
 				gameMap.Load(player, currentMapName);
 				dialogue.Load(GetCurentMapNameForDialogue().c_str());
 				player.Load(gameMap.GetStartPosition());
@@ -91,7 +100,9 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 }
 
 void Game::GameMode::Unload() {
-
+	if (IsPlayer2Maked) {
+		player2.Unload();
+	}
 	gameMap.Unload(); 
 	player.Unload();
 	dialogue.Unload();
