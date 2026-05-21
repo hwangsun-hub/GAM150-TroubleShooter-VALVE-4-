@@ -2,54 +2,65 @@
 #include <iostream>
 #include <string>
 
-SaveFile::SaveFile()
+Engine::SaveFile::SaveFile()
 {
 }
 
-SaveFile::SaveFile(const std::filesystem::path& save_file)
-{
-	Load(save_file);
-}
 
-void SaveFile::Load(const std::filesystem::path& save_file)
+
+void Engine::SaveFile::Load(const std::filesystem::path& save_file)
 {
-    if (save_file.extension() != ".savefile") {
-        std::cout << std::string(save_file.generic_string() + " is not a .savefile file");
+    std::cout << "1"<<'\n';
+    save_file_path = save_file;
+    if (save_file_path.extension() != ".savefile") {
+        std::cout << std::string(save_file_path.generic_string() + " is not a .savefile file");
         return;
     }
-    std::ifstream in_file(save_file);
-
+    std::ifstream in_file(save_file_path);
 
     if (in_file.is_open() == false) {
-        std::cout << std::string("Failed to load " + save_file.generic_string());
+        std::cout << std::string("Failed to load " + save_file_path.generic_string());
         return;
     }
     std::string text;
-    while (in_file >> text >> std::ws) {
-
+    while (in_file.eof() == false) {
+        in_file >> text;
         if (text == "END") {
             break;
         }
-        std::getline(in_file, text);
         if (text == "CurrentGameMap") {
+            in_file >> text;
             savefile.push_back(text);
         }
         else {
-            std::cout << "Wrong name" << std::endl;
+            std::cout << text<< " : Wrong name" << std::endl;
         }
     }
+
 }
 
-void SaveFile::Save(std::string CurrentGameMap)
+void Engine::SaveFile::Save(std::string CurrentGameMap)
 {
+    if (save_file_path.extension() != ".sav") {
+        std::cout << std::string(save_file_path.generic_string() + " is not a .sav file");
+        return;
+    }
+    std::ofstream out_file(save_file_path, std::ios::in | std::ios::out);
+    if (out_file.is_open() == false) {
+        std::cout << std::string("Failed to load " + save_file_path.generic_string());
+        return;
+    }
+    out_file.seekp(15, std::ios::beg);
 
+    out_file << CurrentGameMap << '\n'<<"END";
+    savefile.push_back(CurrentGameMap);
 }
 
-void SaveFile::Unload()
+void Engine::SaveFile::Unload()
 {
 }
 
 
-void SaveFile::Update()
+void Engine::SaveFile::Update()
 {
 }

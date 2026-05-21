@@ -17,7 +17,8 @@ int main() {
     engine.GetGameStateManager().AddGameState(Option);
     Game::GameMode gamemode;
     engine.GetGameStateManager().AddGameState(gamemode);
-    
+	engine.GetSaveFile().Load("Assets/SaveFile/savefile.sav");
+
 
     while (engine.HasGameEnded() == false) {
         engine.Update();

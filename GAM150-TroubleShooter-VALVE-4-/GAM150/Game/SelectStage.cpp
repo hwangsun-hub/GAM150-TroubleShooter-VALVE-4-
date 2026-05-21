@@ -4,6 +4,7 @@
 #include "SelectBox.h"
 #include "States.h"
 #include "GameMode.h"
+#include "../Engine/Application.h"
 Game::SelectStage::SelectStage()
 {
 	 currentMapName = MapName::SelectStage;
@@ -254,7 +255,7 @@ Vector2 Game::SelectStage::GetStartPosition() const
 void Game::SelectStage::MapTransition()
 {
 	if (player.IsReadyToNextLevel && static_cast<int>(currentMapName) > 6) {
-		GameMode::selectedMap = currentMapName;
+ 		Engine::Application::GetSaveFile().Save(GetCurrentMapName());
 		Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::GameMode));
 		player.IsReadyToNextLevel = false;
 		currentMapName = MapName::SelectStage;
@@ -292,7 +293,12 @@ void Game::SelectStage::UpdateObjects(double dt)
 
 void Game::SelectStage::ChangeMap()
 {
-	ui.WhenMapChanged(MapNames[static_cast<int>(currentMapName)]);
+	ui.WhenMapChanged(GetCurrentMapName());
 
+}
+
+std::string Game::SelectStage::GetCurrentMapName() const
+{
+	return MapNames[static_cast<int>(currentMapName)];
 }
 

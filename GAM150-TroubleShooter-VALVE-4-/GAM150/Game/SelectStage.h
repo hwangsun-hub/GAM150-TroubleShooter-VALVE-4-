@@ -29,6 +29,7 @@ namespace Game {
         Player player;
         UI ui;
         void ChangeMap();
+		std::string GetCurrentMapName() const;
         MapName currentMapName = MapName::SelectStage;
         std::vector<std::vector<std::vector<int>>> maps;
 

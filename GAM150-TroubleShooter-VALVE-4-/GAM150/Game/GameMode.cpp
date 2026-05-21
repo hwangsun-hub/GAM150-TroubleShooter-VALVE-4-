@@ -1,10 +1,9 @@
 #include "../Engine/Application.h"
 #include "GameMode.h"
 Game::GameMode::GameMode() {
-
+	
 }
 #include <iostream>
-MapName Game::GameMode::selectedMap = MapName::STAGE0;
 
 std::string Game::GameMode::GetCurentMapNameForDialogue() const
 {
@@ -21,7 +20,7 @@ void Game::GameMode::ChangeMap(MapName newMap)
 	ui.WhenMapChanged(GetCurrentMapName());
 }
 void Game::GameMode::Load() {
-	currentMapName = selectedMap;
+	currentMapName = MapNameMap[Engine::Application::GetSaveFile().GetCurrentGameMap()];
 	gameMap.Load(player, currentMapName);
 	player.Load(gameMap.GetStartPosition());
 	dialogue.Load(GetCurentMapNameForDialogue().c_str());

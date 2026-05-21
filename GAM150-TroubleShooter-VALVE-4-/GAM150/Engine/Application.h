@@ -5,7 +5,7 @@
 #include "GameStateManager.h"
 #include "TextureManager.h"
 #include <chrono>
-
+#include "SaveFile.h"
 namespace Engine {
     class Application {
     public:
@@ -25,7 +25,10 @@ namespace Engine {
         static Engine::TextureManager& GetTextureManager() {
             return Instance().texturemanager;
         }
-     
+        
+        static Engine::SaveFile& GetSaveFile() {
+            return Instance().savefile;
+		}
         
 
         static std::vector<Texture>& GetAssets() {
@@ -53,7 +56,7 @@ namespace Engine {
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
         Engine::TextureManager texturemanager;
-        
+        Engine::SaveFile savefile;
         std::vector<Texture> assets;
 
 
