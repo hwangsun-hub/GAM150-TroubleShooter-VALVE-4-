@@ -3,7 +3,7 @@
 SelectBox::SelectBox(Vector2 pos, int tileid, bool isglitchmoded, MapName mapName) :
 	position(pos),
 	tile_id(tileid),
-	isCollision(false),
+
 	hitbox({ position.x, position.y,0,0 }),
 	id(ObjectID::ID::SELECTBOX),
 	mapName(mapName)

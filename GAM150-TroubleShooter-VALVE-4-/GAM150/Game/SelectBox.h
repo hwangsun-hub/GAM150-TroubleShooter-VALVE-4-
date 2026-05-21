@@ -19,7 +19,6 @@ public:
 private:
 	MapName mapName;
 	Vector2  position;
-	bool isCollision;
 	Rectangle hitbox;
 	ObjectID::ID id;
 	int tile_id;

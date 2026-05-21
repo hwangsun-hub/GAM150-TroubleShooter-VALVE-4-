@@ -3,7 +3,6 @@
 Block::Block(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),
 	tile_id(tileid),
-	isCollision(false),
 	hitbox({ position.x, position.y,0,0 }),
 	id(ObjectID::ID::BLOCK)
 {

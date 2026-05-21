@@ -19,7 +19,6 @@ private:
 	Vector2  start_position;
 	Vector2 position;
 	Vector2 end_position;
-	bool isCollision;
 	Rectangle hitbox;
 	ObjectID::ID id;
 	int tile_id;

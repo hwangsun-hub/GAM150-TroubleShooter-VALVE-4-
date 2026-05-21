@@ -1,7 +1,6 @@
 #include "Player.h"
 #include "Spike.h"
 #include "../Engine/Application.h"
-#include <iostream>
 /*#include "GameMode.h"*/
 Game::Player::Player()  {
 
@@ -84,6 +83,31 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 		}
 		if (obj->GetIsGlitchMode() == false) {
 			IsReadyToNextLevel = true;
+		
+		}
+		else {
+			IsAlive = false;
+		}
+
+		break;
+	}
+	case ObjectID::ID::DOOR: {
+		Door* door = static_cast<Door*>(obj);
+
+		if (arrivedDoor /*&& !CheckCollisionRecs(hitbox, arrivedDoor->GetHitbox())*/) {
+			arrivedDoor = nullptr;
+		}
+		if (door == arrivedDoor) break;
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		
+		if (obj->GetIsGlitchMode() == false) {
+			arrivedDoor = door->GetAnotherDoor();
+			position.x = arrivedDoor->GetPosition().x + hitbox.width;
+			position.y = arrivedDoor->GetPosition().y;
+			hitbox.x = position.x;
+			hitbox.y = position.y;
 		
 		}
 		else {
@@ -205,6 +229,7 @@ void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
 }
 
 void Game::Player::Update(double dt) {
+
 	//move
 	if (IsKeyDown(KeyboardKey::KEY_LEFT) == true) {
 		position.x -= MOVE_SPEED * static_cast<float>(dt); //direct feedback
@@ -301,6 +326,8 @@ void Game::Player::SetCanJump(bool CanJump) {
 void Game::Player::SetIsOnGround(bool IsOnGround) {
 	this->IsOnGround = IsOnGround;
 }
+
+
 
 bool Game::Player::CheckTroubleShoot()
 {

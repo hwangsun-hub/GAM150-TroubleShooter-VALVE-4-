@@ -57,6 +57,8 @@ void Engine::Application::LoadAssets()
     assets[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
     assets[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Trouble.png");
     assets[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Flag.png");
+    assets[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Flag.png");
+
 
 }
 

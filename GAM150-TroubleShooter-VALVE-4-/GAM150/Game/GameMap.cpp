@@ -29,7 +29,7 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 		{ 19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 		{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,10 },
-		{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
+		{ 14,-1,-1,-1,-1,-1,60,-1,60,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 		{ 9,-1,-1,-1,-1,-1,0,1,2,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 		{ 19,99,-1,-1,-1,50,5,6,7,9,-1,-1,-1,-1,-1,-1,54,-1,-1,15 },
 		{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
@@ -461,8 +461,9 @@ void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 	currentMapName = mapname;
 
 	LoadMap(currentMapName);
-	for (int y = 0; y < maps[static_cast<int>(currentMapName)].size(); y++) {
-		for (int x = 0; x < maps[static_cast<int>(currentMapName)][y].size(); x++) {
+	std::vector<std::vector<int>>& currentMap = maps[static_cast<int>(currentMapName)];
+	for (int y = 0; y < currentMap.size(); y++) {
+		for (int x = 0; x < currentMap[y].size(); x++) {
 			
 			if (maps_for_saw[static_cast<int>(currentMapName)][y][x] == 70 //Saw
 				) {
@@ -516,109 +517,91 @@ void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 			}
 
 			
-			if (maps[static_cast<int>(currentMapName)][y][x] >= 0 && //Block
-				maps[static_cast<int>(currentMapName)][y][x] <= 24) {
+			if (currentMap[y][x] >= 0 && //Block
+				currentMap[y][x] <= 24) {
 				objects.push_back(
 					new Block(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x]),
+						(currentMap[y][x]),
 						false
 					));
 			}
 
-			else if (maps[static_cast<int>(currentMapName)][y][x] >= 25 && //Glitched Block
-				maps[static_cast<int>(currentMapName)][y][x] <= 49
+			else if (currentMap[y][x] >= 25 && //Glitched Block
+				currentMap[y][x] <= 49
 				) {
 				objects.push_back(
 					new Block(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 25),
+						(currentMap[y][x] - 25),
 						true
 					));
 
 			}
 
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 50 //Spike
+			else if (currentMap[y][x] == 50 //Spike
 				) {
 				objects.push_back(
 					new Spike(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 50),
+						(currentMap[y][x] - 50),
 						false,
 						false
 						)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 51 //upside down Spike
+			else if (currentMap[y][x] == 51 //upside down Spike
 				) {
 				objects.push_back(
 					new Spike(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 50),
+						(currentMap[y][x] - 50),
 						false,
 						true
 					)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 52 //Glitched Spike
+			else if (currentMap[y][x] == 52 //Glitched Spike
 				) {
 				objects.push_back(
 					new Spike(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 52),
+						(currentMap[y][x] - 52),
 						true,
 						false
 					)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 53 //Glitched upsidedown Spike
+			else if (currentMap[y][x] == 53 //Glitched upsidedown Spike
 				) {
 				objects.push_back(
 					new Spike(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 52),
+						(currentMap[y][x] - 52),
 						true,
 						true
 					)
 				);
 			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 54 //Flag
+			else if (currentMap[y][x] == 60//Door
 				) {
-				objects.push_back(
-					new Flag(
-						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 54),
-						false
-					)
+				Door* door = new Door (
+					Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
+					(currentMap[y][x] - 60),
+					false
 				);
+				doors.push_back(door);
+				objects.push_back(door);
 			}
-/*			else if (maps[static_cast<int>(currentMapName)][y][x] == 70 //Saw
-				) {
-				objects.push_back(
-					new Saw(
-						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 70),
-						false,
-						player
-					)
-				);
-			}
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 75 //Glitched Saw
-				) {
-				objects.push_back(
-					new Saw(
-						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(maps[static_cast<int>(currentMapName)][y][x] - 75),
-						true,
-						player
-					)
-				);
-			}*/
-			else if (maps[static_cast<int>(currentMapName)][y][x] == 99 //player_start_position
+			else if (currentMap[y][x] == 99 //player_start_position
 				) {
 				player_start_position = { static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE+ TILE_SIZE/2};
 			}
 		}
+	}
+	if (doors[0] && doors[1]) {
+		doors[0]->SetAnotherDoor(doors[1]);
+		doors[1]->SetAnotherDoor(doors[0]);
 	}
 	for (Engine::GameObject* obj : objects) {
 		obj->Load();
@@ -634,6 +617,7 @@ void Game::GameMap::Unload() {
 	}
 	troubles.clear();
 	objects.clear();
+	doors.clear();
 }
 
 void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) {

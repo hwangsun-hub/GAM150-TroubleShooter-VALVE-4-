@@ -28,7 +28,6 @@ namespace Engine {
 		Vector2  position = { 0, 0 };
 		Texture2D texture = { 0 };
 		bool isGlitchMode = false;
-		bool isCollision = false;
 		Rectangle hitbox = { 0, 0, 0, 0 };
 		ObjectID::ID id = ObjectID::ID::DEFAULT;
 
@@ -37,7 +36,6 @@ namespace Engine {
 		bool isUnload = false;
 		bool isActive = false;
 
-		static constexpr int SIZE = 64;
 	};
 
 }

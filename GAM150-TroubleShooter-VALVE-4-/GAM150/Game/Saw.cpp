@@ -5,7 +5,6 @@ Saw::Saw(Vector2 start_pos, int tileid, bool isglitchmoded, int size, Vector2 di
 	start_position(start_pos),
 	position(start_pos),
 	tile_id(tileid),
-	isCollision(false),
 	hitbox({ start_position.x, start_position.y,0,0 }),
 	id(ObjectID::ID::SAW),
 	rotation(0),

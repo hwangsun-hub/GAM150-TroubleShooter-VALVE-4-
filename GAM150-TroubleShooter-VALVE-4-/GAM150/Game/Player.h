@@ -3,6 +3,8 @@
 #include <raylib.h>
 #include <raymath.h>
 #include "MapName.h"
+#include "Door.h"
+
 namespace Game {
 	class Player
 	{
@@ -31,6 +33,7 @@ namespace Game {
 		Vector2 position ;
 		Vector2 velocity = { 0,0 };
 		Rectangle hitbox;
+		Door* arrivedDoor = nullptr;
 
 		int trouble_bullet;
 

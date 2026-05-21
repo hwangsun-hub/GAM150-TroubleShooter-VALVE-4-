@@ -4,7 +4,6 @@
 Spike::Spike(Vector2 pos, int tileid, bool isglitchmoded, bool isupsidedown) :
 	position(pos),
 	tile_id(tileid),
-	isCollision(false),
 	hitbox({ position.x+10, position.y + 32,0,0 }),
 	id(ObjectID::ID::SPIKE),
 	isUpsidedown(isupsidedown)

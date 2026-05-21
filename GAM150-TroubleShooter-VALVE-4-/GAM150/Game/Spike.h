@@ -19,7 +19,6 @@ public:
 
 private:
 	Vector2  position;
-	bool isCollision;
 	Rectangle hitbox;
 	ObjectID::ID id;
 	bool isUpsidedown;
