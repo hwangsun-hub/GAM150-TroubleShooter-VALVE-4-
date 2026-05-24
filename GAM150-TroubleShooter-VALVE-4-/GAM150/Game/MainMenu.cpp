@@ -33,6 +33,14 @@ void Game::MainMenu::Update(double dt)
         if (choose_index < 0) choose_index = 2;
     }
 
+    //for test sound-------------------------------
+
+    if (IsKeyPressed(KEY_A)) {
+        Engine::Application::GetAudioManager().SoundPlay(SoundID::ID::TestSound1);
+    }
+
+    //test end-------------------------------------
+
     choose_y = 460 + choose_index * 77;
 
     if (IsKeyPressed(KEY_ENTER)) {

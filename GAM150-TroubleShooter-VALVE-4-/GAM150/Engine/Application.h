@@ -6,6 +6,8 @@
 #include "TextureManager.h"
 #include <chrono>
 #include "SaveFile.h"
+#include "AudioManager.h"
+
 namespace Engine {
     class Application {
     public:
@@ -26,14 +28,28 @@ namespace Engine {
             return Instance().texturemanager;
         }
         
+
+        static Engine::AudioManager& GetAudioManager() {
+            return Instance().audiomanager;
+        }
+
+
         static Engine::SaveFile& GetSaveFile() {
             return Instance().savefile;
 		}
-        
 
-        static std::vector<Texture>& GetAssets() {
-            return Instance().assets;
+        static std::vector<Texture>& Gettextures() {
+            return Instance().textures;
         }
+
+        static std::vector<Sound>& GetSounds() {
+            return Instance().sounds;
+        }
+
+        static std::vector<Music>& GetMusics() {
+            return Instance().musics;
+        }
+
         void Start(std::string window_title);
         void Stop();
         void Update();
@@ -56,8 +72,12 @@ namespace Engine {
         Engine::Window window;
         Engine::GameStateManager gamestatemanager;
         Engine::TextureManager texturemanager;
+        Engine::AudioManager audiomanager;
+
         Engine::SaveFile savefile;
-        std::vector<Texture> assets;
+        std::vector<Texture> textures;
+        std::vector<Sound> sounds;
+        std::vector<Music> musics;
 
 
     };

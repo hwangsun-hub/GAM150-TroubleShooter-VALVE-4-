@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "ObjectID.h"
+#include "SoundID.h"
 
 bool Engine::Application::DebugMode = false;
 
@@ -11,7 +12,9 @@ Engine::Application::Application()
 void Engine::Application::Start(std::string window_title) {
 
     window.Start(window_title);
+    audiomanager.Start();
     LoadAssets();
+    audiomanager.MusicChange(MusicID::ID::TestSound1);
     //Start other services
     last_test = last_tick;
 }
@@ -25,7 +28,9 @@ void Engine::Application::Stop()
 void Engine::Application::Update() {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     double dt = std::chrono::duration<double>(now - last_tick).count();
-    if (dt > 0.02)dt = 0.02;
+    if (dt > 0.02) {
+        dt = 0.02;
+    }
     if (dt > 1 / TargetFPS) {
         last_tick = now;
         frame_count++;
@@ -36,8 +41,8 @@ void Engine::Application::Update() {
 
         }
         gamestatemanager.Update(dt);
-        //input.Update();
         window.Update();
+        audiomanager.MusicUpdate();
         //Update other services
         if (IsKeyReleased(KEY_F1)) {
             DebugMode = !DebugMode;
@@ -49,15 +54,29 @@ void Engine::Application::Update() {
 
 void Engine::Application::LoadAssets()
 {
-    assets.resize(static_cast<int>(ObjectID::ID::COUNT)+2);
-    assets[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Block.png");
-    assets[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Flag.png");
-    assets[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
-    assets[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
-    assets[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
-    assets[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Trouble.png");
-    assets[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Flag.png");
-    assets[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Flag.png");
+    textures.resize(static_cast<int>(ObjectID::ID::COUNT));
+    sounds.resize(static_cast<int>(SoundID::ID::COUNT));
+    musics.resize(static_cast<int>(MusicID::ID::COUNT));
+
+    //textures
+    textures[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Block.png");
+    textures[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
+    textures[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
+    textures[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
+    textures[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Trouble.png");
+    textures[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Flag.png");
+
+    //sounds
+    sounds[static_cast<int>(SoundID::ID::TestSound1)] = LoadSound("Assets/soundtest1.mp3");
+
+    //musics
+    musics[static_cast<int>(MusicID::ID::TestSound1)] = LoadMusicStream("Assets/test1.mp3");
+
+
+
+
 
 
 }

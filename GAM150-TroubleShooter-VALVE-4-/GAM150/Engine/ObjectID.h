@@ -15,7 +15,7 @@ namespace ObjectID {
 		TROUBLE,
 		PLAYER,
 		SELECTBOX,
-		COUNT,
-		DEFAULT
+		DEFAULT,
+		COUNT
 	};
 }
