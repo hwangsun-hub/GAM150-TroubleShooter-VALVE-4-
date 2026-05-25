@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include <raylib.h>
-
+#include <string>
 
 namespace Engine {
 	class SaveFile {
@@ -12,10 +12,9 @@ namespace Engine {
 		void Save(std::string CurrentGameMap);
 		void Unload();
 		void Update();
-		std::string GetCurrentGameMap() const { return savefile.back(); }
+		std::string GetCurrentGameMap() const { return save_game_map; }
 	private:
 		std::filesystem::path save_file_path;
-		std::vector<std::string> savefile;
-		
+		std::string save_game_map = "SelectStage";
 	};
 }

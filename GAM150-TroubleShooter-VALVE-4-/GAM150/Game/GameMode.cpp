@@ -59,6 +59,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				
 				player2.Unload();
 			    ChangeMap(static_cast<MapName>(static_cast<int>(currentMapName) + 1));
+				Engine::Application::GetSaveFile().Save(GetCurrentMapName());
 				gameMap.Unload();
 				ClearBackground(Color{ 42, 79, 107, 255 });
 				dialogue.Unload();
@@ -95,6 +96,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 	}
 	ui.Update(player);
 	if (IsKeyPressed(KEY_ONE)) {
+		Engine::Application::GetSaveFile().Save(GetCurrentMapName());
 		Engine::Application::GetGameStateManager().SetNextGameState(0);  // mainmenu
 	}
 }

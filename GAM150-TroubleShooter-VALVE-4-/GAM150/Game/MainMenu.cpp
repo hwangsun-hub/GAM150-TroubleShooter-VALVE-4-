@@ -46,7 +46,8 @@ void Game::MainMenu::Update(double dt)
     if (IsKeyPressed(KEY_ENTER)) {
         switch (choose_index) {
         case 0:  // Start Game
-            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::SelectStage)); 
+            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::GameMode));
+            break;
         case 1:  // Option
             break;
         case 2:  // Exit
