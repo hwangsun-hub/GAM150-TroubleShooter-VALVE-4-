@@ -8,6 +8,8 @@ Game::Player::Player()  {
 void Game::Player::Load(Vector2 start_position) {
 	texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::PLAYER)];
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
+	position = start_position;
+
 	hitbox = Rectangle{ position.x, 
 						position.y,
 						static_cast<float>(texture.width/2),
@@ -16,7 +18,6 @@ void Game::Player::Load(Vector2 start_position) {
 	IsJump = false;
 	IsLookingRight = true;
 	IsTroubleShoot = false;
-	position = start_position;
 	velocity = { 0,0 };
 	trouble_bullet = 0;
 	IsCollisionWithGlitchedDoor = false;
