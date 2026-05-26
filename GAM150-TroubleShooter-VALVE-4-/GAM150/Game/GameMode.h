@@ -26,6 +26,7 @@ namespace Game {
         Game::Player player;
         Game::Player player2;
         bool IsPlayer2Maked = false;
+        
         UI ui;
         Dialogue dialogue;
         enum class gamestate

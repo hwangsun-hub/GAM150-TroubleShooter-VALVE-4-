@@ -631,7 +631,12 @@ void Game::GameMap::Unload() {
 	
 }
 
-void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) {
+void Game::GameMap::Update(Game::Player& player, Game::Player& player2, Dialogue& dialogue, double dt, bool IsPlayer2Maked) {
+
+	if (!IsPlayer2Maked) {
+		Update2(player, dialogue, dt);
+		return;
+	}
 
 	if (player.CheckTroubleShoot()) {
 			//making touble
@@ -641,9 +646,96 @@ void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) 
 				player.GetIsLookingRight()
 			)
 		);
+		troubles.push_back(
+			new Trouble(
+				player2.GetPosition(),
+				player2.GetIsLookingRight()
+			)
+		);
 	}
 
 	
+	player.SetIsOnGround(false);
+	player.SetCanJump(true);
+	player2.SetIsOnGround(false);
+	player2.SetCanJump(true);
+
+	for (Engine::GameObject* obj : objects) {
+		player.HandleCollision(obj, dt);
+	}
+	for (Engine::GameObject* obj : objects) {
+		player.CorrectCollision(obj, dt);
+
+	}
+	for (Engine::GameObject* obj : objects) {
+		player2.HandleCollision(obj, dt);
+	}
+	for (Engine::GameObject* obj : objects) {
+		player2.CorrectCollision(obj, dt);
+
+	}
+	for (Engine::GameObject* obj : objects) {
+		obj->Update(dt);
+	}
+
+	for (Trouble* trouble : troubles) {
+		for (Engine::GameObject* obj : objects) {
+			trouble->Update(obj, dt);
+		}
+	}
+	
+	
+	for (int i = static_cast<int>(objects.size()) - 1; i >= 0; i--)
+	{
+		if (objects[i]->GetUnload())
+		{
+			delete objects[i];
+			objects.erase(objects.begin() + i);
+		}
+	}
+
+	for (int i = static_cast<int>(troubles.size()) - 1; i >= 0; i--)
+	{
+		if (troubles[i]->GetUnload())
+		{
+			delete troubles[i];
+			troubles.erase(troubles.begin() + i);
+		}
+	}
+	
+
+}
+
+
+void Game::GameMap::draw() {
+	for (Engine::GameObject* obj : objects) {
+		obj->Draw();
+	}
+	for (Trouble* trouble : troubles) {
+		trouble->Draw();
+	}
+}
+
+
+
+Vector2 Game::GameMap::GetStartPosition() const
+{
+	return player_start_position;
+}
+
+void Game::GameMap::Update2(Game::Player& player, Dialogue& dialogue, double dt)
+{
+	if (player.CheckTroubleShoot()) {
+		//making touble
+		troubles.push_back(
+			new Trouble(
+				player.GetPosition(),
+				player.GetIsLookingRight()
+			)
+		);
+	}
+
+
 	player.SetIsOnGround(false);
 	player.SetCanJump(true);
 
@@ -681,23 +773,5 @@ void Game::GameMap::Update(Game::Player& player, Dialogue& dialogue, double dt) 
 			troubles.erase(troubles.begin() + i);
 		}
 	}
-	
 
-}
-
-
-void Game::GameMap::draw() {
-	for (Engine::GameObject* obj : objects) {
-		obj->Draw();
-	}
-	for (Trouble* trouble : troubles) {
-		trouble->Draw();
-	}
-}
-
-
-
-Vector2 Game::GameMap::GetStartPosition() const
-{
-	return player_start_position;
 }

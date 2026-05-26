@@ -24,13 +24,16 @@ namespace Game {
 		void LoadMap(MapName mapname);
 		void Unload();
 		void Load(Game::Player& player, MapName mapname);
-		void Update(Game::Player& player, Dialogue& dialogue, double dt);
+
+		void Update(Game::Player& player, Game::Player& player2, Dialogue& dialogue, double dt, bool IsPlayer2Maked);
 		void draw();
 		std::vector<Engine::GameObject*> GetGameObject();
 		Vector2 GetStartPosition() const;
 
 
 	private:
+		void Update2(Game::Player& player, Dialogue& dialogue, double dt);
+
 		MapName currentMapName;
 		std::vector<std::vector<std::vector<int>>> maps;
 		std::vector<std::vector<std::vector<int>>> maps_for_saw;

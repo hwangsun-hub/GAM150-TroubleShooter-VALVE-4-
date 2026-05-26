@@ -39,10 +39,9 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 			break;
 		case gamestate::Playing:
 			player.Update(dt);
-     			gameMap.Update(player, dialogue, dt);
+     		gameMap.Update(player, player2, dialogue, dt, IsPlayer2Maked);
 			if (IsPlayer2Maked) {
 				player2.Update(dt);
-				gameMap.Update(player2, dialogue, dt);
 			}
 			else {
 				if (player.IsCollisionWithGlitchedDoor) {
@@ -51,7 +50,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 					Vector2 startPosition = player.Getplayer2Pos();
 
 					player2.Load(startPosition); 
-					
+
 				}
 			}
 			if (player.IsReadyToNextLevel || IsKeyPressed(KEY_F10) || (IsPlayer2Maked && player2.IsReadyToNextLevel))
@@ -74,7 +73,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				player.IsReadyToNextLevel = false;
 				gamestate = gamestate::Dialogue;
 			}
-			if (player.GetIsAlive() == false) {
+			if (player.GetIsAlive() == false || (IsPlayer2Maked==true && player2.GetIsAlive() == false)) {
 				gameMap.Unload();
 				
 				dialogue.Unload();
