@@ -19,6 +19,12 @@ void Game::Player::Load(Vector2 start_position) {
 	IsTroubleShoot = false;
 	position = start_position;
 	velocity = { 0,0 };
+<<<<<<< Updated upstream
+=======
+	trouble_bullet = 0;
+	IsCollisionWithGlitchedDoor = false;
+	arrivedDoor = nullptr;
+>>>>>>> Stashed changes
 }
 
 void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {

@@ -38,6 +38,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 
 				gameMap.Load(player, currentMapName);
 				player.Load(gameMap.GetStartPosition());
+				player.IsCollisionWithGlitchedDoor = false;
 				player.SetTroubleBullet(max_trouble[currentMapName]);
 				dialogue.Load(GetCurentMapName().c_str());
 				player.IsReadyToNextLevel = false;
@@ -52,6 +53,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				gameMap.Load(player, currentMapName);
 				dialogue.Load(GetCurentMapName().c_str());
 				player.Load(gameMap.GetStartPosition());
+				player.IsCollisionWithGlitchedDoor = false;
 				player.SetTroubleBullet(max_trouble[currentMapName]);
 
 			}
