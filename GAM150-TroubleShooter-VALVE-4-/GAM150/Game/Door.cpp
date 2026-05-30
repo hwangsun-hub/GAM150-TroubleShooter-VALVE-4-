@@ -4,7 +4,7 @@ Door::Door(Vector2 pos, int tileid, bool isglitchmoded):
 	position(pos),
 	tile_id(tileid),
 	isGlitchMode(isglitchmoded),
-	hitbox({ position.x, position.y,SIZE,SIZE }),
+	hitbox({ position.x + 12, position.y,40,SIZE }),
 	id(ObjectID::ID::DOOR)
 {
 }
