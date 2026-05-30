@@ -7,10 +7,10 @@ Game::MainMenu::MainMenu()
 
 void Game::MainMenu::Load()
 {
-    texture_background = LoadTexture("Assets/test.png");
-    texture_mainmenu = LoadTexture("Assets/Sprite-0002-Recovered.png");
-    texture_choose = LoadTexture("Assets/Sprite-0001.png");
-    texture_logo = LoadTexture("Assets/Timeline1-ezgif.com-optimize.png");
+    texture_background = LoadTexture("Assets/Texture/test.png");
+    texture_mainmenu = LoadTexture("Assets/Texture/Sprite-0002-Recovered.png");
+    texture_choose = LoadTexture("Assets/Texture/Sprite-0001.png");
+    texture_logo = LoadTexture("Assets/Texture/Timeline1-ezgif.com-optimize.png");
 
 }
 

@@ -20,6 +20,8 @@ namespace Game {
 		Vector2 GetVelocity() const;
 		Rectangle GetHitbox() const;
 		bool GetIsAlive() const;
+		bool GetIsDuplicate() const;
+
 		void SetCanJump(bool CanJump);
 		void SetIsOnGround(bool IsOnGround);
 		bool CheckTroubleShoot();
@@ -30,6 +32,7 @@ namespace Game {
 		MapName selectedMapName = MapName::SelectStage;
 		bool IsCollisionWithGlitchedDoor = false;
 		Vector2 Getplayer2Pos();
+
 	private:
 		Texture2D texture;
 		Vector2 position ;

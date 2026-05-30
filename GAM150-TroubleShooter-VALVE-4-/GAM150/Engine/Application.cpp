@@ -59,20 +59,21 @@ void Engine::Application::LoadAssets()
     musics.resize(static_cast<int>(MusicID::ID::COUNT));
 
     //textures
-    textures[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Block.png");
-    textures[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Flag.png");
-    textures[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/gam150-player.png");
-    textures[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Saw.png");
-    textures[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Spike.png");
-    textures[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Trouble.png");
-    textures[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Flag.png");
-    textures[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::BLOCK)] = LoadTexture("Assets/Texture/Block.png");
+    textures[static_cast<int>(ObjectID::ID::FLAG)] = LoadTexture("Assets/Texture/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::PLAYER)] = LoadTexture("Assets/Texture/gam150-player.png");
+    textures[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Texture/Saw.png");
+    textures[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Texture/Spike.png");
+    textures[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Texture/Trouble.png");
+    textures[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Texture/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Texture/Flag.png");
 
     //sounds
-    sounds[static_cast<int>(SoundID::ID::TestSound1)] = LoadSound("Assets/soundtest1.mp3");
+    sounds[static_cast<int>(SoundID::ID::TestSound1)] = LoadSound("Assets/Sound/soundtest1.mp3");
+    sounds[static_cast<int>(SoundID::ID::JUMP)] = LoadSound("Assets/Sound/Jump.wav");
 
     //musics
-    musics[static_cast<int>(MusicID::ID::TestSound1)] = LoadMusicStream("Assets/test1.mp3");
+    //musics[static_cast<int>(MusicID::ID::TestSound1)] = LoadMusicStream("Assets/BGM/test1.mp3");
 
 
 
