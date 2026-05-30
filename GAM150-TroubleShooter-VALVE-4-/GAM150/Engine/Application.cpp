@@ -14,7 +14,7 @@ void Engine::Application::Start(std::string window_title) {
     window.Start(window_title);
     audiomanager.Start();
     LoadAssets();
-    audiomanager.MusicChange(MusicID::ID::TestSound1);
+    audiomanager.MusicChange(MusicID::ID::MAINMENU);
     //Start other services
     last_test = last_tick;
 }
@@ -71,9 +71,14 @@ void Engine::Application::LoadAssets()
     //sounds
     sounds[static_cast<int>(SoundID::ID::TestSound1)] = LoadSound("Assets/Sound/soundtest1.mp3");
     sounds[static_cast<int>(SoundID::ID::JUMP)] = LoadSound("Assets/Sound/Jump.wav");
+    sounds[static_cast<int>(SoundID::ID::DEATH)] = LoadSound("Assets/Sound/Death.wav");
+    sounds[static_cast<int>(SoundID::ID::SHOOT)] = LoadSound("Assets/Sound/Shoot.wav");
 
     //musics
     //musics[static_cast<int>(MusicID::ID::TestSound1)] = LoadMusicStream("Assets/BGM/test1.mp3");
+    musics[static_cast<int>(MusicID::ID::MAINMENU)] = LoadMusicStream("Assets/BGM/Spamgon.mp3");
+    musics[static_cast<int>(MusicID::ID::INGAME1)] = LoadMusicStream("Assets/BGM/umidk_2.mp3");
+    musics[static_cast<int>(MusicID::ID::INGAME2)] = LoadMusicStream("Assets/BGM/TroubleShhoter.mp3");
 
 
 

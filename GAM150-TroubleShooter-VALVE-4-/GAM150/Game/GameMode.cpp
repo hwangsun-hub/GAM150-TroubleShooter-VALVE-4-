@@ -74,6 +74,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 				gamestate = gamestate::Dialogue;
 			}
 			if (player.GetIsAlive() == false || (IsPlayer2Maked==true && player2.GetIsAlive() == false)) {
+				Engine::Application::GetAudioManager().SoundPlay(SoundID::ID::DEATH);
 				gameMap.Unload();
 				
 				dialogue.Unload();

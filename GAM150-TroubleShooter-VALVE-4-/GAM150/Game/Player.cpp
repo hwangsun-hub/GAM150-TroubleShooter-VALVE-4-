@@ -250,6 +250,7 @@ void Game::Player::Update(double dt) {
 		if (IsOnGround == true &&
 			CanJump == true
 			) {
+			Engine::Application::GetAudioManager().SoundPlay(SoundID::ID::JUMP);
 			velocity.y += JUMP_SPEED;
 			IsJump = true;
 			IsOnGround = false;
@@ -339,6 +340,7 @@ bool Game::Player::CheckTroubleShoot()
 {
 	if (IsTroubleShoot == true) {
 		IsTroubleShoot = false;
+		Engine::Application::GetAudioManager().SoundPlay(SoundID::ID::SHOOT);
 		return true;
 	}
 	return false;

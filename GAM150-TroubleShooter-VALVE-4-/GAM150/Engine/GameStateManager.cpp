@@ -1,5 +1,6 @@
 #include "GameStateManager.h"
 #include "Application.h"
+#include "../Game/States.h"
 
 Engine::GameStateManager::GameStateManager() :
     current_gamestate(nullptr),
@@ -13,6 +14,22 @@ void Engine::GameStateManager::AddGameState(GameState& gamestate) {
 }
 
 void Engine::GameStateManager::SetNextGameState(int index) {
+    switch (index)
+    {
+    case static_cast<int>(States::MainMenu):
+        Engine::Application::GetAudioManager().MusicChange(MusicID::ID::MAINMENU);
+        break;
+    case static_cast<int>(States::SelectStage):
+        Engine::Application::GetAudioManager().MusicChange(MusicID::ID::INGAME1);
+        break;
+    case static_cast<int>(States::Option):
+        break;
+    case static_cast<int>(States::GameMode):
+        Engine::Application::GetAudioManager().MusicChange(MusicID::ID::INGAME1);
+        break;
+    default:
+        break;
+    }
     next_gamestate = gamestates[index];
 }
 
