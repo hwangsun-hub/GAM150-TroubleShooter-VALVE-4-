@@ -1,6 +1,7 @@
 #include "TextureManager.h"
 #include "Application.h"
 #include <raymath.h>
+#include <iostream>
 namespace Engine {
     TextureManager::TextureManager()
     {
@@ -24,6 +25,7 @@ namespace Engine {
             TILE_SIZE,
             TILE_SIZE
         };
+
     }
 
     void TextureManager::DrawTexure(ObjectID::ID id, int map_num, Vector2 position, Vector2 size, bool isglitchedMode)

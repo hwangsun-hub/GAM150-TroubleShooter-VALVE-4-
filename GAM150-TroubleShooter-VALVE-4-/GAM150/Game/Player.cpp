@@ -103,17 +103,29 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
 			break;
 		}
-		
+
+
+		double offsetX = position.x - door->GetPosition().x;
+		double offsetY = position.y - door->GetPosition().y;
 		if (obj->GetIsGlitchMode() == false) {
+
+
 			arrivedDoor = door->GetAnotherDoor();
-			position.x = arrivedDoor->GetPosition().x + hitbox.width;
-			position.y = arrivedDoor->GetPosition().y;
+			position.x = arrivedDoor->GetPosition().x + offsetX;
+			position.y = arrivedDoor->GetPosition().y + offsetY;
+
 			hitbox.x = position.x;
 			hitbox.y = position.y;
+
+
+			
 		
 		}
 		else {
-			player2Pos = door->GetAnotherDoor()->GetPosition();
+
+			Door* exitDoor = door->GetAnotherDoor();
+			player2Pos.x = exitDoor->GetPosition().x + offsetX;
+			player2Pos.y = exitDoor->GetPosition().y + offsetY;
 			door->GetAnotherDoor()->Unload(true);
 			door->Unload(true);
 			IsCollisionWithGlitchedDoor = true;
