@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Spike.h"
+#include "Box.h"
 #include "../Engine/Application.h"
 /*#include "GameMode.h"*/
 Game::Player::Player()  {
@@ -145,7 +146,7 @@ void Game::Player::CheckOutOfScreen(void)
 	}
 }
 
-void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
+void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt, std::vector<Engine::GameObject*>& objects) {
 	switch (obj->GetObjectID())
 	{
 	case ObjectID::ID::PLATFORM:
@@ -238,6 +239,44 @@ void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt) {
 
 	}
 	
+
+	case ObjectID::ID::BOX:
+	{
+		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
+			break;
+		}
+		Box* box = static_cast<Box*>(obj);
+		Rectangle overlap = GetCollisionRec(hitbox, obj->GetHitbox());
+		Rectangle boxHitbox = obj->GetHitbox();
+		if (overlap.width < overlap.height) {
+			float playerCenterX = position.x + hitbox.width * 0.5f;
+			float boxCenterX = boxHitbox.x + boxHitbox.width * 0.5f;
+			if (playerCenterX < boxCenterX) {
+				position.x -= overlap.width;
+				box->Push(1.0f, objects);
+			}
+			else {
+				position.x += overlap.width;
+				box->Push(-1.0f, objects);
+			}
+		}
+		else {
+			float playerCenterY = position.y + hitbox.height * 0.5f;
+			float boxCenterY = boxHitbox.y + boxHitbox.height * 0.5f;
+			if (playerCenterY < boxCenterY) {
+				position.y = boxHitbox.y - hitbox.height;
+				if (velocity.y > 0) {
+					velocity.y = 0;
+					IsOnGround = true;
+				}
+			}
+			else {
+				position.y += overlap.height;
+				velocity.y = 0.0f;
+			}
+		}
+		break;
+	}
 
 	default:
 		break;

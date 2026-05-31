@@ -275,7 +275,7 @@ void Game::SelectStage::UpdateObjects(double dt)
 		player.HandleCollision(obj, dt);
 	}
 	for (Engine::GameObject* obj : objects) {
-		player.CorrectCollision(obj, dt);
+		player.CorrectCollision(obj, dt, objects);
 
 	}
 	for (Engine::GameObject* obj : objects) {
