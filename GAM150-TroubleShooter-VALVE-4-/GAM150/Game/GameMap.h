@@ -13,6 +13,7 @@
 #include "Trouble.h"
 #include "dialogue.h"
 #include "Door.h"
+#include "Box.h"
 namespace Game {
 	class GameMap
 	{

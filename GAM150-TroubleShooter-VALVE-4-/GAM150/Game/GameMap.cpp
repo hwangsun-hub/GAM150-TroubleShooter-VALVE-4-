@@ -1,4 +1,5 @@
 #include "GameMap.h"
+#include "Box.h"
 #include <iostream>
 Game::GameMap::GameMap()
 {
@@ -440,6 +441,36 @@ void Game::GameMap::LoadMap(MapName mapname) {
 		};
 		break;
 	case MapName::STAGE4_LEVEL2:
+		maps[static_cast<int>(MapName::STAGE4_LEVEL2)] =
+		{
+		{0,3,3,2,1,1,1,3,1,1,3,2,1,1,2,1,3,3,1,4},
+		{15,54,-1,-1,-1,-1,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,14},
+		{15,80,-1,-1,-1,-1,9,-1,-1,-1,-1,0,4,-1,-1,-1,-1,-1,-1,9},
+		{5,80,80,-1,-1,-1,14,-1,-1,-1,-1,15,19,-1,-1,-1,-1,-1,-1,9},
+		{5,80,80,80,-1,-1,80,-1,-1,-1,-1,5,-1,80,-1,-1,-1,-1,-1,19},
+		{5,1,1,1,1,1,1,1,1,1,1,24,3,1,2,3,-1,-1,0,9},
+		{10,-1,-1,-1,-1,-1,80,-1,-1,-1,-1,-1,-1,80,-1,-1,-1,-1,-1,14},
+		{5,-1,-1,-1,-1,0,4,-1,-1,-1,-1,-1,0,1,2,1,4,-1,-1,19},
+		{10,-1,-1,-1,-1,5,24,-1,-1,-1,-1,0,24,-1,-1,-1,14,-1,-1,9},
+		{5,-1,-1,-1,0,14,-1,-1,-1,-1,-1,5,-1,-1,-1,-1,14,-1,-1,14},
+		{10,-1,-1,99,10,9,-1,-1,-1,-1,-1,5,-1,-1,-1,-1,9,-1,-1,14},
+		{20,21,21,23,22,23,22,21,21,22,21,23,22,22,23,21,23,23,23,24}
+		};
+		maps_for_saw[static_cast<int>(MapName::STAGE4_LEVEL2)] =
+		{
+		{0,3,3,2,1,1,1,3,1,1,3,2,1,1,2,1,3,3,1,4},
+		{15,54,-1,-1,-1,-1,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,14},
+		{15,80,-1,-1,-1,-1,9,-1,-1,-1,-1,0,4,-1,-1,-1,-1,-1,-1,9},
+		{5,80,80,-1,-1,-1,14,-1,-1,-1,-1,15,19,-1,-1,-1,-1,-1,-1,9},
+		{5,80,80,80,-1,-1,80,-1,-1,-1,-1,5,-1,80,-1,-1,-1,-1,-1,19},
+		{5,1,1,1,1,1,1,1,1,1,1,24,3,1,2,3,-1,-1,0,9},
+		{10,-1,-1,-1,-1,-1,80,-1,-1,-1,-1,-1,-1,80,-1,-1,-1,-1,-1,14},
+		{5,-1,-1,-1,-1,0,4,-1,-1,-1,-1,-1,0,1,2,1,4,-1,-1,19},
+		{10,-1,-1,-1,-1,5,24,-1,-1,-1,-1,0,24,-1,-1,-1,14,-1,-1,9},
+		{5,-1,-1,-1,0,14,-1,-1,-1,-1,-1,5,-1,-1,-1,-1,14,-1,-1,14},
+		{10,-1,-1,99,10,9,-1,-1,-1,-1,-1,5,-1,-1,-1,-1,9,-1,-1,14},
+		{20,21,21,23,22,23,22,21,21,22,21,23,22,22,23,21,23,23,23,24}
+		};
 		break;
 	case MapName::STAGE4_LEVEL3:
 		break;
@@ -593,6 +624,14 @@ void Game::GameMap::Load(Game::Player& player,MapName mapname) {
 				doors.push_back(door);
 				objects.push_back(door);
 			}
+			else if (currentMap[y][x] == 80 //Box
+				) {
+				objects.push_back(
+					new Box(
+						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE }
+					)
+				);
+			}
 			else if (currentMap[y][x] == 99 //player_start_position
 				) {
 				player_start_position = { static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE+ TILE_SIZE/2};
@@ -664,25 +703,28 @@ void Game::GameMap::Update(Game::Player& player, Game::Player& player2, Dialogue
 		player.HandleCollision(obj, dt);
 	}
 	for (Engine::GameObject* obj : objects) {
-		player.CorrectCollision(obj, dt);
+		player.CorrectCollision(obj, dt, objects);
 
 	}
 	for (Engine::GameObject* obj : objects) {
 		player2.HandleCollision(obj, dt);
 	}
 	for (Engine::GameObject* obj : objects) {
-		player2.CorrectCollision(obj, dt);
+		player2.CorrectCollision(obj, dt, objects);
 
 	}
 	for (Engine::GameObject* obj : objects) {
 		obj->Update(dt);
 	}
 
+	Box::ResolveCollisions(objects);
+
 	for (Trouble* trouble : troubles) {
 		for (Engine::GameObject* obj : objects) {
 			trouble->Update(obj, dt);
 		}
 	}
+	
 	
 	
 	for (int i = static_cast<int>(objects.size()) - 1; i >= 0; i--)
@@ -743,12 +785,14 @@ void Game::GameMap::Update2(Game::Player& player, Dialogue& dialogue, double dt)
 		player.HandleCollision(obj, dt);
 	}
 	for (Engine::GameObject* obj : objects) {
-		player.CorrectCollision(obj, dt);
+		player.CorrectCollision(obj, dt, objects);
 
 	}
 	for (Engine::GameObject* obj : objects) {
 		obj->Update(dt);
 	}
+
+	Box::ResolveCollisions(objects);
 
 	for (Trouble* trouble : troubles) {
 		for (Engine::GameObject* obj : objects) {
@@ -773,5 +817,6 @@ void Game::GameMap::Update2(Game::Player& player, Dialogue& dialogue, double dt)
 			troubles.erase(troubles.begin() + i);
 		}
 	}
+
 
 }

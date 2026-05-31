@@ -16,6 +16,7 @@ namespace ObjectID {
 		PLAYER,
 		SELECTBOX,
 		DEFAULT,
+		BOX,
 		COUNT
 	};
 }

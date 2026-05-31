@@ -13,7 +13,7 @@ namespace Game {
 		void Load(Vector2 start_position);
 		void Unload();
 		void HandleCollision(Engine::GameObject* obj, double dt);
-		void CorrectCollision(Engine::GameObject* obj, double dt);
+		void CorrectCollision(Engine::GameObject* obj, double dt, std::vector<Engine::GameObject*>& objects);
 		void Update(double dt);
 		void Draw();
 		Vector2 GetPosition() const;
