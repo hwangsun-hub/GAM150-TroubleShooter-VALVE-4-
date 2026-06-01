@@ -17,6 +17,7 @@ namespace ObjectID {
 		SELECTBOX,
 		DEFAULT,
 		BOX,
+		GLITCHBOX,
 		COUNT
 	};
 }

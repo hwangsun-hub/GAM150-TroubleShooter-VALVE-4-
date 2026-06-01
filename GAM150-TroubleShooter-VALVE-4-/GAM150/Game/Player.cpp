@@ -253,11 +253,11 @@ void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt, std::vec
 			float boxCenterX = boxHitbox.x + boxHitbox.width * 0.5f;
 			if (playerCenterX < boxCenterX) {
 				position.x -= overlap.width;
-				box->Push(1.0f, objects);
+				if (IsKeyDown(KEY_RIGHT)) box->Push(1.0f, objects);
 			}
 			else {
 				position.x += overlap.width;
-				box->Push(-1.0f, objects);
+				if (IsKeyDown(KEY_LEFT)) box->Push(-1.0f, objects);
 			}
 		}
 		else {

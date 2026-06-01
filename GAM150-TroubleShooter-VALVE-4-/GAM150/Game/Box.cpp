@@ -1,15 +1,19 @@
 #include "Box.h"
 #include "../Engine/Application.h"
 
-Box::Box(Vector2 pos) :
+Box::Box(Vector2 pos, bool glitch) :
 	position(pos),
 	hitbox({ position.x, position.y, 0, 0 }),
-	id(ObjectID::ID::BOX)
+	id(ObjectID::ID::BOX),
+	isGlitchMode(glitch)
 {
 }
 
 void Box::Load() {
-	texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::BOX)];
+	if (isGlitchMode)
+		texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::GLITCHBOX)];
+	else
+		texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::BOX)];
 	hitbox.width = static_cast<float>(SIZE);
 	hitbox.height = static_cast<float>(SIZE);
 }
@@ -39,8 +43,15 @@ void Box::Draw() {
 }
 
 void Box::Push(float direction, std::vector<Engine::GameObject*>& objects) {
-	if (!CanPush(direction, objects)) return;
-	velocity.x = direction * PUSH_SPEED;
+	float dir;
+	if (isGlitchMode) {
+		dir = -direction;
+	}
+	else {
+		dir = direction;
+	}
+	if (!CanPush(dir, objects)) return;
+	velocity.x = dir * PUSH_SPEED;
 }
 
 void Box::SetGround() {
@@ -73,6 +84,17 @@ bool Box::CheckCollision(Rectangle hibox) {
 	return CheckCollisionRecs(hibox, this->hitbox);
 }
 
+void Box::TroubleCollision() {
+	if (!isGlitchMode) {
+		isGlitchMode = true;
+		texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::GLITCHBOX)];
+	}
+	else {
+		Engine::Application::Gettextures();
+		isUnload = true;
+	}
+}
+
 bool Box::CanPush(float direction, std::vector<Engine::GameObject*>& objects, const Box* caller) {
 	Rectangle checkRect = hitbox;
 	checkRect.x += direction * 1.0f;
@@ -96,15 +118,15 @@ bool Box::CanPush(float direction, std::vector<Engine::GameObject*>& objects, co
 
 void Box::ResolveCollisions(std::vector<Engine::GameObject*>& objects) {
 	for (Engine::GameObject* obj : objects) {
-		if (obj->GetObjectID() != ObjectID::ID::BOX) continue;
-		Box* box = static_cast<Box*>(obj);
-		Rectangle boxHitbox = box->GetHitbox();
+	if (obj->GetObjectID() != ObjectID::ID::BOX) continue;
+	Box* box = static_cast<Box*>(obj);
+	Rectangle boxHitbox = box->GetHitbox();
 
-		for (Engine::GameObject* other : objects) {
-			if (other == obj) continue;
-			if (other->GetObjectID() != ObjectID::ID::BLOCK &&
-				other->GetObjectID() != ObjectID::ID::PLATFORM &&
-				other->GetObjectID() != ObjectID::ID::BOX) continue;
+	for (Engine::GameObject* other : objects) {
+		if (other == obj) continue;
+		if (other->GetObjectID() != ObjectID::ID::BLOCK &&
+			other->GetObjectID() != ObjectID::ID::PLATFORM &&
+			other->GetObjectID() != ObjectID::ID::BOX) continue;
 			if (!CheckCollisionRecs(boxHitbox, other->GetHitbox())) continue;
 
 			Rectangle overlap = GetCollisionRec(boxHitbox, other->GetHitbox());

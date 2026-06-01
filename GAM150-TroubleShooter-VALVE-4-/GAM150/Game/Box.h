@@ -5,7 +5,7 @@
 
 class Box : public Engine::GameObject {
 public:
-	Box(Vector2 pos);
+	Box(Vector2 pos, bool glitch = false);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
@@ -18,6 +18,7 @@ public:
 	void SetGround();
 	void SetPositionFromHitbox(Rectangle newHitbox);
 	bool CanPush(float direction, std::vector<Engine::GameObject*>& objects, const Box* caller = nullptr);
+	void TroubleCollision() override;
 
 	static void ResolveCollisions(std::vector<Engine::GameObject*>& objects);
 
