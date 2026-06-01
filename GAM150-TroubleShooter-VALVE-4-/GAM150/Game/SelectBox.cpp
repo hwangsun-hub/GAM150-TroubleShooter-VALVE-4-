@@ -41,7 +41,13 @@ void  SelectBox::Update(double dt) {
 }
 
 void SelectBox::Draw() {
-	Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
+	
+	if (tile_id == -1) {
+		Engine::Application::GetTextureManager().DrawTexure(id, 24, position, isGlitchMode);
+	}
+	else {
+		Engine::Application::GetTextureManager().DrawTexure(id, tile_id, position, isGlitchMode);
+	}
 	//for debuging
 	if (Engine::Application::DebugMode == true)
 		DrawRectangleLinesEx(hitbox, 5, isGlitchMode ? RED : BLACK);

@@ -65,7 +65,7 @@ void Engine::Application::LoadAssets()
     textures[static_cast<int>(ObjectID::ID::SAW)] = LoadTexture("Assets/Texture/Saw.png");
     textures[static_cast<int>(ObjectID::ID::SPIKE)] = LoadTexture("Assets/Texture/Spike.png");
     textures[static_cast<int>(ObjectID::ID::TROUBLE)] = LoadTexture("Assets/Texture/Trouble.png");
-    textures[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Texture/Flag.png");
+    textures[static_cast<int>(ObjectID::ID::SELECTBOX)] = LoadTexture("Assets/Texture/Level_Block.png");
     textures[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Texture/Door.png");
     textures[static_cast<int>(ObjectID::ID::BOX)] = LoadTexture("Assets/Texture/Box.png");
     textures[static_cast<int>(ObjectID::ID::GLITCHBOX)] = LoadTexture("Assets/Texture/GlitchBox.png");
