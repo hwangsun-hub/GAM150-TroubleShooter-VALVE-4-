@@ -6,6 +6,7 @@ class Block : public Engine::GameObject
 {
 public:
 	Block(Vector2 pos, int tileid, bool isglitchmoded);
+	Block(Vector2 pos, int tileid, bool isglitchmoded, ObjectID::ID id);
 	void Load() override;
 	void Update(double dt) override;
 	void Draw() override;
