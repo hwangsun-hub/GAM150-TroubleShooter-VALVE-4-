@@ -198,7 +198,7 @@ void Game::SelectStage::Load()
 				objects.push_back(
 					new SelectBox(
 						Vector2{ static_cast<float>(x) * TILE_SIZE, static_cast<float>(y) * TILE_SIZE },
-						(currentMap[y][x] - 100),
+						(currentMap[y][x] - 101),
 						false,
 						static_cast<MapName>((currentMap[y][x] - 100))
 					)
