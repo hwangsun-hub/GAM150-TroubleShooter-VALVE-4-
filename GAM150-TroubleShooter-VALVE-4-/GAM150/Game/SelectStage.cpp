@@ -28,7 +28,7 @@ void Game::SelectStage::LoadMap()
 			{ 19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,10 },
-			{ 14,-1,101,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
+			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,101,-1,-1,102,-1,-1,103,-1,-1,104,-1,-1,105,-1,-1,106,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
@@ -49,7 +49,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,25,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,107,-1,108,-1,109,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1, - 1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 		};
 		break;
@@ -66,7 +66,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,110,-1,-1,111,-1,-1,112,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1, - 1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 		};
 		break;
@@ -83,7 +83,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,113,-1,-1,114,-1,-1,115,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,0,1,2,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 		};
 		break;
@@ -100,7 +100,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,116,-1,-1,117,-1,-1,118,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 		};
 		break;
@@ -117,7 +117,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,119,-1,-1,120,-1,-1,121,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 
 		};
@@ -135,7 +135,7 @@ void Game::SelectStage::LoadMap()
 			{ 14,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,15 },
 			{ 19,-1,-1,-1,122,-1,-1,123,-1,-1,124,-1,-1,-1,-1,-1,-1,-1,-1,5 },
 			{ 9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
-			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5 },
+			{ 9,-1,99,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,100,-1,-1,5 },
 			{ 0,2,1,3,1,3,1,1,1,2,3,3,1,3,2,2,1,1,1,4 }
 
 		};
@@ -251,11 +251,11 @@ Vector2 Game::SelectStage::GetStartPosition() const
 {
 	return player_start_position;
 }
-
+#include <iostream>
 void Game::SelectStage::MapTransition()
 {
-	if (player.IsReadyToNextLevel && static_cast<int>(currentMapName) > 6) {
- 		Engine::Application::GetSaveFile().Save(GetCurrentMapName());
+    if (player.IsReadyToNextLevel && static_cast<int>(currentMapName) > 6) {
+/* 		Engine::Application::GetSaveFile().Save(GetCurrentMapName());*/
 		Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::GameMode));
 		player.IsReadyToNextLevel = false;
 		currentMapName = MapName::SelectStage;
@@ -283,10 +283,26 @@ void Game::SelectStage::UpdateObjects(double dt)
 	}
 	for (Engine::GameObject* obj : objects) {
 		if (obj->GetObjectID() == ObjectID::ID::SELECTBOX &&
-			CheckCollisionRecs(player.GetHitbox(), obj->GetHitbox()))
+			CheckCollisionRecs(player.GetHitbox(), obj->GetHitbox())) 
 		{
-			currentMapName = static_cast<SelectBox*>(obj)->GetMapName();
-			player.IsReadyToNextLevel = true;
+			player.IsReadyToNextLevel = false;
+
+   			currentMapName = static_cast<SelectBox*>(obj)->GetMapName();
+			int current = static_cast<int>(currentMapName);
+			int maxMap = static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()]);
+			std::cout << "[LOG] current: " << current
+				<< " / current+1: " << current + 1
+				<< " / maxMap: " << maxMap
+				<< " / condition: " << (current + 1 <= maxMap) << std::endl;
+			if (static_cast<int>(currentMapName) < 6 ) {
+				player.IsReadyToNextLevel = true;
+				
+        			}else if (static_cast<int>(currentMapName)  <= static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()])) {
+				player.IsReadyToNextLevel = true;
+				
+
+				
+			}
 		}
 	}
 }

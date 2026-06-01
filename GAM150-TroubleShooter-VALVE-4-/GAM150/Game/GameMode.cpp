@@ -17,10 +17,11 @@ std::string Game::GameMode::GetCurrentMapName() const
 void Game::GameMode::ChangeMap(MapName newMap)
 {
 	currentMapName = newMap;
+	Engine::Application::GetSaveFile().Save(GetCurrentMapName());
 	ui.WhenMapChanged(GetCurrentMapName());
 }
 void Game::GameMode::Load() {
-	currentMapName = MapNameMap[Engine::Application::GetSaveFile().GetCurrentGameMap()];
+	currentMapName = MapNameMap[Engine::Application::GetSaveFile().GetMaxGameMap()];
 	gameMap.Load(player, currentMapName);
 	player.Load(gameMap.GetStartPosition());
 	dialogue.Load(GetCurentMapNameForDialogue().c_str());
