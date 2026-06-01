@@ -8,6 +8,10 @@ Block::Block(Vector2 pos, int tileid, bool isglitchmoded) :
 {
 	isGlitchMode = isglitchmoded;
 }
+Block::Block(Vector2 pos, int tileid, bool isglitchmoded, ObjectID::ID id) :Block( pos, tileid,  isglitchmoded)
+{
+	this->id = id;
+}
 Vector2  Block::GetPosition() {
 	return position;
 }

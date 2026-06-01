@@ -11,7 +11,7 @@ namespace ObjectID {
 		SAW,
 		DOOR,
 		FLAG,
-		GLITCHPLATE,
+		NUMBER_BLOCK,
 		TROUBLE,
 		PLAYER,
 		SELECTBOX,

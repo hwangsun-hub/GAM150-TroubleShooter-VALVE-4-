@@ -69,6 +69,7 @@ void Engine::Application::LoadAssets()
     textures[static_cast<int>(ObjectID::ID::DOOR)] = LoadTexture("Assets/Texture/Door.png");
     textures[static_cast<int>(ObjectID::ID::BOX)] = LoadTexture("Assets/Texture/Box.png");
     textures[static_cast<int>(ObjectID::ID::GLITCHBOX)] = LoadTexture("Assets/Texture/GlitchBox.png");
+    textures[static_cast<int>(ObjectID::ID::NUMBER_BLOCK)] = LoadTexture("Assets/Texture/Number_Block.png");
 
     //sounds
     sounds[static_cast<int>(SoundID::ID::TestSound1)] = LoadSound("Assets/Sound/soundtest1.mp3");

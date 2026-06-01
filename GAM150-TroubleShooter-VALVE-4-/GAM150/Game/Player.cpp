@@ -27,6 +27,7 @@ void Game::Player::Load(Vector2 start_position) {
 
 void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 	switch (obj->GetObjectID()) {
+	case ObjectID::ID::NUMBER_BLOCK: [[fallthrough]];
 	case ObjectID::ID::BLOCK: {
 		if (obj->GetIsGlitchMode() == true &&
 			CheckCollisionRecs(hitbox, obj->GetHitbox())
@@ -191,6 +192,7 @@ void Game::Player::CorrectCollision(Engine::GameObject* obj, double dt, std::vec
 		}
 		break;
 	}
+	case ObjectID::ID::NUMBER_BLOCK: [[fallthrough]];
 	case ObjectID::ID::BLOCK:
 	{
 		if (!CheckCollisionRecs(hitbox, obj->GetHitbox())) {
