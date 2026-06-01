@@ -22,6 +22,7 @@ void Game::Player::Load(Vector2 start_position) {
 	velocity = { 0,0 };
 	trouble_bullet = 0;
 	IsCollisionWithGlitchedDoor = false;
+	IsReadyToNextLevel = false;
 }
 
 void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {

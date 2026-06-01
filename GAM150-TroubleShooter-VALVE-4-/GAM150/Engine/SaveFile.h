@@ -12,7 +12,7 @@ namespace Engine {
 		void Save(std::string CurrentGameMap);
 		void Unload();
 		void Update();
-		std::string GetCurrentGameMap() const { return savefile.back(); }
+		std::string GetMaxGameMap() const { return savefile.back(); }
 	private:
 		std::filesystem::path save_file_path;
 		std::vector<std::string> savefile;

@@ -10,9 +10,8 @@ Engine::SaveFile::SaveFile()
 
 void Engine::SaveFile::Load(const std::filesystem::path& save_file)
 {
-    std::cout << "1"<<'\n';
     save_file_path = save_file;
-    if (save_file_path.extension() != ".savefile") {
+    if (save_file_path.extension() != ".sav") {
         std::cout << std::string(save_file_path.generic_string() + " is not a .savefile file");
         return;
     }
@@ -23,6 +22,7 @@ void Engine::SaveFile::Load(const std::filesystem::path& save_file)
         return;
     }
     std::string text;
+
     while (in_file.eof() == false) {
         in_file >> text;
         if (text == "END") {
