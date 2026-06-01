@@ -21,6 +21,7 @@ void Game::Player::Load(Vector2 start_position) {
 	IsTroubleShoot = false;
 	velocity = { 0,0 };
 	trouble_bullet = 0;
+	arrivedDoor = nullptr;
 	IsCollisionWithGlitchedDoor = false;
 	IsReadyToNextLevel = false;
 }
