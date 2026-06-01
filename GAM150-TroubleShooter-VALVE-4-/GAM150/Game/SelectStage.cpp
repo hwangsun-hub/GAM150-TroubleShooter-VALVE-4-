@@ -255,8 +255,8 @@ Vector2 Game::SelectStage::GetStartPosition() const
 void Game::SelectStage::MapTransition()
 {
     if (player.IsReadyToNextLevel && static_cast<int>(currentMapName) > 6) {
-/* 		Engine::Application::GetSaveFile().Save(GetCurrentMapName());*/
 		Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::GameMode));
+		static_cast<GameMode*>(Engine::Application::GetGameStateManager().GetGameState(static_cast<int>(States::GameMode)))->SetCurrentMap(currentMapName);
 		player.IsReadyToNextLevel = false;
 		currentMapName = MapName::SelectStage;
 		return;
@@ -297,7 +297,7 @@ void Game::SelectStage::UpdateObjects(double dt)
 			if (static_cast<int>(currentMapName) < 6 ) {
 				player.IsReadyToNextLevel = true;
 				
-        			}else if (static_cast<int>(currentMapName)  <= static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()])) {
+        	}else if (static_cast<int>(currentMapName)  <= static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()])) {
 				player.IsReadyToNextLevel = true;
 				
 

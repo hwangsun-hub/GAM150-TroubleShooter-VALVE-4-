@@ -14,6 +14,7 @@ namespace Engine {
         void ReloadState();
         void ClearNextGameState();
         bool HasGameEnded();
+        GameState* GetGameState(int index) { return gamestates[index]; }
     private:
         enum class Status {
             STARTING,
