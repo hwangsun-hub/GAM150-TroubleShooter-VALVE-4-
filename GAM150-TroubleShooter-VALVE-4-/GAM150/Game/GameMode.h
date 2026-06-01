@@ -20,6 +20,7 @@ namespace Game {
         std::string GetCurentMapNameForDialogue() const;
         std::string GetCurrentMapName() const;
         void ChangeMap(MapName newMap);
+        void SetCurrentMap(MapName map) { currentMapName = map; }
     private:
         MapName currentMapName;
         Game::GameMap gameMap;
