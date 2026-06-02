@@ -4,7 +4,7 @@
 Flag::Flag(Vector2 pos, int tileid, bool isglitchmoded) :
 	position(pos),
 	tile_id(tileid),
-	hitbox({ position.x, position.y,0,0 }),
+	hitbox({ position.x + 12, position.y,40,SIZE }),
 	id(ObjectID::ID::FLAG)
 {
 	isGlitchMode = isglitchmoded;
@@ -27,8 +27,6 @@ bool  Flag::CheckCollision(Rectangle hibox) {
 }
 
 void Flag::Load() {
-	hitbox.width = SIZE;
-	hitbox.height = SIZE;
 }
 void  Flag::Update(double dt) {
 

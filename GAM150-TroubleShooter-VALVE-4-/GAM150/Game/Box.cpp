@@ -100,7 +100,8 @@ bool Box::CanPush(float direction, std::vector<Engine::GameObject*>& objects, co
 	checkRect.x += direction * 1.0f;
 	for (Engine::GameObject* other : objects) {
 		if (other == this || other == caller) continue;
-		if (other->GetObjectID() != ObjectID::ID::BLOCK &&
+		if (other->GetObjectID() != ObjectID::ID::NUMBER_BLOCK &&
+			other->GetObjectID() != ObjectID::ID::BLOCK &&
 			other->GetObjectID() != ObjectID::ID::PLATFORM &&
 			other->GetObjectID() != ObjectID::ID::BOX) continue;
 		if (CheckCollisionRecs(checkRect, other->GetHitbox())) {
@@ -124,7 +125,8 @@ void Box::ResolveCollisions(std::vector<Engine::GameObject*>& objects) {
 
 	for (Engine::GameObject* other : objects) {
 		if (other == obj) continue;
-		if (other->GetObjectID() != ObjectID::ID::BLOCK &&
+		if (other->GetObjectID() != ObjectID::ID::NUMBER_BLOCK &&
+			other->GetObjectID() != ObjectID::ID::BLOCK &&
 			other->GetObjectID() != ObjectID::ID::PLATFORM &&
 			other->GetObjectID() != ObjectID::ID::BOX) continue;
 			if (!CheckCollisionRecs(boxHitbox, other->GetHitbox())) continue;
