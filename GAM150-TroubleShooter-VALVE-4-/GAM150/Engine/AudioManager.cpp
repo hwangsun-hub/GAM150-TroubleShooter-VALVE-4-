@@ -25,6 +25,8 @@ void Engine::AudioManager::SoundPlay(SoundID::ID id)
 
 void Engine::AudioManager::MusicChange(MusicID::ID id)
 {
+    if (bgm.ctxData == Engine::Application::GetMusics()[static_cast<int>(id)].ctxData)
+        return;
     if (bgm.ctxData != nullptr)
     {
         StopMusicStream(bgm);
@@ -32,8 +34,7 @@ void Engine::AudioManager::MusicChange(MusicID::ID id)
 
     bgm =
         Engine::Application::GetMusics()[
-            static_cast<int>(id)
-        ];
+            static_cast<int>(id)];
 
     if (bgm.ctxData != nullptr)
     {
