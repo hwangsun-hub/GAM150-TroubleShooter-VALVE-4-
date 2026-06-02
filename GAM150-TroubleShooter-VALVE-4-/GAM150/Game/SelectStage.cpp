@@ -172,7 +172,7 @@ void Game::SelectStage::LoadMap()
 
 
 void Game::SelectStage::Unload()
-{
+ {
 	player.Unload();
 	for (Engine::GameObject* obj : objects)
 	{
@@ -297,9 +297,11 @@ void Game::SelectStage::MapTransition()
 
 void Game::SelectStage::UpdateObjects(double dt)
 {
+	
 	for (Engine::GameObject* obj : objects) {
 		player.HandleCollision(obj, dt);
 	}
+	
 	for (Engine::GameObject* obj : objects) {
 		player.CorrectCollision(obj, dt, objects);
 
@@ -309,25 +311,22 @@ void Game::SelectStage::UpdateObjects(double dt)
 	}
 	for (Engine::GameObject* obj : objects) {
 		if (obj->GetObjectID() == ObjectID::ID::SELECTBOX &&
-			CheckCollisionRecs(player.GetHitbox(), obj->GetHitbox())) 
+			CheckCollisionRecs(player.GetHitbox(), obj->GetHitbox()))
 		{
 			player.IsReadyToNextLevel = false;
 
-   			currentMapName = static_cast<SelectBox*>(obj)->GetMapName();
+			currentMapName = static_cast<SelectBox*>(obj)->GetMapName();
 			int current = static_cast<int>(currentMapName);
 			int maxMap = static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()]);
-			std::cout << "[LOG] current: " << current
-				<< " / current+1: " << current + 1
-				<< " / maxMap: " << maxMap
-				<< " / condition: " << (current + 1 <= maxMap) << std::endl;
-			if (static_cast<int>(currentMapName) < 6 ) {
+			
+			if (static_cast<int>(currentMapName) < 6) {
 				player.IsReadyToNextLevel = true;
-				
-        	}else if (static_cast<int>(currentMapName)  <= static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()])) {
+			}
+			else if (static_cast<int>(currentMapName) <= static_cast<int>(MapNameStringToMapName[Engine::Application::GetSaveFile().GetMaxGameMap()])) {
 				player.IsReadyToNextLevel = true;
-				
 
-				
+
+
 			}
 		}
 	}

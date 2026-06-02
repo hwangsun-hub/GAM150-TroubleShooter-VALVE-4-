@@ -52,7 +52,7 @@ void Game::GameMode::Update([[maybe_unused]] double dt) {
 
 					Vector2 startPosition = player.Getplayer2Pos();
 
-					player2.Load(startPosition); 
+					player2.Load(startPosition, player.GetVelocity()); 
 
 				}
 			}

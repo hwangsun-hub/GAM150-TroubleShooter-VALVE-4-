@@ -46,8 +46,12 @@ void Game::MainMenu::Update(double dt)
     if (IsKeyPressed(KEY_ENTER)) {
         switch (choose_index) {
         case 0:  // Start Game
-            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::SelectStage)); 
+            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::SelectStage));
+            break;
+
         case 1:  // Option
+            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::Option));
+
             break;
         case 2:  // Exit
             Engine::Application::GetGameStateManager().ClearNextGameState();
@@ -61,7 +65,8 @@ void Game::MainMenu::Unload()
 {
     UnloadTexture(texture_mainmenu);
     UnloadTexture(texture_choose);
-
+    UnloadTexture(texture_background);
+    UnloadTexture(texture_logo);
 }
 
 void Game::MainMenu::Draw()

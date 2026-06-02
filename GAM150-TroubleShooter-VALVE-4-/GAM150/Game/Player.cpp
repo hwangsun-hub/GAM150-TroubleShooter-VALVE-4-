@@ -6,7 +6,7 @@
 Game::Player::Player()  {
 
 }
-void Game::Player::Load(Vector2 start_position) {
+void Game::Player::Load(Vector2 start_position, Vector2 velocity) {
 	texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::PLAYER)];
 	SetTextureFilter(texture, TEXTURE_FILTER_POINT);
 	position = start_position;
@@ -19,7 +19,7 @@ void Game::Player::Load(Vector2 start_position) {
 	IsJump = false;
 	IsLookingRight = true;
 	IsTroubleShoot = false;
-	velocity = { 0,0 };
+	this->velocity = velocity;
 	trouble_bullet = 0;
 	arrivedDoor = nullptr;
 	IsCollisionWithGlitchedDoor = false;
@@ -89,7 +89,6 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 			break;
 		}
 		if (obj->GetIsGlitchMode() == false) {
-			IsReadyToNextLevel = true;
 		
 		}
 		else {
@@ -118,7 +117,7 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 			arrivedDoor = door->GetAnotherDoor();
 			position.x = arrivedDoor->GetPosition().x + offsetX;
 			position.y = arrivedDoor->GetPosition().y + offsetY;
-
+			
 			hitbox.x = position.x;
 			hitbox.y = position.y;
 
@@ -131,6 +130,7 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 			Door* exitDoor = door->GetAnotherDoor();
 			player2Pos.x = exitDoor->GetPosition().x + offsetX;
 			player2Pos.y = exitDoor->GetPosition().y + offsetY;
+			
 			door->GetAnotherDoor()->Unload(true);
 			door->Unload(true);
 			IsCollisionWithGlitchedDoor = true;

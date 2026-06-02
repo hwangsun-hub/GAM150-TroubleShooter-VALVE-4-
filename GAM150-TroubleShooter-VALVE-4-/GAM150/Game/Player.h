@@ -10,7 +10,7 @@ namespace Game {
 	{
 	public:
 		Player();
-		void Load(Vector2 start_position);
+		void Load(Vector2 start_position, Vector2 velocity={0,0});
 		void Unload();
 		void HandleCollision(Engine::GameObject* obj, double dt);
 		void CorrectCollision(Engine::GameObject* obj, double dt, std::vector<Engine::GameObject*>& objects);
