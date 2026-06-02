@@ -52,10 +52,10 @@ namespace Game {
 
             { MapName::STAGE3_LEVEL1, 0 },
             { MapName::STAGE3_LEVEL2, 0 },
-            { MapName::STAGE3_LEVEL3, 0 },
+            { MapName::STAGE3_LEVEL3, 4 },
 
-            { MapName::STAGE4_LEVEL1, 100 },
-            { MapName::STAGE4_LEVEL2, 0 },
+            { MapName::STAGE4_LEVEL1, 0 },
+            { MapName::STAGE4_LEVEL2, 4 },
             { MapName::STAGE4_LEVEL3, 3 },
 
             { MapName::STAGE5_LEVEL1, 2 },
