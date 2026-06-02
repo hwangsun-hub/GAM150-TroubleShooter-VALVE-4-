@@ -4,6 +4,7 @@
 #include "SelectBox.h"
 #include "States.h"
 #include "GameMode.h"
+#include "Tutorial.h"
 #include "../Engine/Application.h"
 Game::SelectStage::SelectStage()
 {
@@ -269,6 +270,9 @@ void Game::SelectStage::Draw()
 		obj->Draw();
 	}
 	player.Draw();
+	if (currentMapName == MapName::SelectStage) {
+		Tutorial::Draw(0, { 64.0f * 1, 64.0f * 8 });
+	}
 	ui.Draw(player);
 
 }
