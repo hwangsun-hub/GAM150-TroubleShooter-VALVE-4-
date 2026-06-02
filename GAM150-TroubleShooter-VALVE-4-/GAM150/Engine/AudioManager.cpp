@@ -8,7 +8,7 @@ Engine::AudioManager::AudioManager()
 void Engine::AudioManager::Start()
 {
 	InitAudioDevice();
-    SetMasterVolume(0.1f);
+    SetMasterVolume(0.01f);
 }
 
 void Engine::AudioManager::SoundPlay(SoundID::ID id)

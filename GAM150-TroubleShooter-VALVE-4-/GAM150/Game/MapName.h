@@ -33,6 +33,7 @@ enum class MapName
 	STAGE5_LEVEL2,
 	STAGE5_LEVEL3,
 
+	CLEAR,
 	
 
 	COUNT
