@@ -89,7 +89,6 @@ void Game::Player::HandleCollision(Engine::GameObject* obj, double dt) {
 			break;
 		}
 		if (obj->GetIsGlitchMode() == false) {
-			IsReadyToNextLevel = true;
 		
 		}
 		else {

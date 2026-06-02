@@ -13,7 +13,7 @@ int main() {
     engine.GetGameStateManager().AddGameState(mainmenu);
     Game::SelectStage selectstage;
     engine.GetGameStateManager().AddGameState(selectstage);
-    Game::GameMode Option;
+    Game::Option Option;
     engine.GetGameStateManager().AddGameState(Option);
     Game::GameMode gamemode;
     engine.GetGameStateManager().AddGameState(gamemode);
