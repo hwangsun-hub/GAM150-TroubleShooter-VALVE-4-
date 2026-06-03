@@ -73,6 +73,8 @@ inline  std::string MapNames[] =
 	"STAGE5_LEVEL2",
 	"STAGE5_LEVEL3",
 
+	"CLEAR",
+
 	"COUNT"
 };
 

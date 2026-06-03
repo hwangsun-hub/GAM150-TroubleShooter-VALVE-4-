@@ -5,8 +5,8 @@ void UI::Draw(Game::Player& player)
 {
 	Engine::Application::GetTextureManager().DrawTexure(ObjectID::ID::TROUBLE, troublePosition);
 	DrawText(troubleString, troublePosition.x + 50, troublePosition.y, 40, WHITE);
-	DrawText(currentMapName.c_str(), currentMapNamePosition.x , currentMapNamePosition.y, 40, WHITE);
-
+	DrawText(currentMapName.c_str(), currentMapNamePosition.x , currentMapNamePosition.y, currentMapNameFontSize, WHITE);
+	
 }
 
 void UI::Update(Game::Player& player)
@@ -16,6 +16,10 @@ void UI::Update(Game::Player& player)
 	{
 		troubleString = TextFormat("x %d", player.GetCurrentTroubleBullet());
 		lastTroubleBullet = current;
+	}
+	if (currentMapName == "CLEAR") {
+		currentMapNameFontSize = 200;
+		currentMapNamePosition = { 480,500 };
 	}
 }
 

@@ -16,6 +16,7 @@ private:
 	int lastTroubleBullet = -1;
 
 	Vector2 currentMapNamePosition = {  50 , 50 };
+	int currentMapNameFontSize = 40;
 	std::string currentMapName;
 
 };
