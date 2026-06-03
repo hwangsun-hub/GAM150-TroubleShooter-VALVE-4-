@@ -13,6 +13,8 @@ namespace Engine {
 		void SoundPlay(SoundID::ID id);
 		void MusicChange(MusicID::ID id);
 		void MusicUpdate();
+		void SetSoundV(float volume);
+		void SetMusicV(float volume);
 
 	private:
 		Music bgm;

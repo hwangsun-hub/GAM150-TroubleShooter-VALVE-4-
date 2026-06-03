@@ -2,8 +2,13 @@
 #include "../Engine/Application.h"
 #include "States.h"
 
+float Game::Option::sound = 0.5f;
+float Game::Option::sound2 = 0.5f;
+float Game::Option::sound3 = 0.5f;
+
 Game::Option::Option()
 {
+    
 }
 
 void Game::Option::Load()
@@ -26,11 +31,10 @@ void Game::Option::Update(double dt)
         choose_index--;
         if (choose_index < 0) choose_index = 4;
     }
-
     switch (choose_index) {
     case 0: [[fallthrough]];
     case 1: [[fallthrough]];
-    case 2:  
+    case 2:
         choose_y = 325 + choose_index * 95;
         break;
     case 3:  // DELETE SAVE FILE
@@ -40,26 +44,67 @@ void Game::Option::Update(double dt)
         choose_y = 740;
         break;
     }
-    
 
-    if (IsKeyPressed(KEY_ENTER)) {
+    if (IsKeyPressed(KEY_RIGHT)) {
         switch (choose_index) {
         case 0:  // MASTER
-            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::SelectStage));
+            if (sound < 1)
+                sound += 0.1;
+            SetMasterVolume(sound);
             break;
         case 1:  // BGM
+            if (sound2 < 1)
+                sound2 += 0.1;
+            Engine::Application::GetAudioManager().SetMusicV(sound2);
             break;
         case 2:  // SFX
-            break;
-        case 3:  // DELETE SAVE FILE
-            Engine::Application::GetSaveFile().Save("STAGE0_LEVEL1");
-            break;
-        case 4:  // EXIT
-            Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::MainMenu));
+            if (sound3 < 1)
+                sound3 += 0.1;
+            Engine::Application::GetAudioManager().SetSoundV(sound3);
             break;
         }
     }
-}
+
+        if (IsKeyPressed(KEY_LEFT)) {
+            switch (choose_index) {
+            case 0:  // MASTER
+                if (sound > 0)
+                    sound -= 0.1;
+                SetMasterVolume(sound);
+                break;
+            case 1:  // BGM
+                if (sound2 > 0)
+                    sound2 -= 0.1;
+                Engine::Application::GetAudioManager().SetMusicV(sound2);
+                break;
+            case 2:  // SFX
+                if (sound3 > 0)
+                    sound3 -= 0.1;
+                Engine::Application::GetAudioManager().SetSoundV(sound3);
+                break;
+            }
+        }
+        
+
+
+        if (IsKeyPressed(KEY_ENTER)) {
+            switch (choose_index) {
+            case 0:  // MASTER
+                break;
+            case 1:  // BGM
+                break;
+            case 2:  // SFX
+                break;
+            case 3:  // DELETE SAVE FILE
+                Engine::Application::GetSaveFile().Save("STAGE0_LEVEL1");
+                break;
+            case 4:  // EXIT
+                Engine::Application::GetGameStateManager().SetNextGameState(static_cast<int>(States::MainMenu));
+                break;
+            }
+        }
+    }
+
 
 void Game::Option::Unload()
 {
@@ -114,27 +159,7 @@ void Game::Option::Draw()
         WHITE
     );
 
-    DrawTexturePro(
-        texture_sound_bar,
-
-        Rectangle{
-             0,
-            0,
-            (float)texture_sound_bar.width,
-            (float)texture_sound_bar.height
-        },
-
-        Rectangle{
-            0,
-            0,
-            (float)texture_sound_bar.width,
-            (float)texture_sound_bar.height
-        },
-        Vector2{ 0,0 },
-        0.0f,
-        WHITE
-    );
-
+  
     DrawTexturePro(
         texture_sound,
 
@@ -157,6 +182,10 @@ void Game::Option::Draw()
     );
 
     DrawTexture(texture_choose, choose_x, choose_y, WHITE);
+    DrawRectangle(600, 325, 410 * sound, 45, GREEN);
+    DrawRectangle(600, 325 + 1 * 95, 410 * sound2, 45, GREEN);
+    DrawRectangle(600, 325 + 2 * 95, 410 * sound3, 45, GREEN);
+
 
 
 }

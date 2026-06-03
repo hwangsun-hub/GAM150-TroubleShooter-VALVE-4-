@@ -3,12 +3,13 @@
 
 Engine::AudioManager::AudioManager()
 {
+
 }
 
 void Engine::AudioManager::Start()
 {
 	InitAudioDevice();
-    SetMasterVolume(0.01f);
+    SetMasterVolume(0.5f);
 }
 
 void Engine::AudioManager::SoundPlay(SoundID::ID id)
@@ -46,5 +47,19 @@ void Engine::AudioManager::MusicUpdate()
 {
     if (bgm.ctxData != nullptr) {
         UpdateMusicStream(bgm);
+    }
+}
+
+void Engine::AudioManager::SetSoundV(float volume)
+{
+    for (Sound& s : Engine::Application::GetSounds()) {
+        SetSoundVolume(s, volume);
+    }
+}
+
+void Engine::AudioManager::SetMusicV(float volume)
+{
+    for (Music& v : Engine::Application::GetMusics()) {
+        SetMusicVolume(v, volume);
     }
 }

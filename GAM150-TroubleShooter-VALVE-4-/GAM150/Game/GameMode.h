@@ -39,12 +39,12 @@ namespace Game {
         gamestate gamestate;
         std::map<MapName, int> max_trouble = {
             { MapName::STAGE0_LEVEL1, 10 },
-            { MapName::STAGE0_LEVEL2, 0 },
+            { MapName::STAGE0_LEVEL2, 1 },
             { MapName::STAGE0_LEVEL3, 1 },
 
-            { MapName::STAGE1_LEVEL1, 2 },
-            { MapName::STAGE1_LEVEL2, 3 },
-            { MapName::STAGE1_LEVEL3, 4 },
+            { MapName::STAGE1_LEVEL1, 0 },
+            { MapName::STAGE1_LEVEL2, 0 },
+            { MapName::STAGE1_LEVEL3, 0 },
 
             { MapName::STAGE2_LEVEL1, 0 },
             { MapName::STAGE2_LEVEL2, 6 },
@@ -58,9 +58,9 @@ namespace Game {
             { MapName::STAGE4_LEVEL2, 4 },
             { MapName::STAGE4_LEVEL3, 3 },
 
-            { MapName::STAGE5_LEVEL1, 2 },
-            { MapName::STAGE5_LEVEL2, 2 },
-            { MapName::STAGE5_LEVEL3, 2 }
+            { MapName::STAGE5_LEVEL1, 0 },
+            { MapName::STAGE5_LEVEL2, 0 },
+            { MapName::STAGE5_LEVEL3, 1 }
         };
         std::map<std::string, MapName> MapNameMap = {
             {"SelectStage", MapName::SelectStage},

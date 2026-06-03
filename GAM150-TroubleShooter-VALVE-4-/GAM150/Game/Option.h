@@ -27,6 +27,9 @@ namespace Game {
         int choose_y = 200;
         int choose_index = 0;
         int frame = 0;
+        static float sound;
+        static float sound2;
+        static float sound3;
 
 
         static constexpr int FRAME_WIDTH = 1920;
