@@ -14,7 +14,7 @@ void Box::Load() {
 		texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::GLITCHBOX)];
 	else
 		texture = Engine::Application::Gettextures()[static_cast<int>(ObjectID::ID::BOX)];
-	hitbox.width = static_cast<float>(SIZE);
+	hitbox.width = static_cast<int>(SIZE-5);
 	hitbox.height = static_cast<float>(SIZE);
 }
 
@@ -33,7 +33,7 @@ void Box::Draw() {
 	DrawTexturePro(
 		texture,
 		Rectangle{ 0, 0, static_cast<float>(texture.width), static_cast<float>(texture.height) },
-		hitbox,
+		{ position.x , position.y , SIZE, SIZE },
 		Vector2{ 0, 0 },
 		0.0f,
 		WHITE
@@ -134,10 +134,10 @@ void Box::ResolveCollisions(std::vector<Engine::GameObject*>& objects) {
 			Rectangle overlap = GetCollisionRec(boxHitbox, other->GetHitbox());
 			Rectangle otherHitbox = other->GetHitbox();
 
-			if (overlap.width < overlap.height) {
+			if (overlap.width <= overlap.height) {
 				float boxCenterX = boxHitbox.x + boxHitbox.width * 0.5f;
 				float otherCenterX = otherHitbox.x + otherHitbox.width * 0.5f;
-				if (boxCenterX < otherCenterX) {
+				if (boxCenterX <= otherCenterX) {
 					box->Push(0, objects);
 					boxHitbox.x -= overlap.width;
 				}
