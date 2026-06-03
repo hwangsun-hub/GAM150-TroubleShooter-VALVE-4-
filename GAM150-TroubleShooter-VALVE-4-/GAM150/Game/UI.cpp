@@ -21,6 +21,10 @@ void UI::Update(Game::Player& player)
 		currentMapNameFontSize = 200;
 		currentMapNamePosition = { 480,500 };
 	}
+	else {
+		currentMapNameFontSize = 40;
+		currentMapNamePosition= { 50 , 50 };
+	}
 }
 
 void UI::WhenMapChanged(const std::string& newMapName)
