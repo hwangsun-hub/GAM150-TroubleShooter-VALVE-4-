@@ -34,7 +34,9 @@ enum class MapName
 	STAGE5_LEVEL3,
 
 	CLEAR,
-	
+
+	STAGE6_LEVEL2,
+
 
 	COUNT
 };
@@ -74,6 +76,8 @@ inline  std::string MapNames[] =
 	"STAGE5_LEVEL3",
 
 	"CLEAR",
+
+	"STAGE6_LEVEL2",
 
 	"COUNT"
 };
