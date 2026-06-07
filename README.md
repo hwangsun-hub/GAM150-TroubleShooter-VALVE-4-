@@ -19,7 +19,7 @@ If an error occurs, go to [Project Properties] > [Configuration Properties] > [G
 
 - Explanation of what the game is and how to play
 This game is a platformer where the player wins by reaching the flag.
-If you reach the map with the smiley face, the game is finished.
+If you clear 18 maps, the game is finished.
 
 You can move using the left and right arrow keys, and jump with the space bar.
 You can shoot trouble with "Z"key.
